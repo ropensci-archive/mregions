@@ -2,7 +2,7 @@ language: r
 
 sudo: required
 
-r_install:
+r_packages:
  - geojsonio
 
 notifications:
