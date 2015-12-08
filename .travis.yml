@@ -1,0 +1,11 @@
+language: r
+
+sudo: required
+
+r_install:
+ - geojsonio
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
