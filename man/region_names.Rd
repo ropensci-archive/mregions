@@ -12,4 +12,9 @@ region_names(x)
 \description{
 Get region names
 }
+\examples{
+\dontrun{
+region_names()
+}
+}
 
