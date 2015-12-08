@@ -2,8 +2,8 @@ language: r
 
 sudo: required
 
-r_packages:
- - geojsonio
+env:
+	- _R_CHECK_FORCE_SUGGESTS_=FALSE
 
 notifications:
   email:
