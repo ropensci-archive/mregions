@@ -3,7 +3,7 @@ language: r
 sudo: required
 
 env:
-	- _R_CHECK_FORCE_SUGGESTS_=FALSE
+- _R_CHECK_FORCE_SUGGESTS_=FALSE
 
 notifications:
   email:
