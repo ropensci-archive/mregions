@@ -1,7 +1,7 @@
 Package: mregions
 Title: Marine Regions from Marineregions.org
 Description: Marine regions from Marineregions.org. Yay.
-Version: 0.0.1.9500
+Version: 0.0.1.9900
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")

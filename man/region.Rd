@@ -4,19 +4,25 @@
 \alias{region}
 \title{Get a region shp file}
 \usage{
-region(x, format = "geojson")
+region(name = NULL, key = NULL, format = "geojson")
 }
 \arguments{
-\item{x}{Region name}
+\item{name}{(character) Region name}
 
-\item{format}{one of geojson, shp}
+\item{key}{(character) Region key}
+
+\item{format}{(character) One of 'geojson' or 'shp'}
 }
 \description{
 Get a region shp file
 }
 \examples{
 \dontrun{
-res <- region(x = "MarineRegions:eez_33176", format = "geojson")
+# by key
+res <- region(key = "MarineRegions:eez_33176", format = "geojson")
+
+# by name
+res <- region(name = "Turkmen Exclusive Economic Zone", format = "geojson")
 
 library("geojsonio")
 as.json(res) \%>\% map_leaf
