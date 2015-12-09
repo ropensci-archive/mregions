@@ -74,6 +74,17 @@ leaflet() %>%
 
 ![map2](http://f.cl.ly/items/1m3R2p241S1u1n3r141R/Screen%20Shot%202015-12-09%20at%209.36.19%20AM.png)
 
+## Convert to WKT
+
+
+```r
+res <- region_geojson(key = "MarineRegions:eez_33176")
+as_wkt(res, fmt = 5)
+
+#> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
+```
+
+
 ## Meta
 
 * Please [report any issues or bugs](https://github.com/sckott/mregions/issues).
