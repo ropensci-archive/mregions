@@ -3,6 +3,7 @@
 #' @importFrom httr GET content stop_for_status write_disk
 #' @importFrom jsonlite fromJSON
 #' @importFrom xml2 read_xml xml_children xml_text
+#' @import wellknown
 #' @name mregions-package
 #' @aliases mregions
 #' @docType package

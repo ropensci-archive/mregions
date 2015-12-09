@@ -9,6 +9,7 @@
 #' @param read (logical) To read in as spatial object. If \code{FALSE} a path
 #' given back. if \code{TRUE}, you need the \code{rgdal} package installed.
 #' Default: \code{FALSE}
+#' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' # by key
 #' res <- region_geojson(key = "MarineRegions:eez_33176")
@@ -31,21 +32,14 @@
 #' leaflet() %>% addPolygons(data = res)
 #' }
 region_shp <- function(name = NULL, key = NULL, maxFeatures = 50,
-                       path = "~/.mregions", overwrite = TRUE, read = TRUE) {
+  path = "~/.mregions", overwrite = TRUE, read = TRUE, ...) {
 
   args <- make_args('shp', name, key, maxFeatures)
-  res <- m_GET(vliz_base(), args, path, overwrite)
+  res <- m_GET(vliz_base(), args, path, overwrite, ...)
   if (read) {
     check4pkg("rgdal")
     rgdal::readOGR(res, rgdal::ogrListLayers(res), verbose = FALSE)
   } else {
     res
   }
-}
-
-#' @export
-#' @rdname region_shp
-region_geojson <- function(name = NULL, key = NULL, maxFeatures = 50, ...) {
-  args <- make_args('geojson', name, key, maxFeatures)
-  jsonlite::fromJSON(m_GET(vliz_base(), args, ...), FALSE)
 }

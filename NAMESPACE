@@ -3,6 +3,7 @@
 export(region_geojson)
 export(region_names)
 export(region_shp)
+import(wellknown)
 importFrom(httr,GET)
 importFrom(httr,content)
 importFrom(httr,stop_for_status)
