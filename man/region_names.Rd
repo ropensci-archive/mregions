@@ -4,10 +4,10 @@
 \alias{region_names}
 \title{Get region names}
 \usage{
-region_names(x)
+region_names(...)
 }
 \arguments{
-\item{x}{Region name}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
 Get region names

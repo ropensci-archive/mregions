@@ -45,7 +45,7 @@ region_shp <- function(name = NULL, key = NULL, maxFeatures = 50,
 
 #' @export
 #' @rdname region_shp
-region_geojson <- function(name = NULL, key = NULL, maxFeatures = 50) {
+region_geojson <- function(name = NULL, key = NULL, maxFeatures = 50, ...) {
   args <- make_args('geojson', name, key, maxFeatures)
-  m_GET(vliz_base(), args)
+  jsonlite::fromJSON(m_GET(vliz_base(), args, ...), FALSE)
 }

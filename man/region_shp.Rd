@@ -8,7 +8,7 @@
 region_shp(name = NULL, key = NULL, maxFeatures = 50,
   path = "~/.mregions", overwrite = TRUE, read = TRUE)
 
-region_geojson(name = NULL, key = NULL, maxFeatures = 50)
+region_geojson(name = NULL, key = NULL, maxFeatures = 50, ...)
 }
 \arguments{
 \item{name}{(character) Region name}

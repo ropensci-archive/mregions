@@ -1,23 +1,26 @@
 vliz_base <- function(x) "http://geo.vliz.be/geoserver/MarineRegions/ows"
 
-m_GET <- function(url, args, path = NULL, overwrite = NULL) {
+m_GET <- function(url, args, path = NULL, overwrite = NULL, ...) {
   if (args$outputFormat == "SHAPE-ZIP") {
     if (!file.exists(path)) {
       dir.create(path, recursive = TRUE, showWarnings = FALSE)
     }
     path <- file.path(path, paste0(sub(":", "_", args$typeName), ".zip"))
-    tt <- GET(url, query = args, write_disk(path = path, overwrite = overwrite))
+    tt <- httr::GET(url, query = args, write_disk(path = path, overwrite = overwrite), ...)
     stop_for_status(tt)
     file <- tt$request$output$path
     exdir <- sub(".zip", "", path)
     unzip(file, exdir = exdir)
     path.expand(list.files(exdir, pattern = ".shp", full.names = TRUE))
   } else {
-    tt <- GET(url, query = args)
-    stop_for_status(tt)
-    ttt <- content(tt, "text")
-    jsonlite::fromJSON(ttt, FALSE)
+    getter(url, args, ...)
   }
+}
+
+getter <- function(url, args, ...) {
+  tt <- GET(url, query = args)
+  stop_for_status(tt)
+  content(tt, "text")
 }
 
 ex_name <- function(x, y) {

@@ -17,31 +17,62 @@ devtools::install_github("ropensci/mregions")
 library("mregions")
 ```
 
-## 
+## GeoJSON
 
 Get region
 
 
 ```r
-res <- region(name = "Turkmen Exclusive Economic Zone", format = "geojson")
+res <- region_geojson(name = "Turkmen Exclusive Economic Zone")
 ```
 
 Get helper library
 
 
 ```r
-install.packages("geojsonio")
+install.packages("leaflet")
 ```
 
 Plot data
 
 
 ```r
-library("geojsonio")
-as.json(res) %>% map_leaf
+library('leaflet')
+leaflet() %>% 
+  addProviderTiles(provider = 'OpenStreetMap') %>% 
+  addGeoJSON(geojson = res$features) %>% 
+  setView(53, 40, zoom = 6)
 ```
 
-![map](http://f.cl.ly/items/292D3I32251l1z3j0i1d/Screen%20Shot%202015-12-08%20at%2011.16.18%20PM.png)
+![map](http://f.cl.ly/items/0c2c2Z143d2H3F142c35/Screen%20Shot%202015-12-09%20at%2010.01.52%20AM.png)
+
+## Shape
+
+Get region
+
+
+```r
+res <- region_shp(name = "Belgian Exclusive Economic Zone")
+```
+
+Get helper library
+
+
+```r
+install.packages("leaflet")
+```
+
+Plot data
+
+
+```r
+library('leaflet')
+leaflet() %>% 
+  addProviderTiles(provider = 'OpenStreetMap') %>% 
+  addPolygons(data = res)
+```
+
+![map2](http://f.cl.ly/items/1m3R2p241S1u1n3r141R/Screen%20Shot%202015-12-09%20at%209.36.19%20AM.png)
 
 ## Meta
 

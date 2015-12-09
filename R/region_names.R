@@ -1,13 +1,13 @@
 #' Get region names
 #'
 #' @export
-#' @param x Region name
+#' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' region_names()
 #' }
-region_names <- function(x) {
-  args <- list(SERVICE = 'WFS', REQUEST = 'GetCapabilities')
-  res <- m_GET(vliz_base(), args)
+region_names <- function(...) {
+  args <- list(SERVICE = 'WFS', REQUEST = 'GetCapabilities', outputFormat = 'a')
+  res <- m_GET(vliz_base(), args, ...)
   xml <- xml2::read_xml(res)
   features <- xml_children(xml_children(xml)[[4]])
   lapply(features, function(z) {
