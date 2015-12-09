@@ -1,7 +1,7 @@
 Package: mregions
 Title: Marine Regions from Marineregions.org
 Description: Marine regions from Marineregions.org. Yay.
-Version: 0.0.2.9000
+Version: 0.0.2.9500
 License: MIT + file LICENSE
 Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
     email = "myrmecocystus@gmail.com")
@@ -10,7 +10,8 @@ BugReports: https://github.com/sckott/mregions/issues
 Imports:
     httr (>= 1.0.0),
     jsonlite (>= 0.9.17),
-    xml2
+    xml2,
+    wellknown
 Suggests:
     testthat,
     geojsonio,
