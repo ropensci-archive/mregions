@@ -2,6 +2,7 @@
 
 export(as_wkt)
 export(place_types)
+export(records_by_type)
 export(region_geojson)
 export(region_names)
 export(region_shp)

@@ -18,8 +18,8 @@ m_GET <- function(url, args, path = NULL, overwrite = NULL, ...) {
   }
 }
 
-getter <- function(url, args, ...) {
-  tt <- GET(url, query = args)
+getter <- function(url, args = list(), ...) {
+  tt <- GET(url, query = args, ...)
   stop_for_status(tt)
   content(tt, "text")
 }
@@ -51,5 +51,13 @@ nameorkey <- function(name, key) {
     nms[vapply(nms, "[[", "", "title") == name][[1]]$name
   } else {
     key
+  }
+}
+
+pluck <- function(x, name, type) {
+  if (missing(type)) {
+    lapply(x, "[[", name)
+  } else {
+    vapply(x, "[[", name, FUN.VALUE = type)
   }
 }

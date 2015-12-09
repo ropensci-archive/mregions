@@ -14,7 +14,9 @@ Get Marineregions place types
 }
 \examples{
 \dontrun{
-place_types()
+res <- place_types()
+head(res)
+res$type
 }
 }
 
