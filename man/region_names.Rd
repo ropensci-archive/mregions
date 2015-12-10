@@ -2,19 +2,30 @@
 % Please edit documentation in R/region_names.R
 \name{region_names}
 \alias{region_names}
+\alias{region_names_search}
 \title{Get region names}
 \usage{
 region_names(...)
+
+region_names_search(query)
 }
 \arguments{
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+
+\item{query}{Query term}
 }
 \description{
 Get region names
 }
 \examples{
 \dontrun{
-region_names()
+(res <- region_names())
+vapply(res, "[[", "", "namespace")
+
+# search
+region_names_search(query = "EEZ")
+region_names_search(query = "IHO")
+region_names_search(query = "Heritage")
 }
 }
 

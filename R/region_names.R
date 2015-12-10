@@ -1,9 +1,16 @@
 #' Get region names
 #'
 #' @export
+#' @param query Query term
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
-#' region_names()
+#' (res <- region_names())
+#' vapply(res, "[[", "", "namespace")
+#'
+#' # search
+#' region_names_search(query = "EEZ")
+#' region_names_search(query = "IHO")
+#' region_names_search(query = "Heritage")
 #' }
 region_names <- function(...) {
   args <- list(SERVICE = 'WFS', REQUEST = 'GetCapabilities', outputFormat = 'a')
@@ -19,6 +26,19 @@ region_names <- function(...) {
   }, "", USE.NAMES = FALSE)
   fullnms <- vapply(nms, function(z) nms_matches[[z]], "", USE.NAMES = FALSE)
   Map(function(a, b) modifyList(a, list(namespace = b)), tt, fullnms)
+}
+
+#' @export
+#' @rdname region_names
+region_names_search <- function(query) {
+  res <- region_names()
+  nmsps <- sort(unique(vapply(res, "[[", "", "namespace")))
+  tmp <- agrep(query, nmsps, value = TRUE)
+  if (length(tmp) == 0) {
+    NULL
+  } else {
+    res[sapply(res, function(x) x$namespace == tmp)]
+  }
 }
 
 nms_matches <- list(
