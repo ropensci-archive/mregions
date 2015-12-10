@@ -84,6 +84,17 @@ as_wkt(res, fmt = 5)
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
 ```
 
+## Get OBIS EEZ ID
+
+
+```r
+res <- region_names()
+obis_eez_id(res[[1]]$title)
+```
+
+```
+## [1] 82
+```
 
 ## Meta
 
