@@ -11,19 +11,6 @@
 #' Default: \code{FALSE}
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
-#' # by key
-#' res <- region_geojson(key = "MarineRegions:eez_33176")
-#'
-#' # by name
-#' res <- region_geojson(name = "Turkmen Exclusive Economic Zone")
-#'
-#' library("geojsonio")
-#' as.json(res) %>% map_leaf
-#'
-#' nms <- region_names()
-#' as.json(region_geojson(nms[[1]]$name)) %>% map_leaf
-#'
-#' # shp files
 #' ## just get path
 #' region_shp(key = "MarineRegions:eez_33176", read = FALSE)
 #' ## read shp file into spatial object
@@ -38,8 +25,12 @@ region_shp <- function(name = NULL, key = NULL, maxFeatures = 50,
   res <- m_GET(vliz_base(), args, path, overwrite, ...)
   if (read) {
     check4pkg("rgdal")
-    rgdal::readOGR(res, rgdal::ogrListLayers(res), verbose = FALSE)
+    read_shp(res)
   } else {
-    res
+    structure(res, class = 'mr_shp_file')
   }
+}
+
+read_shp <- function(x) {
+  rgdal::readOGR(x, rgdal::ogrListLayers(x), verbose = FALSE)
 }

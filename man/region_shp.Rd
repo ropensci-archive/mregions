@@ -29,19 +29,6 @@ Get a region shp file
 }
 \examples{
 \dontrun{
-# by key
-res <- region_geojson(key = "MarineRegions:eez_33176")
-
-# by name
-res <- region_geojson(name = "Turkmen Exclusive Economic Zone")
-
-library("geojsonio")
-as.json(res) \%>\% map_leaf
-
-nms <- region_names()
-as.json(region_geojson(nms[[1]]$name)) \%>\% map_leaf
-
-# shp files
 ## just get path
 region_shp(key = "MarineRegions:eez_33176", read = FALSE)
 ## read shp file into spatial object

@@ -20,8 +20,18 @@ m_GET <- function(url, args, path = NULL, overwrite = NULL, ...) {
 
 getter <- function(url, args = list(), ...) {
   tt <- GET(url, query = args, ...)
-  stop_for_status(tt)
+  err_handle(tt)
   content(tt, "text")
+}
+
+err_handle <- function(x) {
+  if (x$status_code > 201) {
+    stop(http_status(x)$message, call. = FALSE)
+  } else {
+    if (grepl("xml", x$headers$`content-type`)) {
+      stop("Region not found, try another search", call. = FALSE)
+    }
+  }
 }
 
 ex_name <- function(x, y) {
