@@ -20,5 +20,7 @@
 #' }
 region_geojson <- function(name = NULL, key = NULL, maxFeatures = 50, ...) {
   args <- make_args('geojson', name, key, maxFeatures)
-  structure(jsonlite::fromJSON(m_GET(vliz_base(), args, ...), FALSE), class = "mr_geojson")
+  structure(jsonlite::fromJSON(
+    m_GET(vliz_base(), args,
+          format = "application/json", ...), FALSE), class = "mr_geojson")
 }

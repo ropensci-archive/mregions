@@ -76,10 +76,24 @@ leaflet() %>%
 
 ## Convert to WKT
 
+From geojson
+
 
 ```r
 res <- region_geojson(key = "MarineRegions:eez_33176")
 as_wkt(res, fmt = 5)
+
+#> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
+```
+
+From shp object (`SpatialPolygonsDataFrame`) or file, both work
+
+
+```r
+## path to wkt
+as_wkt(region_shp(key = "MarineRegions:eez_33176", read = FALSE))
+## spatial object to wkt
+as_wkt(region_shp(key = "MarineRegions:eez_33176", read = TRUE))
 
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
 ```

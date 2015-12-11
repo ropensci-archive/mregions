@@ -14,7 +14,7 @@
 #' }
 region_names <- function(...) {
   args <- list(SERVICE = 'WFS', REQUEST = 'GetCapabilities', outputFormat = 'a')
-  res <- m_GET(vliz_base(), args, ...)
+  res <- m_GET(vliz_base(), args, format = "application/xml", ...)
   xml <- xml2::read_xml(res)
   features <- xml_children(xml_children(xml)[[4]])
   tt <- lapply(features, function(z) {

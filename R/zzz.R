@@ -1,7 +1,7 @@
 vliz_base <- function(x) "http://geo.vliz.be/geoserver/MarineRegions/ows"
 mr_base <- function() "http://marineregions.org/rest"
 
-m_GET <- function(url, args, path = NULL, overwrite = NULL, ...) {
+m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "application/xml", ...) {
   if (args$outputFormat == "SHAPE-ZIP") {
     if (!file.exists(path)) {
       dir.create(path, recursive = TRUE, showWarnings = FALSE)
@@ -14,21 +14,21 @@ m_GET <- function(url, args, path = NULL, overwrite = NULL, ...) {
     unzip(file, exdir = exdir)
     path.expand(list.files(exdir, pattern = ".shp", full.names = TRUE))
   } else {
-    getter(url, args, ...)
+    getter(url, args, format, ...)
   }
 }
 
-getter <- function(url, args = list(), ...) {
+getter <- function(url, args = list(), format, ...) {
   tt <- GET(url, query = args, ...)
-  err_handle(tt)
+  err_handle(tt, format)
   content(tt, "text")
 }
 
-err_handle <- function(x) {
+err_handle <- function(x, format) {
   if (x$status_code > 201) {
     stop(http_status(x)$message, call. = FALSE)
   } else {
-    if (grepl("xml", x$headers$`content-type`)) {
+    if (x$headers$`content-type` != format) {
       stop("Region not found, try another search", call. = FALSE)
     }
   }
