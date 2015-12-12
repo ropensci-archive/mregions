@@ -7,6 +7,7 @@
 #' @param path (character) path to write shp files to, only used in \code{region_shp}
 #' @param overwrite (logical) Overwrite file if already exists. Default: \code{FALSE}
 #' @param read (logical) To read in as spatial object. If \code{FALSE} a path
+#' @param filter (character) String to filter features on
 #' given back. if \code{TRUE}, you need the \code{rgdal} package installed.
 #' Default: \code{FALSE}
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
@@ -19,13 +20,19 @@
 #' leaflet() %>% addPolygons(data = res)
 #' }
 region_shp <- function(name = NULL, key = NULL, maxFeatures = 50,
-  path = "~/.mregions", overwrite = TRUE, read = TRUE, ...) {
+                       path = "~/.mregions", overwrite = TRUE, read = TRUE, filter = NULL, ...) {
 
   args <- make_args('shp', name, key, maxFeatures)
   res <- m_GET(vliz_base(), args, path, overwrite, ...)
+
   if (read) {
     check4pkg("rgdal")
-    read_shp(res)
+    shp <- read_shp(res)
+    if (!is.null(filter)) {
+      shp[which(rowSums(shp@data == filter, na.rm = TRUE) > 0),]
+    } else {
+      shp
+    }
   } else {
     structure(res, class = 'mr_shp_file')
   }
