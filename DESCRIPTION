@@ -1,10 +1,11 @@
 Package: mregions
 Title: Marine Regions from Marineregions.org
 Description: Marine regions from Marineregions.org. Yay.
-Version: 0.0.4.9600
+Version: 0.0.4.9800
 License: MIT + file LICENSE
-Authors@R: person("Scott", "Chamberlain", role = c("aut", "cre"),
-    email = "myrmecocystus@gmail.com")
+Authors@R: c(person("Scott", "Chamberlain", role = c("aut", "cre"),
+    email = "myrmecocystus@gmail.com"), person("Pieter", "Provoost", role = "aut")
+    )
 URL: https://github.com/sckott/mregions
 BugReports: https://github.com/sckott/mregions/issues
 Imports:

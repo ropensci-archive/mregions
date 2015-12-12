@@ -5,7 +5,8 @@
 \title{Get a region shp file}
 \usage{
 region_shp(name = NULL, key = NULL, maxFeatures = 50,
-  path = "~/.mregions", overwrite = TRUE, read = TRUE, ...)
+  path = "~/.mregions", overwrite = TRUE, read = TRUE, filter = NULL,
+  ...)
 }
 \arguments{
 \item{name}{(character) Region name}
@@ -22,6 +23,8 @@ region_shp(name = NULL, key = NULL, maxFeatures = 50,
 given back. if \code{TRUE}, you need the \code{rgdal} package installed.
 Default: \code{FALSE}}
 
+\item{filter}{(character) String to filter features on}
+
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \description{
@@ -34,7 +37,13 @@ region_shp(key = "MarineRegions:eez_33176", read = FALSE)
 ## read shp file into spatial object
 res <- region_shp(key = "MarineRegions:eez_33176", read = TRUE)
 library('leaflet')
-leaflet() \%>\% addPolygons(data = res)
+leaflet() \%>\%
+  addProviderTiles(provider = "Stamen.TonerHybrid") \%>\%
+  addPolygons(data = res)
+
+# use `filter` param to get a subset of a region
+region_shp(name="World Marine Heritage Sites", maxFeatures=NULL,
+  filter="iSimangaliso Wetland Park")
 }
 }
 
