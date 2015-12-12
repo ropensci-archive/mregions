@@ -9,7 +9,7 @@ mregions
 
 
 ```r
-devtools::install_github("ropensci/mregions")
+devtools::install_github("sckott/mregions")
 ```
 
 
