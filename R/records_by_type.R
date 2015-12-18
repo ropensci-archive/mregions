@@ -2,7 +2,7 @@
 #'
 #' @export
 #' @param type (character) One place type name. See
-#' \code{\link[httr]{place_types}} for place type names
+#' \code{\link{place_types}} for place type names
 #' @param offset (numeric) Offset to start at. Each request can return up to
 #' 100 results. e.g., an offset of 200 will give records 200 to 299.
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
