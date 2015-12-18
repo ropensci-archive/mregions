@@ -29,7 +29,7 @@ err_handle <- function(x, format) {
     stop(http_status(x)$message, call. = FALSE)
   } else {
     if (x$headers$`content-type` != format) {
-      stop("Region not found, try another search", call. = FALSE)
+      stop("Region not found or no results found, try another search", call. = FALSE)
     }
   }
 }

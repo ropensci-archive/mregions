@@ -4,11 +4,14 @@
 \alias{records_by_type}
 \title{Get Marineregions records by place type}
 \usage{
-records_by_type(type, ...)
+records_by_type(type, offset = 100, ...)
 }
 \arguments{
 \item{type}{(character) One place type name. See
 \code{\link[httr]{place_types}} for place type names}
+
+\item{offset}{(numeric) Offset to start at. Each request can return up to
+100 results. e.g., an offset of 200 will give records 200 to 299.}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
@@ -23,6 +26,8 @@ head(res)
 types <- place_types()
 records_by_type(types$type[1])
 records_by_type(types$type[10])
+records_by_type(grep("MEOW", types$type, value = TRUE))
+records_by_type(grep("MEOW", types$type, value = TRUE), offset = 300)
 }
 }
 

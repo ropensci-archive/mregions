@@ -3,6 +3,8 @@
 #' @export
 #' @param type (character) One place type name. See
 #' \code{\link[httr]{place_types}} for place type names
+#' @param offset (numeric) Offset to start at. Each request can return up to
+#' 100 results. e.g., an offset of 200 will give records 200 to 299.
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' res <- records_by_type(type="EEZ")
@@ -11,8 +13,14 @@
 #' types <- place_types()
 #' records_by_type(types$type[1])
 #' records_by_type(types$type[10])
+#' records_by_type(grep("MEOW", types$type, value = TRUE))
+#' records_by_type(grep("MEOW", types$type, value = TRUE), offset = 300)
 #' }
-records_by_type <- function(type, ...) {
-  x <- getter(file.path(mr_base(), 'getGazetteerRecordsByType.json', type, ''), ...)
+records_by_type <- function(type, offset = 100, ...) {
+  stopifnot(is.numeric(offset) || is.integer(offset))
+  url <- URLencode(file.path(mr_base(), 'getGazetteerRecordsByType.json', type, offset, '/'))
+  x <- getter(url, args = NULL,
+    format = "application/json; charset=UTF-8;", ...
+  )
   jsonlite::fromJSON(x)
 }
