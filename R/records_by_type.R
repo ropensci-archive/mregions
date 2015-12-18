@@ -14,9 +14,9 @@
 #' records_by_type(types$type[1])
 #' records_by_type(types$type[10])
 #' records_by_type(grep("MEOW", types$type, value = TRUE))
-#' records_by_type(grep("MEOW", types$type, value = TRUE), offset = 300)
+#' records_by_type(grep("MEOW", types$type, value = TRUE), offset = 100)
 #' }
-records_by_type <- function(type, offset = 100, ...) {
+records_by_type <- function(type, offset = 0, ...) {
   stopifnot(is.numeric(offset) || is.integer(offset))
   url <- URLencode(file.path(mr_base(), 'getGazetteerRecordsByType.json', type, offset, '/'))
   x <- getter(url, args = NULL,

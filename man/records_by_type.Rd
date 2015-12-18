@@ -4,7 +4,7 @@
 \alias{records_by_type}
 \title{Get Marineregions records by place type}
 \usage{
-records_by_type(type, offset = 100, ...)
+records_by_type(type, offset = 0, ...)
 }
 \arguments{
 \item{type}{(character) One place type name. See
@@ -27,7 +27,7 @@ types <- place_types()
 records_by_type(types$type[1])
 records_by_type(types$type[10])
 records_by_type(grep("MEOW", types$type, value = TRUE))
-records_by_type(grep("MEOW", types$type, value = TRUE), offset = 300)
+records_by_type(grep("MEOW", types$type, value = TRUE), offset = 100)
 }
 }
 
