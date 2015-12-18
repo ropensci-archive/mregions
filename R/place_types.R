@@ -8,5 +8,11 @@
 #' res$type
 #' }
 place_types <- function(...) {
-  jsonlite::fromJSON(getter(file.path(mr_base(), 'getGazetteerTypes.json')))
+  jsonlite::fromJSON(
+    getter(
+      file.path(mr_base(), 'getGazetteerTypes.json'),
+      format = "application/json; charset=UTF-8;",
+      ...
+    )
+  )
 }
