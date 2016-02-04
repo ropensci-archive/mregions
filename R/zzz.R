@@ -21,7 +21,7 @@ m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "applicatio
 getter <- function(url, args = list(), format, ...) {
   tt <- GET(url, query = args, ...)
   err_handle(tt, format)
-  content(tt, "text")
+  content(tt, "text", encoding = "UTF-8")
 }
 
 err_handle <- function(x, format) {
