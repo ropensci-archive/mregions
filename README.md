@@ -1,7 +1,7 @@
 mregions
 ========
 
-[![Build Status](https://travis-ci.org/sckott/mregions.svg)](https://travis-ci.org/sckott/mregions)
+[![Build Status](https://travis-ci.org/ropenscilabs/mregions.svg)](https://travis-ci.org/ropenscilabs/mregions)
 
 `mregions` - Get data from http://marineregions.org
 
@@ -9,7 +9,7 @@ mregions
 
 
 ```r
-devtools::install_github("sckott/mregions")
+devtools::install_github("ropenscilabs/mregions")
 ```
 
 
@@ -38,9 +38,9 @@ Plot data
 
 ```r
 library('leaflet')
-leaflet() %>% 
-  addProviderTiles(provider = 'OpenStreetMap') %>% 
-  addGeoJSON(geojson = res$features) %>% 
+leaflet() %>%
+  addProviderTiles(provider = 'OpenStreetMap') %>%
+  addGeoJSON(geojson = res$features) %>%
   setView(53, 40, zoom = 6)
 ```
 
@@ -67,8 +67,8 @@ Plot data
 
 ```r
 library('leaflet')
-leaflet() %>% 
-  addProviderTiles(provider = 'OpenStreetMap') %>% 
+leaflet() %>%
+  addProviderTiles(provider = 'OpenStreetMap') %>%
   addPolygons(data = res)
 ```
 
@@ -112,5 +112,5 @@ obis_eez_id(res[[1]]$title)
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/sckott/mregions/issues).
+* Please [report any issues or bugs](https://github.com/ropenscilabs/mregions/issues).
 * License: MIT
