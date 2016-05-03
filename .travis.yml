@@ -9,6 +9,7 @@ addons:
       - libgdal1h
       - gdal-bin
       - libproj-dev
+      - libhdf5-dev 
       - libhdf5-serial-dev
       - libgdal-dev
 
