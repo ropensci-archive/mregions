@@ -8,6 +8,7 @@ addons:
       - libv8-dev
       - libgdal1h
       - gdal-bin
+      - libhdf5-7
       - libproj-dev
       - libhdf5-dev 
       - libhdf5-serial-dev
