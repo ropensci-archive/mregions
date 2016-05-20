@@ -7,8 +7,8 @@ m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "applicatio
       dir.create(path, recursive = TRUE, showWarnings = FALSE)
     }
     path <- file.path(path, paste0(sub(":", "_", args$typeName), ".zip"))
-    tt <- httr::GET(url, query = args, write_disk(path = path, overwrite = overwrite), ...)
-    stop_for_status(tt)
+    tt <- httr::GET(url, query = args, httr::write_disk(path = path, overwrite = overwrite), ...)
+    httr::stop_for_status(tt)
     file <- tt$request$output$path
     exdir <- sub(".zip", "", path)
     utils::unzip(file, exdir = exdir)
@@ -19,14 +19,14 @@ m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "applicatio
 }
 
 getter <- function(url, args = list(), format, ...) {
-  tt <- GET(url, query = args, ...)
+  tt <- httr::GET(url, query = args, ...)
   err_handle(tt, format)
-  content(tt, "text", encoding = "UTF-8")
+  httr::content(tt, "text", encoding = "UTF-8")
 }
 
 err_handle <- function(x, format) {
   if (x$status_code > 201) {
-    stop(http_status(x)$message, call. = FALSE)
+    stop(httr::http_status(x)$message, call. = FALSE)
   } else {
     if (x$headers$`content-type` != format) {
       stop("Region not found or no results found, try another search", call. = FALSE)
@@ -35,7 +35,7 @@ err_handle <- function(x, format) {
 }
 
 ex_name <- function(x, y) {
-  xml_text(xml_children(x)[[y]])
+  xml2::xml_text(xml2::xml_children(x)[[y]])
 }
 
 check4pkg <- function(x) {

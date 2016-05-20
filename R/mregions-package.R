@@ -1,9 +1,5 @@
-#' Marine regions data
+#' Marine regions data from Marineregions.org
 #'
-#' @importFrom httr GET content stop_for_status write_disk http_status
-#' @importFrom jsonlite fromJSON
-#' @importFrom xml2 read_xml xml_children xml_text
-#' @importFrom wellknown geojson2wkt
 #' @name mregions-package
 #' @aliases mregions
 #' @docType package
