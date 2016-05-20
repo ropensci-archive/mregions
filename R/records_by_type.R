@@ -18,7 +18,7 @@
 #' }
 records_by_type <- function(type, offset = 0, ...) {
   stopifnot(is.numeric(offset) || is.integer(offset))
-  url <- URLencode(file.path(mr_base(), 'getGazetteerRecordsByType.json', type, offset, '/'))
+  url <- utils::URLencode(file.path(mr_base(), 'getGazetteerRecordsByType.json', type, offset, '/'))
   x <- getter(url, args = NULL,
     format = "application/json; charset=UTF-8;", ...
   )

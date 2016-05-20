@@ -11,7 +11,7 @@ m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "applicatio
     stop_for_status(tt)
     file <- tt$request$output$path
     exdir <- sub(".zip", "", path)
-    unzip(file, exdir = exdir)
+    utils::unzip(file, exdir = exdir)
     path.expand(list.files(exdir, pattern = ".shp", full.names = TRUE))
   } else {
     getter(url, args, format, ...)
