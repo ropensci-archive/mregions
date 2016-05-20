@@ -99,3 +99,7 @@ obis_eez_id(res[[1]]$title)
 
 * Please [report any issues or bugs](https://github.com/ropenscilabs/mregions/issues).
 * License: MIT
+* Get citation information for `mregions` in R doing `citation(package = 'mregions')`
+* Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+[![rofooter](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
