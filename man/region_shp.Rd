@@ -4,14 +4,17 @@
 \alias{region_shp}
 \title{Get a region shp file}
 \usage{
-region_shp(name = NULL, key = NULL, maxFeatures = 50,
+region_shp(key = NULL, name = NULL, maxFeatures = 50,
   path = "~/.mregions", overwrite = TRUE, read = TRUE, filter = NULL,
   ...)
 }
 \arguments{
-\item{name}{(character) Region name}
+\item{key}{(character) Region key, of the form \code{x:y}, where
+\code{x} is a namespace (e.g., \code{MarineRegions}), and \code{y} is
+a region (e.g., \code{eez_33176})}
 
-\item{key}{(character) Region key}
+\item{name}{(character) Region name, if you supply this, we search
+against titles via \code{\link{region_names}} function}
 
 \item{maxFeatures}{(integer) Number of features}
 
@@ -34,12 +37,16 @@ Get a region shp file
 \dontrun{
 ## just get path
 region_shp(key = "MarineRegions:eez_33176", read = FALSE)
+
 ## read shp file into spatial object
 res <- region_shp(key = "MarineRegions:eez_33176", read = TRUE)
-library('leaflet')
-leaflet() \%>\%
-  addProviderTiles(provider = "Stamen.TonerHybrid") \%>\%
-  addPolygons(data = res)
+
+if (requireNamespace("leaflet")) {
+  library('leaflet')
+  leaflet() \%>\%
+    addProviderTiles(provider = "Stamen.TonerHybrid") \%>\%
+    addPolygons(data = res)
+}
 
 # use `filter` param to get a subset of a region
 region_shp(name="World Marine Heritage Sites", maxFeatures=NULL,

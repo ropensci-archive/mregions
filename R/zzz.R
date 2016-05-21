@@ -1,4 +1,5 @@
-vliz_base <- function(x) "http://geo.vliz.be/geoserver/MarineRegions/ows"
+#vliz_base <- function() "http://geo.vliz.be/geoserver/MarineRegions/ows"
+vliz_base <- function() "http://geo.vliz.be/geoserver/ows"
 mr_base <- function() "http://marineregions.org/rest"
 
 m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "application/xml", ...) {
@@ -58,9 +59,9 @@ nameorkey <- function(name, key) {
   stopifnot(xor(!is.null(name), !is.null(key)))
   if (is.null(key)) {
     nms <- region_names()
-    nms[vapply(nms, "[[", "", "title") == name][[1]]$name
+    nms[pluck(nms, "title", "") == name][[1]]$name
   } else {
-    key
+    strsplit(key, ":")[[1]][2]
   }
 }
 

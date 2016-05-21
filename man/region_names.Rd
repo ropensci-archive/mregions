@@ -20,12 +20,16 @@ Get region names
 \examples{
 \dontrun{
 (res <- region_names())
-vapply(res, "[[", "", "namespace")
+vapply(res, "[[", "", "name")
+sort(unique(vapply(res, "[[", "", "name_first")))
+sort(unique(vapply(res, "[[", "", "name_second")))
+vapply(res, "[[", "", "title")
 
 # search
 region_names_search(query = "EEZ")
 region_names_search(query = "IHO")
 region_names_search(query = "Heritage")
+region_names_search(query = "ecoregions")
 }
 }
 

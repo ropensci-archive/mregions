@@ -21,4 +21,5 @@ Suggests:
     geojsonio,
     rgdal,
     rgeos
+Enhances: leaflet
 RoxygenNote: 5.0.1

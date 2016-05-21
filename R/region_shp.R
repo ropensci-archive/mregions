@@ -1,8 +1,11 @@
 #' Get a region shp file
 #'
 #' @export
-#' @param name (character) Region name
-#' @param key (character) Region key
+#' @param key (character) Region key, of the form \code{x:y}, where
+#' \code{x} is a namespace (e.g., \code{MarineRegions}), and \code{y} is
+#' a region (e.g., \code{eez_33176})
+#' @param name (character) Region name, if you supply this, we search
+#' against titles via \code{\link{region_names}} function
 #' @param maxFeatures (integer) Number of features
 #' @param path (character) path to write shp files to, only used in \code{region_shp}
 #' @param overwrite (logical) Overwrite file if already exists. Default: \code{FALSE}
@@ -14,22 +17,28 @@
 #' @examples \dontrun{
 #' ## just get path
 #' region_shp(key = "MarineRegions:eez_33176", read = FALSE)
+#'
 #' ## read shp file into spatial object
 #' res <- region_shp(key = "MarineRegions:eez_33176", read = TRUE)
-#' library('leaflet')
-#' leaflet() %>%
-#'   addProviderTiles(provider = "Stamen.TonerHybrid") %>%
-#'   addPolygons(data = res)
+#'
+#' if (requireNamespace("leaflet")) {
+#'   library('leaflet')
+#'   leaflet() %>%
+#'     addProviderTiles(provider = "Stamen.TonerHybrid") %>%
+#'     addPolygons(data = res)
+#' }
 #'
 #' # use `filter` param to get a subset of a region
 #' region_shp(name="World Marine Heritage Sites", maxFeatures=NULL,
 #'   filter="iSimangaliso Wetland Park")
 #' }
-region_shp <- function(name = NULL, key = NULL, maxFeatures = 50, path = "~/.mregions",
+region_shp <- function(key = NULL, name = NULL, maxFeatures = 50, path = "~/.mregions",
                        overwrite = TRUE, read = TRUE, filter = NULL, ...) {
 
   args <- make_args('shp', name, key, maxFeatures)
-  res <- m_GET(vliz_base(), args, path, overwrite, ...)
+  key <- nameorkey(name, key)
+  res <- m_GET(sub("ows", file.path(strsplit(key, ":")[[1]][1], "ows"), vliz_base()),
+               args, path, overwrite, ...)
 
   if (read) {
     check4pkg("rgdal")
