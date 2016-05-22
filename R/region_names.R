@@ -29,12 +29,6 @@ region_names <- function(...) {
     gg <- if (grepl("eez", gg)) "eez" else gg
     utils::modifyList(x, list(name_first = strsplit(x$name, ":")[[1]][[1]], name_second = gg))
   })
-  # nms <- vapply(pluck(tt, "name", ""), function(z) {
-  #   gg <- strsplit(z, ":")[[1]][[2]]
-  #   if (grepl("eez", gg)) "eez" else gg
-  # }, "", USE.NAMES = FALSE)
-  # fullnms <- vapply(nms, function(z) nms_matches[[z]], "", USE.NAMES = FALSE)
-  # Map(function(a, b) utils::modifyList(a, list(namespace = b)), tt, fullnms)
 }
 
 #' @export

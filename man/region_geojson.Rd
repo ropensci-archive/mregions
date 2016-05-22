@@ -35,7 +35,7 @@ res <- region_geojson(name = "Turkmen Exclusive Economic Zone")
 
 if (requireNamespace("geojsonio")) {
   library("geojsonio")
-  as.json(res) \%>\% map_leaf
+  as.json(unclass(res)) \%>\% map_leaf
 
   nms <- region_names()
   as.json(unclass(region_geojson(nms[[40]]$name))) \%>\% map_leaf()
