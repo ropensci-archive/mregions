@@ -7,19 +7,23 @@
 #' @param name (character) Region name, if you supply this, we search
 #' against titles via \code{\link{region_names}} function
 #' @param maxFeatures (integer) Number of features
-#' @param path (character) path to write shp files to, only used in \code{region_shp}
 #' @param overwrite (logical) Overwrite file if already exists. Default: \code{FALSE}
 #' @param read (logical) To read in as spatial object. If \code{FALSE} a path
 #' given back. if \code{TRUE}, you need the \code{rgdal} package installed.
 #' Default: \code{FALSE}
 #' @param filter (character) String to filter features on
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @return A \code{SpatialPolygonsDataFrame}
+#' @details We use \pkg{rappdirs} to determine where to cache data depening on
+#' your operating system. See \code{rappdirs::user_cache_dir("mregions")} for
+#' location on your machine
 #' @examples \dontrun{
 #' ## just get path
 #' region_shp(key = "MarineRegions:eez_33176", read = FALSE)
-#'
 #' ## read shp file into spatial object
 #' res <- region_shp(key = "MarineRegions:eez_33176", read = TRUE)
+#'
+#' region_shp(key = "SAIL:w_marinehabitatd")
 #'
 #' if (requireNamespace("leaflet")) {
 #'   library('leaflet')
@@ -32,13 +36,22 @@
 #' region_shp(name="World Marine Heritage Sites", maxFeatures=NULL,
 #'   filter="iSimangaliso Wetland Park")
 #' }
-region_shp <- function(key = NULL, name = NULL, maxFeatures = 50, path = "~/.mregions",
+region_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
                        overwrite = TRUE, read = TRUE, filter = NULL, ...) {
+
+  cache_dir <- rappdirs::user_cache_dir("mregions")
+  if (!file.exists(cache_dir)) dir.create(cache_dir, recursive = TRUE)
 
   args <- make_args('shp', name, key, maxFeatures)
   key <- nameorkey(name, key)
-  res <- m_GET(sub("ows", file.path(strsplit(key, ":")[[1]][1], "ows"), vliz_base()),
-               args, path, overwrite, ...)
+
+  file <- file.path(cache_dir, paste0(sub(":", "_", args$typeName), ".zip"))
+  if (!file.exists(sub("\\.zip", "", file))) {
+    res <- m_GET(sub("ows", file.path(strsplit(key, ":")[[1]][1], "ows"), vliz_base()),
+                 args, file, overwrite, ...)
+  } else {
+    res <- path.expand(list.files(sub("\\.zip", "", file), pattern = ".shp", full.names = TRUE))
+  }
 
   if (read) {
     check4pkg("rgdal")

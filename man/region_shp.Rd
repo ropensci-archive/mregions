@@ -4,9 +4,8 @@
 \alias{region_shp}
 \title{Get a region shp file}
 \usage{
-region_shp(key = NULL, name = NULL, maxFeatures = 50,
-  path = "~/.mregions", overwrite = TRUE, read = TRUE, filter = NULL,
-  ...)
+region_shp(key = NULL, name = NULL, maxFeatures = 50, overwrite = TRUE,
+  read = TRUE, filter = NULL, ...)
 }
 \arguments{
 \item{key}{(character) Region key, of the form \code{x:y}, where
@@ -18,8 +17,6 @@ against titles via \code{\link{region_names}} function}
 
 \item{maxFeatures}{(integer) Number of features}
 
-\item{path}{(character) path to write shp files to, only used in \code{region_shp}}
-
 \item{overwrite}{(logical) Overwrite file if already exists. Default: \code{FALSE}}
 
 \item{read}{(logical) To read in as spatial object. If \code{FALSE} a path
@@ -30,16 +27,25 @@ Default: \code{FALSE}}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
+\value{
+A \code{SpatialPolygonsDataFrame}
+}
 \description{
 Get a region shp file
+}
+\details{
+We use \pkg{rappdirs} to determine where to cache data depening on
+your operating system. See \code{rappdirs::user_cache_dir("mregions")} for
+location on your machine
 }
 \examples{
 \dontrun{
 ## just get path
 region_shp(key = "MarineRegions:eez_33176", read = FALSE)
-
 ## read shp file into spatial object
 res <- region_shp(key = "MarineRegions:eez_33176", read = TRUE)
+
+region_shp(key = "SAIL:w_marinehabitatd")
 
 if (requireNamespace("leaflet")) {
   library('leaflet')

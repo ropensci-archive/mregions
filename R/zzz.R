@@ -4,15 +4,12 @@ mr_base <- function() "http://marineregions.org/rest"
 
 m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "application/xml", ...) {
   if (args$outputFormat == "SHAPE-ZIP") {
-    if (!file.exists(path)) {
-      dir.create(path, recursive = TRUE, showWarnings = FALSE)
-    }
-    path <- file.path(path, paste0(sub(":", "_", args$typeName), ".zip"))
     tt <- httr::GET(url, query = args, httr::write_disk(path = path, overwrite = overwrite), ...)
     httr::stop_for_status(tt)
     file <- tt$request$output$path
     exdir <- sub(".zip", "", path)
     utils::unzip(file, exdir = exdir)
+    on.exit(unlink(file))
     path.expand(list.files(exdir, pattern = ".shp", full.names = TRUE))
   } else {
     getter(url, args, format, ...)
@@ -52,7 +49,7 @@ make_args <- function(format, name, key, maxFeatures) {
   format <- switch(format, geojson = "application/json", shp = "SHAPE-ZIP")
   key <- nameorkey(name, key)
   list(service = 'WFS', version = '1.0.0', request = 'GetFeature',
-       typeName = key, maxFeatures = maxFeatures, outputFormat = format)
+       typeName = strsplit(key, ":")[[1]][2], maxFeatures = maxFeatures, outputFormat = format)
 }
 
 nameorkey <- function(name, key) {
@@ -61,7 +58,8 @@ nameorkey <- function(name, key) {
     nms <- region_names()
     nms[pluck(nms, "title", "") == name][[1]]$name
   } else {
-    strsplit(key, ":")[[1]][2]
+    key
+    #strsplit(key, ":")[[1]][2]
   }
 }
 
