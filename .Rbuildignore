@@ -3,3 +3,6 @@
 ^README.Rmd$
 ^\.travis.yml$
 ^CONDUCT\.md$
+^Makefile$
+vignettes/figure
+
