@@ -2,8 +2,13 @@ mregions
 ========
 
 [![Build Status](https://travis-ci.org/ropenscilabs/mregions.svg)](https://travis-ci.org/ropenscilabs/mregions)
+[![codecov.io](https://codecov.io/github/ropenscilabs/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/mregions?branch=master)
+[![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/metacran/cranlogs.app)
+[![cran version](http://www.r-pkg.org/badges/version/mregions)](https://cran.r-project.org/package=mregions)
 
 `mregions` - Get data from http://marineregions.org
+
+Some data comes from the [Flanders Marine Institute (VLIZ) geoserver](http://geo.vliz.be/geoserver/web/)
 
 ## Install
 
@@ -107,7 +112,7 @@ obis_eez_id(res[[1]]$title)
 ```
 
 ```
-## [1] 82
+## integer(0)
 ```
 
 ## Meta
