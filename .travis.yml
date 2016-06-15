@@ -10,20 +10,15 @@ before_script:
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
   - ./travis-tool.sh install_deps
-  - ./travis-tool.sh install_github jimhester/covr
 
 after_failure:
   - ./travis-tool.sh dump_logs
-
-after_success:
-  - Rscript -e 'covr::codecov()'
 
 env:
    global:
      - R_LIBS="http://cran.rstudio.com"
      - R_BUILD_ARGS="--no-build-vignettes --no-manual"
      - R_CHECK_ARGS="--no-build-vignettes --no-manual --as-cran"
-     - BOOTSTRAP_LATEX="
      - _R_CHECK_FORCE_SUGGESTS_=FALSE
 
 notifications:

@@ -23,6 +23,6 @@ Suggests:
     rgdal,
     rgeos,
     knitr
-VignetteBuilder: knitr
 Enhances: leaflet
+VignetteBuilder: knitr
 RoxygenNote: 5.0.1
