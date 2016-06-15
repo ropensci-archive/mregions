@@ -7,7 +7,11 @@
 obis_eez_id(x)
 }
 \arguments{
-\item{x}{Output from \code{\link{region_geojson}}}
+\item{x}{(character) An Exclusive Economic Zone name}
+}
+\value{
+An integer EEZ ID if a match found in list of EEZ's, or \code{NULL} if
+no match found.
 }
 \description{
 Get OBIS EEZ id
@@ -15,7 +19,7 @@ Get OBIS EEZ id
 \examples{
 \dontrun{
 (res <- region_names())
-obis_eez_id(res[[1]]$title)
+obis_eez_id(res[[100]]$title)
 }
 }
 

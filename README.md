@@ -12,6 +12,15 @@ Some data comes from the [Flanders Marine Institute (VLIZ) geoserver](http://geo
 
 ## Install
 
+CRAN stable
+
+
+```r
+install.packages("mregions")
+```
+
+Development version
+
 
 ```r
 devtools::install_github("ropenscilabs/mregions")
@@ -108,11 +117,11 @@ as_wkt(region_shp(key = "MarineRegions:eez_33176", read = TRUE))
 
 ```r
 res <- region_names()
-obis_eez_id(res[[1]]$title)
+obis_eez_id(res[[100]]$title)
 ```
 
 ```
-## integer(0)
+## [1] 224
 ```
 
 ## Meta

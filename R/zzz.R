@@ -72,3 +72,7 @@ pluck <- function(x, name, type) {
     vapply(x, "[[", name, FUN.VALUE = type)
   }
 }
+
+`%&%` <- function(x, y) {
+  if (length(x) == 0) y else x
+}
