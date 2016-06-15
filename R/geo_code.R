@@ -14,7 +14,7 @@
 #' geo_code(place = "oost", like = TRUE, fuzzy = TRUE)
 #' }
 geo_code <- function(place, like = TRUE, fuzzy = FALSE, ...) {
-  base <- "http://www.marineregions.org/rest/getGazetteerRecordsByName.json/%s/%s/%s"
+  base <- file.path(mr_base(), "getGazetteerRecordsByName.json/%s/%s/%s")
   url <- sprintf(base, place, conv_log(like), conv_log(fuzzy))
   res <- httr::GET(url, ...)
   httr::stop_for_status(res)
