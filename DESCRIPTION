@@ -22,8 +22,7 @@ Suggests:
     geojsonio,
     rgdal,
     rgeos,
-    knitr,
-    covr
+    knitr
 VignetteBuilder: knitr
 Enhances: leaflet
 RoxygenNote: 5.0.1
