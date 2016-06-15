@@ -19,8 +19,10 @@ m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "applicatio
 getter <- function(url, args = list(), format, ...) {
   tt <- httr::GET(url, query = args, ...)
   err_handle(tt, format)
-  httr::content(tt, "text", encoding = "UTF-8")
+  contutf8(tt)
 }
+
+contutf8 <- function(x) httr::content(x, "text", encoding = "UTF-8")
 
 err_handle <- function(x, format) {
   if (x$status_code > 201) {

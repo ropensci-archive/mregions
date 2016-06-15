@@ -3,7 +3,7 @@ Title: Marine Regions Data from Marineregions.org
 Description: Tools to get marine regions data from Marineregions.org.
     Includes tools to get region metadata, as well as data in GeoJSON
     format, as well as Shape files.
-Version: 0.0.7.9000
+Version: 0.0.7.9300
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
