@@ -123,6 +123,12 @@ obis_eez_id(res[[100]]$title)
 ## [1] 224
 ```
 
+## Contributors
+
+* [Scott Chamberlain](https://github.com/sckott)
+* [Francois Michonneau](https://github.com/fmichonneau)
+* [Pieter Provoost](https://github.com/pieterprovoost)
+
 ## Meta
 
 * Please [report any issues or bugs](https://github.com/ropenscilabs/mregions/issues).
