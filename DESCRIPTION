@@ -7,6 +7,7 @@ Version: 0.0.9.9400
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
+    person("Francois", "Michonneau", role = "aut"),
     person("Pieter", "Provoost", role = "aut")
     )
 URL: https://github.com/ropenscilabs/mregions
