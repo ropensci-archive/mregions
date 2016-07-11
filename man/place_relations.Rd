@@ -29,4 +29,7 @@ Get related records based on their MRGID.
   place_relations(tikehau$MRGID)
 }
 }
+\author{
+Francois Michonneau <francois.michonneau@gmail.com>
+}
 

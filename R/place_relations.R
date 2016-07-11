@@ -12,6 +12,7 @@
 ##'   tikehau <- geo_code("tikehau")
 ##'   place_relations(tikehau$MRGID)
 ##' }
+##' @author Francois Michonneau <francois.michonneau@gmail.com>
 ##' @export
 place_relations <- function(mrgid, direction = c("upper", "lower", "both"),
                             type = c("partof", "partlypartof", "adjacentto",

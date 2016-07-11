@@ -12,6 +12,7 @@
 ##' @examples \dontrun{
 ##'     rev_geo_code(-21.5, 55.5, lat_radius=.5, lon_radius=.5)
 ##' }
+##' @author Francois Michonneau <francois.michonneau@gmail.com>
 ##' @export
 rev_geo_code <- function(lat, lon, lat_radius = 1, lon_radius = 1, ...) {
     sapply(list(lat, lon, lat_radius, lon_radius), check_is_number)
