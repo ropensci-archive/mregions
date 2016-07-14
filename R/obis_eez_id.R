@@ -6,7 +6,7 @@
 #' no match found.
 #' @examples \dontrun{
 #' (res <- region_names())
-#' obis_eez_id(res[[100]]$title)
+#' obis_eez_id(res$title[100])
 #' }
 obis_eez_id <- function(x) {
   eezs <- obis_eez()
