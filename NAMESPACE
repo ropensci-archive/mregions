@@ -3,6 +3,8 @@
 S3method(as_wkt,SpatialPolygonsDataFrame)
 S3method(as_wkt,mr_geojson)
 S3method(as_wkt,mr_shp_file)
+S3method(region_names_search,character)
+S3method(region_names_search,tbl_df)
 export(as_wkt)
 export(geo_code)
 export(obis_eez_id)
