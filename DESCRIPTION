@@ -16,7 +16,8 @@ Imports:
     jsonlite (>= 0.9.20),
     xml2,
     wellknown,
-    rappdirs
+    rappdirs,
+    sp
 Suggests:
     testthat,
     geojsonio,
