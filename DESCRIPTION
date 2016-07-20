@@ -1,12 +1,13 @@
 Package: mregions
-Title: Marine Regions Data from Marineregions.org
-Description: Tools to get marine regions data from Marineregions.org.
+Title: Marine Regions Data from Marineregions
+Description: Tools to get marine regions data from <http://www.marineregions.org/>.
     Includes tools to get region metadata, as well as data in GeoJSON
     format, as well as Shape files.
-Version: 0.0.9.9400
+Version: 0.0.9.9892
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
+    person("Francois", "Michonneau", role = "aut"),
     person("Pieter", "Provoost", role = "aut")
     )
 URL: https://github.com/ropenscilabs/mregions
@@ -17,7 +18,9 @@ Imports:
     xml2,
     wellknown,
     rappdirs,
-    sp
+    sp,
+    data.table,
+    tibble
 Suggests:
     testthat,
     geojsonio,

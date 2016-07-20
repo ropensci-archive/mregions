@@ -2,17 +2,15 @@
 % Please edit documentation in R/region_names.R
 \name{region_names}
 \alias{region_names}
-\alias{region_names_search}
 \title{Get region names}
 \usage{
 region_names(...)
-
-region_names_search(query)
 }
 \arguments{
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
-
-\item{query}{Query term}
+}
+\value{
+a data.frame, or tibble, of class tbl_df
 }
 \description{
 Get region names
@@ -20,16 +18,10 @@ Get region names
 \examples{
 \dontrun{
 (res <- region_names())
-vapply(res, "[[", "", "name")
-sort(unique(vapply(res, "[[", "", "name_first")))
-sort(unique(vapply(res, "[[", "", "name_second")))
-vapply(res, "[[", "", "title")
-
-# search
-region_names_search(query = "EEZ")
-region_names_search(query = "IHO")
-region_names_search(query = "Heritage")
-region_names_search(query = "ecoregions")
+res$name
+sort(unique(res$name_first))
+sort(unique(res$name_second))
+res$title
 }
 }
 

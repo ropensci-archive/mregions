@@ -4,9 +4,12 @@
 \name{mregions-package}
 \alias{mregions}
 \alias{mregions-package}
-\title{Marine regions data from Marineregions.org}
+\title{Marine regions data from Marineregions}
 \description{
-Marine regions data from Marineregions.org
+Marine regions data from Marineregions
+}
+\details{
+Get data from <http://www.marineregions.org/>
 }
 \author{
 Scott Chamberlain \email{myrmecocystus@gmail.com}

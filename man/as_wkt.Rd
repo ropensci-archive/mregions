@@ -2,23 +2,34 @@
 % Please edit documentation in R/as_wkt.R
 \name{as_wkt}
 \alias{as_wkt}
-\title{Convert to WKT}
+\title{Convert data to WKT}
 \usage{
 as_wkt(x, fmt = 16, ...)
 }
 \arguments{
-\item{x}{Output from \code{\link{region_geojson}}}
+\item{x}{Output from \code{\link{region_geojson}}, \code{\link{region_shp}},
+or a \code{SpatialPolygonsDataFrame}}
 
-\item{fmt}{Format string which indicates the number of digits to display after the
-decimal point when formatting coordinates. Ignored when shp files or objects
+\item{fmt}{The number of digits to display after the decimal point when
+formatting coordinates. Ignored when shp files or \code{SpatialPolygonsDataFrame}
 passed in}
 
 \item{...}{Further args passed on to \code{\link[jsonlite]{fromJSON}} only in the event of json
-passed as a character string. Ignored when shp files or objects
+passed as a character string. Ignored when shp files or \code{SpatialPolygonsDataFrame}
 passed in}
 }
+\value{
+a character string of WKT data
+}
 \description{
-Convert to WKT
+Convert data to WKT
+}
+\details{
+WKT, or Well Known Text, is a way to encode spatial data. It's somewhat
+similar to GeoJSON, but instead of being in JSON format, it's a character string
+(though can also be encoded in binary format). WKT is often used in SQL databases,
+and many species occurrence APIs allow only WKT. You could do the conversion to
+WKT yourself, but we provide \code{as_wkt} as a convenience
 }
 \examples{
 \dontrun{

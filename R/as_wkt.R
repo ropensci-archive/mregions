@@ -1,13 +1,23 @@
-#' Convert to WKT
+#' Convert data to WKT
 #'
 #' @export
-#' @param x Output from \code{\link{region_geojson}}
-#' @param fmt Format string which indicates the number of digits to display after the
-#' decimal point when formatting coordinates. Ignored when shp files or objects
+#' @param x Output from \code{\link{region_geojson}}, \code{\link{region_shp}},
+#' or a \code{SpatialPolygonsDataFrame}
+#' @param fmt The number of digits to display after the decimal point when
+#' formatting coordinates. Ignored when shp files or \code{SpatialPolygonsDataFrame}
 #' passed in
 #' @param ... Further args passed on to \code{\link[jsonlite]{fromJSON}} only in the event of json
-#' passed as a character string. Ignored when shp files or objects
+#' passed as a character string. Ignored when shp files or \code{SpatialPolygonsDataFrame}
 #' passed in
+#'
+#' @details WKT, or Well Known Text, is a way to encode spatial data. It's somewhat
+#' similar to GeoJSON, but instead of being in JSON format, it's a character string
+#' (though can also be encoded in binary format). WKT is often used in SQL databases,
+#' and many species occurrence APIs allow only WKT. You could do the conversion to
+#' WKT yourself, but we provide \code{as_wkt} as a convenience
+#'
+#' @return a character string of WKT data
+#'
 #' @examples \dontrun{
 #' res <- region_geojson(key = "MarineRegions:eez_33176")
 #' as_wkt(res, fmt = 5)

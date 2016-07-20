@@ -58,7 +58,7 @@ nameorkey <- function(name, key) {
   stopifnot(xor(!is.null(name), !is.null(key)))
   if (is.null(key)) {
     nms <- region_names()
-    nms[pluck(nms, "title", "") == name][[1]]$name
+    nms[nms$title == name, ]$name
   } else {
     key
     #strsplit(key, ":")[[1]][2]

@@ -5,13 +5,13 @@ mregions
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/mregions)](https://cran.r-project.org/package=mregions)
 
-`mregions` - Get data from [http://marineregions.org](http://marineregions.org)
+`mregions` - Get data from <http://www.marineregions.org>
 
 Some data comes from the [Flanders Marine Institute (VLIZ) geoserver](http://geo.vliz.be/geoserver/web/)
 
 ## Install
 
-CRAN stable
+CRAN stable (when on CRAN, not yet as of 2016-07-13)
 
 
 ```r
@@ -116,12 +116,19 @@ as_wkt(region_shp(key = "MarineRegions:eez_33176", read = TRUE))
 
 ```r
 res <- region_names()
-obis_eez_id(res[[100]]$title)
+obis_eez_id(res$title[100])
 ```
 
 ```
 ## [1] 224
 ```
+
+## Contributors
+
+* [Scott Chamberlain](https://github.com/sckott)
+* [Francois Michonneau](https://github.com/fmichonneau)
+* [Pieter Provoost](https://github.com/pieterprovoost)
+* [Michael Sumner](https://github.com/mdsumner)
 
 ## Meta
 
