@@ -15,6 +15,5 @@ export(region_geojson)
 export(region_names)
 export(region_names_search)
 export(region_shp)
-importFrom(sp,spTransform)
 export(rev_geo_code)
-
+importFrom(sp,spTransform)

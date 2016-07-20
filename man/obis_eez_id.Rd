@@ -19,7 +19,7 @@ Get OBIS EEZ id
 \examples{
 \dontrun{
 (res <- region_names())
-obis_eez_id(res[[100]]$title)
+obis_eez_id(res$title[100])
 }
 }
 
