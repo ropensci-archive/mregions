@@ -1,7 +1,7 @@
 #' Geocode with Marineregions
 #'
 #' @export
-#' @param place (character)
+#' @param place (character) a place name
 #' @param like (logical) adds a percent-sign before and after place value
 #' (a SQL LIKE function). Default: \code{TRUE}
 #' @param fuzzy (logical) Uses Levenshtein query to find nearest matches.

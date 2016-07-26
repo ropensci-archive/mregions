@@ -7,7 +7,7 @@
 geo_code(place, like = TRUE, fuzzy = FALSE, ...)
 }
 \arguments{
-\item{place}{(character)}
+\item{place}{(character) a place name}
 
 \item{like}{(logical) adds a percent-sign before and after place value
 (a SQL LIKE function). Default: \code{TRUE}}

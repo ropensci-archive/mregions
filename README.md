@@ -9,6 +9,15 @@ mregions
 
 Some data comes from the [Flanders Marine Institute (VLIZ) geoserver](http://geo.vliz.be/geoserver/web/)
 
+`mregions` is useful to a wide diversity of R users because you get access to all of the 
+data MarineRegions has, which can help in a variety of use cases:
+
+* Visualize marine regions alone
+* Visualize marine regions with associated data paired with analysis
+* Use marine region geospatial boundaries to query data providers (e.g., OBIS (<http://www.iobis.org>))
+* Geocode - get geolocation data from place names
+* Reverse Geocode - get place names from geolocation data
+
 ## Install
 
 CRAN stable (when on CRAN, not yet as of 2016-07-13)

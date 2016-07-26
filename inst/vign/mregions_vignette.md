@@ -9,6 +9,15 @@
 mregions introduction
 =====================
 
+`mregions` is useful to a wide diversity of R users because you get access to all of the 
+data MarineRegions has, which can help in a variety of use cases:
+
+* Visualize marine regions alone
+* Visualize marine regions with associated data paired with analysis
+* Use marine region geospatial boundaries to query data providers (e.g., OBIS (<http://www.iobis.org>))
+* Geocode - get geolocation data from place names
+* Reverse Geocode - get place names from geolocation data
+
 A few notes before we begin:
 
 * `mregions` will be on CRAN soon, install from github for now
@@ -89,74 +98,7 @@ head(res)
 ```r
 res <- region_names()
 region_names_search(query = "IHO")
-#> [[1]]
-#> [[1]]$name
-#> [1] "MarineRegions:iho"
-#> 
-#> [[1]]$title
-#> [1] "IHO Sea Areas"
-#> 
-#> [[1]]$name_first
-#> [1] "MarineRegions"
-#> 
-#> [[1]]$name_second
-#> [1] "iho"
-#> 
-#> 
-#> [[2]]
-#> [[2]]$name
-#> [1] "MarineRegions:iho_quadrants_20150810"
-#> 
-#> [[2]]$title
-#> [1] "IHO quadrants (20150810)"
-#> 
-#> [[2]]$name_first
-#> [1] "MarineRegions"
-#> 
-#> [[2]]$name_second
-#> [1] "iho_quadrants_20150810"
-#> 
-#> 
-#> [[3]]
-#> [[3]]$name
-#> [1] "World:iosregions"
-#> 
-#> [[3]]$title
-#> [1] "IOS Regions"
-#> 
-#> [[3]]$name_first
-#> [1] "World"
-#> 
-#> [[3]]$name_second
-#> [1] "iosregions"
-#> 
-#> 
-#> [[4]]
-#> [[4]]$name
-#> [1] "MarineRegions:eez_iho_union_v2"
-#> 
-#> [[4]]$title
-#> [1] "Marineregions: the intersect of the Exclusive Economic Zones and IHO areas"
-#> 
-#> [[4]]$name_first
-#> [1] "MarineRegions"
-#> 
-#> [[4]]$name_second
-#> [1] "eez"
-#> 
-#> 
-#> [[5]]
-#> [[5]]$name
-#> [1] "Belgium:vl_venivon"
-#> 
-#> [[5]]$title
-#> [1] "VEN (Flanders Ecological Network) and IVON (Integral Interrelated and Supporting Network)  areas in Flanders"
-#> 
-#> [[5]]$name_first
-#> [1] "Belgium"
-#> 
-#> [[5]]$name_second
-#> [1] "vl_venivon"
+#> Error in region_names_search.character(query = "IHO"): argument "x" is missing, with no default
 ```
 
 ## Get a region - geojson
@@ -188,8 +130,9 @@ class(res)
 ```r
 res <- region_names()
 res <- Filter(function(x) grepl("eez", x$name, ignore.case = TRUE), res)
+#> Error in x$name: $ operator is invalid for atomic vectors
 obis_eez_id(res[[2]]$title)
-#> [1] 84
+#> Error in res[[2]]$title: $ operator is invalid for atomic vectors
 ```
 
 ## Convert to WKT
