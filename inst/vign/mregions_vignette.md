@@ -60,8 +60,8 @@ head(res$type)
 
 
 ```r
-res <- records_by_type(type = "EEZ")
-head(res)
+res1 <- records_by_type(type = "EEZ")
+head(res1)
 #>   MRGID                                            gazetteerSource
 #> 1  3293 Maritime Boundaries Geodatabase, Flanders Marine Institute
 #> 2  5668 Maritime Boundaries Geodatabase, Flanders Marine Institute
@@ -96,19 +96,28 @@ head(res)
 
 
 ```r
-res <- region_names()
-region_names_search(query = "IHO")
-#> Error in region_names_search.character(query = "IHO"): argument "x" is missing, with no default
+res2 <- region_names()
+region_names_search("IHO")
+#> # A tibble: 5 x 4
+#>                                   name
+#>                                  <chr>
+#> 1                    MarineRegions:iho
+#> 2 MarineRegions:iho_quadrants_20150810
+#> 3                     World:iosregions
+#> 4       MarineRegions:eez_iho_union_v2
+#> 5                   Belgium:vl_venivon
+#> # ... with 3 more variables: title <chr>, name_first <chr>,
+#> #   name_second <chr>
 ```
 
 ## Get a region - geojson
 
 
 ```r
-res <- region_geojson(name = "Turkmen Exclusive Economic Zone")
-class(res)
+res3 <- region_geojson(name = "Turkmen Exclusive Economic Zone")
+class(res3)
 #> [1] "mr_geojson"
-names(res)
+names(res3)
 #> [1] "type"          "totalFeatures" "features"      "crs"          
 #> [5] "bbox"
 ```
@@ -117,8 +126,8 @@ names(res)
 
 
 ```r
-res <- region_shp(name = "Belgian Exclusive Economic Zone")
-class(res)
+res4 <- region_shp(name = "Belgian Exclusive Economic Zone")
+class(res4)
 #> [1] "SpatialPolygonsDataFrame"
 #> attr(,"package")
 #> [1] "sp"
@@ -128,11 +137,22 @@ class(res)
 
 
 ```r
-res <- region_names()
-res <- Filter(function(x) grepl("eez", x$name, ignore.case = TRUE), res)
-#> Error in x$name: $ operator is invalid for atomic vectors
-obis_eez_id(res[[2]]$title)
-#> Error in res[[2]]$title: $ operator is invalid for atomic vectors
+res5 <- region_names()
+res6 <- res5[grepl("eez", res5$name, ignore.case = TRUE),]
+obis_eez_id(res6$title)
+#>   [1] 218   1   2   3   5   9  10  11  13  16  18  21  24  28  29  30  33
+#>  [18]  34  35  36  37  41  42  43  46  51  56  64  67  68  69  70  71  74
+#>  [35]  78  82  84  85  91  92  93  94  95  97  99 100 101 104 105 106 107
+#>  [52] 108 112 113 114 115 118 120 124 130 134 137 141 147 149 151 153 154
+#>  [69] 158 164 166 167 169 171 172 174 177 184 189 191 193 194 195 196 198
+#>  [86] 200 201 203 204 205 206 209 210 211 212 213 217 223 226 145 143 179
+#> [103]  39  38 181 133 110 216 231 180 183  31  32  44  47  48  53 102 202
+#> [120]   7   8  12  17  19  40  86  88 222 178  73  72  75  76  61  63  66
+#> [137]  96 103  89 146 155 150 152 156 161 173 111 116 117 129 139 168  14
+#> [154]  20  22  23  25  27 207  49 190   6 119 126 122 127 227 228 214  15
+#> [171] 123 182 136 132 131  77 121 165  52 188 199 208 238 239  59 185  45
+#> [188]  54 192  65 237 197 135  50  79  60  62 162 159  98 220 221 219 176
+#> [205] 175 163 138 224 187 241  81
 ```
 
 ## Convert to WKT
@@ -141,8 +161,8 @@ From geojson or shp. Here, geojson
 
 
 ```r
-res <- region_geojson(key = "MarineRegions:eez_33176")
-as_wkt(res, fmt = 5)
+res7 <- region_geojson(key = "MarineRegions:eez_33176")
+as_wkt(res7, fmt = 5)
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
 ```
 

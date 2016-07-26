@@ -59,38 +59,38 @@ head(res$type)
 ## Get Marineregions records by place type
 
 ```{r}
-res <- records_by_type(type = "EEZ")
-head(res)
+res1 <- records_by_type(type = "EEZ")
+head(res1)
 ```
 
 ## Get and search region names
 
 ```{r}
-res <- region_names()
-region_names_search(query = "IHO")
+res2 <- region_names()
+region_names_search("IHO")
 ```
 
 ## Get a region - geojson
 
 ```{r}
-res <- region_geojson(name = "Turkmen Exclusive Economic Zone")
-class(res)
-names(res)
+res3 <- region_geojson(name = "Turkmen Exclusive Economic Zone")
+class(res3)
+names(res3)
 ```
 
 ## Get a region - shp
 
 ```{r}
-res <- region_shp(name = "Belgian Exclusive Economic Zone")
-class(res)
+res4 <- region_shp(name = "Belgian Exclusive Economic Zone")
+class(res4)
 ```
 
 ## Get OBIS EEZ ID
 
 ```{r}
-res <- region_names()
-res <- Filter(function(x) grepl("eez", x$name, ignore.case = TRUE), res)
-obis_eez_id(res[[2]]$title)
+res5 <- region_names()
+res6 <- res5[grepl("eez", res5$name, ignore.case = TRUE),]
+obis_eez_id(res6$title)
 ```
 
 ## Convert to WKT
@@ -98,8 +98,8 @@ obis_eez_id(res[[2]]$title)
 From geojson or shp. Here, geojson
 
 ```{r eval=FALSE}
-res <- region_geojson(key = "MarineRegions:eez_33176")
-as_wkt(res, fmt = 5)
+res7 <- region_geojson(key = "MarineRegions:eez_33176")
+as_wkt(res7, fmt = 5)
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
 ```
 

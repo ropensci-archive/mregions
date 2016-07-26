@@ -41,7 +41,7 @@ library("mregions")
 Get region
 
 ```{r}
-res <- region_geojson(name = "Turkmen Exclusive Economic Zone")
+res1 <- region_geojson(name = "Turkmen Exclusive Economic Zone")
 ```
 
 Get helper library
@@ -56,7 +56,7 @@ Plot data
 library('leaflet')
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
-  addGeoJSON(geojson = res$features) %>%
+  addGeoJSON(geojson = res1$features) %>%
   setView(53, 40, zoom = 6)
 ```
 
@@ -67,7 +67,7 @@ leaflet() %>%
 Get region
 
 ```{r}
-res <- region_shp(name = "Belgian Exclusive Economic Zone")
+res2 <- region_shp(name = "Belgian Exclusive Economic Zone")
 ```
 
 Get helper library
@@ -82,7 +82,7 @@ Plot data
 library('leaflet')
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
-  addPolygons(data = res)
+  addPolygons(data = res2)
 ```
 
 ![map2](http://f.cl.ly/items/1m3R2p241S1u1n3r141R/Screen%20Shot%202015-12-09%20at%209.36.19%20AM.png)
@@ -92,8 +92,8 @@ leaflet() %>%
 From geojson
 
 ```{r eval=FALSE}
-res <- region_geojson(key = "MarineRegions:eez_33176")
-as_wkt(res, fmt = 5)
+res3 <- region_geojson(key = "MarineRegions:eez_33176")
+as_wkt(res3, fmt = 5)
 
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
 ```
@@ -112,8 +112,8 @@ as_wkt(region_shp(key = "MarineRegions:eez_33176", read = TRUE))
 ## Get OBIS EEZ ID
 
 ```{r}
-res <- region_names()
-obis_eez_id(res$title[100])
+res4 <- region_names()
+obis_eez_id(res4$title[100])
 ```
 
 ## Contributors
