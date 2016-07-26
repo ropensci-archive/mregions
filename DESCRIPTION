@@ -18,6 +18,7 @@ Imports:
     xml2,
     wellknown,
     rappdirs,
+    sp,
     data.table,
     tibble
 Suggests:
