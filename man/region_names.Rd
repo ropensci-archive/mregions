@@ -25,10 +25,19 @@ Get region names
 }
 \examples{
 \dontrun{
+# region_names gives a tidy data.frame
 (res <- region_names())
+
+# index to any given column
 res$name
+
+# get unique, sorted first names
 sort(unique(res$name_first))
+
+# get unique, sorted second names
 sort(unique(res$name_second))
+
+# get titles
 res$title
 }
 }

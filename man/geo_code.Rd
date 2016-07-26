@@ -41,10 +41,20 @@ Geocode with Marineregions
 }
 \examples{
 \dontrun{
+# search for 'oost', like=TRUE, and not fuzzy
 geo_code(place = "oost", like = TRUE, fuzzy = FALSE)
+
+# search for 'oost', like=FALSE, and not fuzzy
 geo_code(place = "oost", like = FALSE, fuzzy = FALSE)
+
+# search for 'oost', like=FALSE, and fuzzy
 geo_code(place = "oost", like = FALSE, fuzzy = TRUE)
+
+# search for 'oost', like=TRUE, and fuzzy
 geo_code(place = "oost", like = TRUE, fuzzy = TRUE)
+
+# search for 'ast', like=TRUE, and fuzzy
+geo_code(place = "ast", like = TRUE, fuzzy = TRUE)
 }
 }
 

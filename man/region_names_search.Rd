@@ -30,10 +30,17 @@ Search for region names
 }
 \examples{
 \dontrun{
+# Get region names with region_names() function
 (res <- region_names())
 
+# to save time, pass in the result from region_names()
 region_names_search(res, q = "EEZ")
+
+# if you don't pass in the result from region_names(), we have to
+# call region_names() internally, adding some time
 region_names_search("IHO")
+
+# more examples, with and without passing in region_names() output
 region_names_search(res, q = "IHO")
 region_names_search("Heritage")
 region_names_search(res, q = "Heritage")

@@ -25,8 +25,19 @@ Get related records based on their MRGID.
 }
 \examples{
 \dontrun{
-tikehau <- geo_code("tikehau")
+## geocode to get geospatial data for a place name
+(tikehau <- geo_code("tikehau"))
+
+## then pass in in an MRGID as the first parameter
 place_relations(tikehau$MRGID)
+
+## Set direction='both'
+place_relations(tikehau$MRGID, direction = "both")
+
+## Set type to various other options
+place_relations(307, type = "adjacentto")
+place_relations(414, type = "similarto")
+place_relations(4177, type = "all")
 }
 }
 \author{

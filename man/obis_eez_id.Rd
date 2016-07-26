@@ -17,12 +17,25 @@ no match found.
 Get OBIS EEZ id
 }
 \details{
-internally we use the OBIS API to retrieve an EEZ id
+internally we use the OBIS API to retrieve an EEZ id.
+
+Matching internally is case insensitive, as we convert your input and match
+against EEZ names that are all lower case.
 }
 \examples{
 \dontrun{
+# You can get EEZ names via the region_names() function
 (res <- region_names())
 obis_eez_id(res$title[100])
+
+# Or pass in a name
+obis_eez_id("Bulgarian Exclusive Economic Zone")
+
+# case doesn't matter
+obis_eez_id("bulgarian exclusive economic zone")
+
+# No match, gives NULL
+obis_eez_id("stuff things")
 }
 }
 

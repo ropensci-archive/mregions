@@ -12,8 +12,13 @@
 ##'     \code{lon}-\code{lon_radius} to \code{lon}+\code{lon_radius}
 ##' @param ... curl options to be passed on to \code{\link[httr]{GET}}
 ##' @examples \dontrun{
-##' rev_geo_code(-21.5, 55.5, lat_radius=.5, lon_radius=.5)
+##' # Setting radius to 0.5
+##' rev_geo_code(-21.5, 55.5, lat_radius=0.5, lon_radius=0.5)
+##'
+##' # radius to 3
 ##' rev_geo_code(-21.5, 55.5, lat_radius=3, lon_radius=3)
+##'
+##' # radius to 1
 ##' rev_geo_code(-15, 45, lat_radius=1, lon_radius=1)
 ##' }
 ##' @author Francois Michonneau <francois.michonneau@gmail.com>

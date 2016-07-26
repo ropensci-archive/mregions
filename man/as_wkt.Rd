@@ -43,6 +43,7 @@ as_wkt(res, fmt = 5)
 # shp files
 ## path to wkt
 as_wkt(region_shp(key = "MarineRegions:eez_33176", read = FALSE))
+
 ## spatial object to wkt
 as_wkt(region_shp(key = "MarineRegions:eez_33176", read = TRUE))
 }
