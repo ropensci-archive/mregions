@@ -28,7 +28,8 @@ Default: \code{FALSE}}
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
-A \code{SpatialPolygonsDataFrame}
+A \code{SpatialPolygonsDataFrame} if \code{read=TRUE}, or a path to
+a SHP file on disk if \code{read=FALSE}.
 }
 \description{
 Get a region shp file

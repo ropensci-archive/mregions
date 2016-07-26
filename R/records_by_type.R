@@ -1,11 +1,14 @@
 #' Get Marineregions records by place type
 #'
 #' @export
-#' @param type (character) One place type name. See
-#' \code{\link{place_types}} for place type names
+#' @template dframe1
+#' @param type (character) One place type name. See \code{\link{place_types}} for
+#' place type names
 #' @param offset (numeric) Offset to start at. Each request can return up to
 #' 100 results. e.g., an offset of 200 will give records 200 to 299.
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @details Internally we use the \code{getGazetteerRecordsByType.json} API method,
+#' which searches for Marineregions records by user supplied place type
 #' @examples \dontrun{
 #' res <- records_by_type(type="EEZ")
 #' head(res)

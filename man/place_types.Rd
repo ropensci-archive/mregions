@@ -9,6 +9,13 @@ place_types(...)
 \arguments{
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
+\value{
+A data.frame with the columns:
+\itemize{
+ \item type (character) the place type
+ \item description (character) description of the place type
+}
+}
 \description{
 Get Marineregions place types
 }

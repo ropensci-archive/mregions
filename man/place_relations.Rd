@@ -9,14 +9,14 @@ place_relations(mrgid, direction = c("upper", "lower", "both"),
   "administrativepartof", "influencedby", "all"), ...)
 }
 \arguments{
-\item{mrgid}{the MRGID (Marineregions Global Identifier) for the
+\item{mrgid}{(numeric) the MRGID (Marineregions Global Identifier) for the
 record of interest}
 
-\item{direction}{in which direction of the geographical hierarchy
-should the records be retrieved?}
+\item{direction}{(character) in which direction of the geographical hierarchy
+should the records be retrieved? Default: \code{upper}}
 
-\item{type}{what kind of relations should the records retrieve
-have with the place?}
+\item{type}{(character) what kind of relations should the records retrieve
+have with the place? Default: \code{partof}}
 
 \item{...}{curl options to be passed on to \code{\link[httr]{GET}}}
 }
@@ -25,8 +25,8 @@ Get related records based on their MRGID.
 }
 \examples{
 \dontrun{
-  tikehau <- geo_code("tikehau")
-  place_relations(tikehau$MRGID)
+tikehau <- geo_code("tikehau")
+place_relations(tikehau$MRGID)
 }
 }
 \author{

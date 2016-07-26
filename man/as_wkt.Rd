@@ -10,13 +10,13 @@ as_wkt(x, fmt = 16, ...)
 \item{x}{Output from \code{\link{region_geojson}}, \code{\link{region_shp}},
 or a \code{SpatialPolygonsDataFrame}}
 
-\item{fmt}{The number of digits to display after the decimal point when
+\item{fmt}{(integer) The number of digits to display after the decimal point when
 formatting coordinates. Ignored when shp files or \code{SpatialPolygonsDataFrame}
 passed in}
 
-\item{...}{Further args passed on to \code{\link[jsonlite]{fromJSON}} only in the event of json
-passed as a character string. Ignored when shp files or \code{SpatialPolygonsDataFrame}
-passed in}
+\item{...}{Further args passed on to \code{\link[jsonlite]{fromJSON}} only in the
+event of json passed as a character string. Ignored when shp files or
+\code{SpatialPolygonsDataFrame} passed in}
 }
 \value{
 a character string of WKT data

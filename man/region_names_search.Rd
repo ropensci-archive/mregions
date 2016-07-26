@@ -15,7 +15,15 @@ as \code{NULL}}
 \item{...}{Parameters passed on to \code{\link{agrep}}}
 }
 \value{
-a data.frame, or tibble, of class tbl_df
+\code{NULL} if no matches found, or a data.frame, or tibble, of class
+tbl_df (basically, a compact data.frame), with slots:
+\itemize{
+ \item name (character) - name of the region, which is a combination of the
+ name_first and name_second, e.g., Morocco:elevation_10m
+ \item title (character) - title for the region
+ \item name_first (character) - first part of the name, e.g., Morocco
+ \item name_second (character) - second part of the name, e.g., elevation_10m
+}
 }
 \description{
 Search for region names

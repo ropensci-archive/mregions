@@ -2,6 +2,11 @@
 #'
 #' @export
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @return A data.frame with the columns:
+#' \itemize{
+#'  \item type (character) the place type
+#'  \item description (character) description of the place type
+#' }
 #' @examples \dontrun{
 #' res <- place_types()
 #' head(res)

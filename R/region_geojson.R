@@ -9,13 +9,22 @@
 #' @param maxFeatures (integer) Number of features to return. Default: \code{50}
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @return an S3 class of type \code{mr_geojson}, just a thin wrapper around
-#' a list
+#' a list. The list has names:
+#'
+#' \itemize{
+#'  \item type (character) - the geojson type (e.g., FeatureCollection)
+#'  \item totalFeatures (integer) - the
+#'  \item features (list) - the features, with slots for each feature: type,
+#'  id, geometry, geometry_name, and properties
+#'  \item crs (list) - the coordinate reference system
+#'  \item bbox (list) - the bounding box that encapsulates the object
+#' }
 #' @examples \dontrun{
 #' # by key
-#' res <- region_geojson(key = "MarineRegions:eez_33176")
+#' res1 <- region_geojson(key = "MarineRegions:eez_33176")
 #'
 #' # by name
-#' res <- region_geojson(name = "Turkmen Exclusive Economic Zone")
+#' res2 <- region_geojson(name = "Turkmen Exclusive Economic Zone")
 #'
 #' if (requireNamespace("geojsonio")) {
 #'   library("geojsonio")

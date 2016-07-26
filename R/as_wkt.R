@@ -3,12 +3,12 @@
 #' @export
 #' @param x Output from \code{\link{region_geojson}}, \code{\link{region_shp}},
 #' or a \code{SpatialPolygonsDataFrame}
-#' @param fmt The number of digits to display after the decimal point when
+#' @param fmt (integer) The number of digits to display after the decimal point when
 #' formatting coordinates. Ignored when shp files or \code{SpatialPolygonsDataFrame}
 #' passed in
-#' @param ... Further args passed on to \code{\link[jsonlite]{fromJSON}} only in the event of json
-#' passed as a character string. Ignored when shp files or \code{SpatialPolygonsDataFrame}
-#' passed in
+#' @param ... Further args passed on to \code{\link[jsonlite]{fromJSON}} only in the
+#' event of json passed as a character string. Ignored when shp files or
+#' \code{SpatialPolygonsDataFrame} passed in
 #'
 #' @details WKT, or Well Known Text, is a way to encode spatial data. It's somewhat
 #' similar to GeoJSON, but instead of being in JSON format, it's a character string

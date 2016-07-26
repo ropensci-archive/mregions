@@ -16,6 +16,9 @@ no match found.
 \description{
 Get OBIS EEZ id
 }
+\details{
+internally we use the OBIS API to retrieve an EEZ id
+}
 \examples{
 \dontrun{
 (res <- region_names())

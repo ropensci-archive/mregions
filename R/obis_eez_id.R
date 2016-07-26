@@ -4,6 +4,7 @@
 #' @param x (character) An Exclusive Economic Zone name
 #' @return An integer EEZ ID if a match found in list of EEZ's, or \code{NULL} if
 #' no match found.
+#' @details internally we use the OBIS API to retrieve an EEZ id
 #' @examples \dontrun{
 #' (res <- region_names())
 #' obis_eez_id(res$title[100])

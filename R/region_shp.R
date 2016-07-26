@@ -13,7 +13,8 @@
 #' Default: \code{FALSE}
 #' @param filter (character) String to filter features on
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
-#' @return A \code{SpatialPolygonsDataFrame}
+#' @return A \code{SpatialPolygonsDataFrame} if \code{read=TRUE}, or a path to
+#' a SHP file on disk if \code{read=FALSE}.
 #' @details We use \pkg{rappdirs} to determine where to cache data depening on
 #' your operating system. See \code{rappdirs::user_cache_dir("mregions")} for
 #' location on your machine
