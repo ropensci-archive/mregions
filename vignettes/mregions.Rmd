@@ -18,11 +18,6 @@ data MarineRegions has, which can help in a variety of use cases:
 * Geocode - get geolocation data from place names
 * Reverse Geocode - get place names from geolocation data
 
-A few notes before we begin:
-
-* `mregions` will be on CRAN soon, install from github for now
-* master version of `robis` lives at `iobis/robis`, but i use a slight changed in my fork :)
-
 ## Install
 
 Stable version (not on CRAN yet, soon though)
@@ -36,7 +31,7 @@ Dev version
 
 
 ```r
-devtools::install_github(c("sckott/mregions", "sckott/robis"))
+devtools::install_github("ropenscilabs/mregions")
 install.packages("leaflet")
 ```
 
@@ -168,19 +163,19 @@ as_wkt(res7, fmt = 5)
 
 ## Get regions, then OBIS data
 
-### Using Well-Known Text
-
-Both shp and geojson data returned from `region_shp()` and `region_geojson()`, respectively, can be passed to `as_wkt()` to get WKT.
+Using Well-Known Text. Both shp and geojson data returned from `region_shp()` and `region_geojson()`, respectively, can be passed to `as_wkt()` to get WKT.
 
 
 ```r
-library('robis')
 shp <- region_shp(name = "Belgian Exclusive Economic Zone")
 wkt <- as_wkt(shp)
-xx <- occurrence("Abra alba", geometry = wkt)
-#> Retrieved 695 records of 695 (100%)
+library('httr')
+library('data.table')
+args <- list(scientificname = "Abra alba", geometry = wkt, limit = 100)
+res <- httr::GET('http://api.iobis.org/occurrence', query = args)
+xx <- data.table::setDF(data.table::rbindlist(httr::content(res)$results, use.names = TRUE, fill = TRUE))
 xx <- xx[, c('scientificName', 'decimalLongitude', 'decimalLatitude')]
-names(xx) <- c('scientificName', 'longitude', 'latitude')
+names(xx)[2:3] <- c('longitude', 'latitude')
 ```
 
 Plot
@@ -196,19 +191,6 @@ leaflet() %>%
 
 ![map1](figure/map1.png)
 
-### Using EEZ ID
-
-EEZ is a Exclusive Economic Zone
-
-
-```r
-library('robis')
-(eez <- obis_eez_id("Belgian Exclusive Economic Zone"))
-#> [1] 59
-```
-
-You currently can't search for OBIS occurrences by EEZ ID, but hopefully soon...
-
 ## Dealing with bigger WKT
 
 What if you're WKT string is super long?  It's often a problem because some online species occurrence databases that accept WKT to search by geometry bork due to
@@ -217,7 +199,7 @@ including remainder of URL). One way to deal with it is to reduce detail - simpl
 
 
 ```r
-devtools::install_github("ateucher/rmapshaper")
+install.packages("rmapshaper")
 ```
 
 Using `rmapshaper` we can simplify a spatial object, then search with that.
@@ -262,24 +244,6 @@ Convert to WKT
 
 ```r
 wkt <- as_wkt(shp)
-```
-
-### OBIS data
-
-Search OBIS
-
-
-```r
-library("robis")
-dat <- occurrence_single(geometry = wkt, limit = 500, fields = c("species", "decimalLongitude", "decimalLatitude"))
-head(dat)
-#>               species decimalLongitude decimalLatitude
-#> 1  Temora longicornis         3.423300        55.39170
-#> 2  Temora longicornis         3.518300        55.39170
-#> 3 Stragularia clavata         4.190675        53.61508
-#> 4                <NA>         4.189400        53.55727
-#> 5   Stylonema alsidii         4.190675        53.61508
-#> 6                <NA>         4.318000        53.30720
 ```
 
 [mr]: https://github.com/ropenscilabs/mregions
