@@ -23,7 +23,7 @@
 #' as_wkt(res, fmt = 5)
 #'
 #' nms <- region_names()
-#' res <- region_geojson(key = nms[[1]]$name)
+#' res <- region_geojson(key = grep("MarineRegions", nms$name, value = TRUE)[10])
 #' as_wkt(res, fmt = 5)
 #'
 #' # shp files
@@ -68,8 +68,7 @@ as_wkt.mr_shp_file <- function(x, fmt = 16, ...) {
 }
 
 # stolen from raster::isLonLat
-.isLonLat <- function (x)
-{
+.isLonLat <- function(x) {
   p4 <-  x@proj4string@projargs
   if (is.na(p4)) {
     return(NA)

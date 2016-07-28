@@ -9,10 +9,14 @@ before_script:
   - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
   - chmod 755 ./travis-tool.sh
   - ./travis-tool.sh bootstrap
+  - ./travis-tool.sh install_r leaflet
   - ./travis-tool.sh install_deps
 
 after_failure:
   - ./travis-tool.sh dump_logs
+
+after_success:
+  - Rscript -e 'covr::codecov()'
 
 env:
    global:
