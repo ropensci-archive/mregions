@@ -23,7 +23,7 @@
 ##' }
 ##' @author Francois Michonneau <francois.michonneau@gmail.com>
 rev_geo_code <- function(lat, lon, lat_radius = 1, lon_radius = 1, ...) {
-  sapply(list(lat, lon, lat_radius, lon_radius), check_is_number)
+  invisible(lapply(list(lat, lon, lat_radius, lon_radius), check_is_number))
   base <- paste0(mr_base(), "/getGazetteerRecordsByLatLong.json/%s/%s/%s/%s")
   url <- sprintf(base, lat, lon, lat_radius, lon_radius)
   res <- httr::GET(url, ...)
@@ -36,7 +36,7 @@ check_is_number <- function(x) {
   if (is.logical(x)) {
     stop(msg, call. = FALSE)
   }
-  x <- as.numeric(x)
+  x <- suppressWarnings(as.numeric(x))
   if (!(is.numeric(x) && length(x) == 1
         && !is.na(x)))
     stop(msg, call. = FALSE)

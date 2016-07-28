@@ -37,7 +37,7 @@ res <- region_geojson(key = "MarineRegions:eez_33176")
 as_wkt(res, fmt = 5)
 
 nms <- region_names()
-res <- region_geojson(key = nms[[1]]$name)
+res <- region_geojson(key = grep("MarineRegions", nms$name, value = TRUE)[10])
 as_wkt(res, fmt = 5)
 
 # shp files
