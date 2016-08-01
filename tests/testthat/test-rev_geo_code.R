@@ -1,18 +1,18 @@
-context("rev_geo_code")
+context("mr_rev_geo_code")
 
-test_that("rev_geo_code fails if input is not numeric", {
+test_that("mr_rev_geo_code fails if input is not numeric", {
     skip_on_cran()
-    expect_error(expect_warning(rev_geo_code("test", -10)))
-    expect_error(rev_geo_code("", -10))
-    expect_error(rev_geo_code(10, TRUE))
-    expect_error(rev_geo_code(10, 10, NA))
+    expect_error(expect_warning(mr_rev_geo_code("test", -10)))
+    expect_error(mr_rev_geo_code("", -10))
+    expect_error(mr_rev_geo_code(10, TRUE))
+    expect_error(mr_rev_geo_code(10, 10, NA))
 })
 
 
-test_that("rev_geo_code works ", {
+test_that("mr_rev_geo_code works ", {
     skip_on_cran()
 
-    res <- rev_geo_code(-21.5, 55.5, lat_radius = .5, lon_radius = .5)
+    res <- mr_rev_geo_code(-21.5, 55.5, lat_radius = .5, lon_radius = .5)
 
     expect_is(res, "data.frame")
     expect_true(NROW(res) > 0)

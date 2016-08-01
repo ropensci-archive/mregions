@@ -15,7 +15,7 @@
 #'
 #' @examples \dontrun{
 #' # region_names gives a tidy data.frame
-#' (res <- region_names())
+#' (res <- mr_names())
 #'
 #' # index to any given column
 #' res$name
@@ -29,7 +29,7 @@
 #' # get titles
 #' res$title
 #' }
-region_names <- function(...) {
+mr_names <- function(...) {
   args <- list(SERVICE = 'WFS', REQUEST = 'GetCapabilities', outputFormat = 'a')
   res <- m_GET(vliz_base(), args, format = "application/xml", ...)
   xml <- xml2::read_xml(res)

@@ -5,7 +5,7 @@
 #' \code{x} is a namespace (e.g., \code{MarineRegions}), and \code{y} is
 #' a region (e.g., \code{eez_33176})
 #' @param name (character) Region name, if you supply this, we search
-#' against titles via \code{\link{region_names}} function
+#' against titles via \code{\link{mr_names}} function
 #' @param maxFeatures (integer) Number of features
 #' @param overwrite (logical) Overwrite file if already exists. Default: \code{FALSE}
 #' @param read (logical) To read in as spatial object. If \code{FALSE} a path
@@ -20,11 +20,11 @@
 #' location on your machine
 #' @examples \dontrun{
 #' ## just get path
-#' region_shp(key = "MarineRegions:eez_33176", read = FALSE)
+#' mr_shp(key = "MarineRegions:eez_33176", read = FALSE)
 #' ## read shp file into spatial object
-#' res <- region_shp(key = "MarineRegions:eez_33176", read = TRUE)
+#' res <- mr_shp(key = "MarineRegions:eez_33176", read = TRUE)
 #'
-#' region_shp(key = "SAIL:w_marinehabitatd")
+#' mr_shp(key = "SAIL:w_marinehabitatd")
 #'
 #' if (requireNamespace("leaflet")) {
 #'   library('leaflet')
@@ -34,10 +34,10 @@
 #' }
 #'
 #' # use `filter` param to get a subset of a region
-#' region_shp(name="World Marine Heritage Sites", maxFeatures=NULL,
+#' mr_shp(name="World Marine Heritage Sites", maxFeatures=NULL,
 #'   filter="iSimangaliso Wetland Park")
 #' }
-region_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
+mr_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
                        overwrite = TRUE, read = TRUE, filter = NULL, ...) {
 
   cache_dir <- rappdirs::user_cache_dir("mregions")

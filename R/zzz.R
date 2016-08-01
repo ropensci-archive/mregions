@@ -57,7 +57,7 @@ make_args <- function(format, name, key, maxFeatures) {
 nameorkey <- function(name, key) {
   stopifnot(xor(!is.null(name), !is.null(key)))
   if (is.null(key)) {
-    nms <- region_names()
+    nms <- mr_names()
     nms[nms$title == name, ]$name
   } else {
     key

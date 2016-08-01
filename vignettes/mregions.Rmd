@@ -44,7 +44,7 @@ library("mregions")
 
 
 ```r
-res <- place_types()
+res <- mr_place_types()
 head(res$type)
 #> [1] "Town"                      "Arrondissement"           
 #> [3] "Department"                "Province (administrative)"
@@ -55,7 +55,7 @@ head(res$type)
 
 
 ```r
-res1 <- records_by_type(type = "EEZ")
+res1 <- mr_records_by_type(type = "EEZ")
 head(res1)
 #>   MRGID                                            gazetteerSource
 #> 1  3293 Maritime Boundaries Geodatabase, Flanders Marine Institute
@@ -91,8 +91,8 @@ head(res1)
 
 
 ```r
-res2 <- region_names()
-region_names_search("IHO")
+res2 <- mr_names()
+mr_names_search("IHO")
 #> # A tibble: 5 x 4
 #>                                   name
 #>                                  <chr>
@@ -109,7 +109,7 @@ region_names_search("IHO")
 
 
 ```r
-res3 <- region_geojson(name = "Turkmen Exclusive Economic Zone")
+res3 <- mr_geojson(name = "Turkmen Exclusive Economic Zone")
 class(res3)
 #> [1] "mr_geojson"
 names(res3)
@@ -121,7 +121,7 @@ names(res3)
 
 
 ```r
-res4 <- region_shp(name = "Belgian Exclusive Economic Zone")
+res4 <- mr_shp(name = "Belgian Exclusive Economic Zone")
 class(res4)
 #> [1] "SpatialPolygonsDataFrame"
 #> attr(,"package")
@@ -132,9 +132,9 @@ class(res4)
 
 
 ```r
-res5 <- region_names()
+res5 <- mr_names()
 res6 <- res5[grepl("eez", res5$name, ignore.case = TRUE),]
-obis_eez_id(res6$title)
+mr_obis_eez_id(res6$title)
 #>   [1] 218   1   2   3   5   9  10  11  13  16  18  21  24  28  29  30  33
 #>  [18]  34  35  36  37  41  42  43  46  51  56  64  67  68  69  70  71  74
 #>  [35]  78  82  84  85  91  92  93  94  95  97  99 100 101 104 105 106 107
@@ -156,8 +156,8 @@ From geojson or shp. Here, geojson
 
 
 ```r
-res7 <- region_geojson(key = "MarineRegions:eez_33176")
-as_wkt(res7, fmt = 5)
+res7 <- mr_geojson(key = "MarineRegions:eez_33176")
+mr_as_wkt(res7, fmt = 5)
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
 ```
 
@@ -167,8 +167,8 @@ Using Well-Known Text. Both shp and geojson data returned from `region_shp()` an
 
 
 ```r
-shp <- region_shp(name = "Belgian Exclusive Economic Zone")
-wkt <- as_wkt(shp)
+shp <- mr_shp(name = "Belgian Exclusive Economic Zone")
+wkt <- mr_as_wkt(shp)
 library('httr')
 library('data.table')
 args <- list(scientificname = "Abra alba", geometry = wkt, limit = 100)
@@ -206,7 +206,7 @@ Using `rmapshaper` we can simplify a spatial object, then search with that.
 
 
 ```r
-shp <- region_shp(name = "Dutch Exclusive Economic Zone")
+shp <- mr_shp(name = "Dutch Exclusive Economic Zone")
 ```
 
 Visualize
@@ -243,7 +243,7 @@ Convert to WKT
 
 
 ```r
-wkt <- as_wkt(shp)
+wkt <- mr_as_wkt(shp)
 ```
 
 [mr]: https://github.com/ropenscilabs/mregions

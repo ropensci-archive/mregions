@@ -13,16 +13,16 @@
 ##' @param ... curl options to be passed on to \code{\link[httr]{GET}}
 ##' @examples \dontrun{
 ##' # Setting radius to 0.5
-##' rev_geo_code(-21.5, 55.5, lat_radius=0.5, lon_radius=0.5)
+##' mr_rev_geo_code(-21.5, 55.5, lat_radius=0.5, lon_radius=0.5)
 ##'
 ##' # radius to 3
-##' rev_geo_code(-21.5, 55.5, lat_radius=3, lon_radius=3)
+##' mr_rev_geo_code(-21.5, 55.5, lat_radius=3, lon_radius=3)
 ##'
 ##' # radius to 1
-##' rev_geo_code(-15, 45, lat_radius=1, lon_radius=1)
+##' mr_rev_geo_code(-15, 45, lat_radius=1, lon_radius=1)
 ##' }
 ##' @author Francois Michonneau <francois.michonneau@gmail.com>
-rev_geo_code <- function(lat, lon, lat_radius = 1, lon_radius = 1, ...) {
+mr_rev_geo_code <- function(lat, lon, lat_radius = 1, lon_radius = 1, ...) {
   invisible(lapply(list(lat, lon, lat_radius, lon_radius), check_is_number))
   base <- paste0(mr_base(), "/getGazetteerRecordsByLatLong.json/%s/%s/%s/%s")
   url <- sprintf(base, lat, lon, lat_radius, lon_radius)
