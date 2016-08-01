@@ -1,7 +1,7 @@
 #' Search for region names
 #'
 #' @export
-#' @param x,q Either a \code{tbl_df}, returned from \code{\link{region_names}}, or
+#' @param x,q Either a \code{tbl_df}, returned from \code{\link{mr_names}}, or
 #' a query as a character string. If a \code{tbl_df}, you must pass a query string to
 #' \code{q}. If a query string (character) is passed to \code{x}, leave \code{q}
 #' as \code{NULL}
@@ -19,35 +19,35 @@
 #'
 #' @examples \dontrun{
 #' # Get region names with region_names() function
-#' (res <- region_names())
+#' (res <- mr_names())
 #'
 #' # to save time, pass in the result from region_names()
-#' region_names_search(res, q = "EEZ")
+#' mr_names_search(res, q = "EEZ")
 #'
 #' # if you don't pass in the result from region_names(), we have to
 #' # call region_names() internally, adding some time
-#' region_names_search("IHO")
+#' mr_names_search("IHO")
 #'
 #' # more examples, with and without passing in region_names() output
-#' region_names_search(res, q = "IHO")
-#' region_names_search("Heritage")
-#' region_names_search(res, q = "Heritage")
-#' region_names_search("ecoregions")
-#' region_names_search(res, q = "ecoregions")
+#' mr_names_search(res, q = "IHO")
+#' mr_names_search("Heritage")
+#' mr_names_search(res, q = "Heritage")
+#' mr_names_search("ecoregions")
+#' mr_names_search(res, q = "ecoregions")
 #' }
-region_names_search <- function(x, q = NULL, ...) {
-  UseMethod('region_names_search')
+mr_names_search <- function(x, q = NULL, ...) {
+  UseMethod('mr_names_search')
 }
 
 #' @export
-region_names_search.tbl_df <- function(x, q = NULL, ...) {
+mr_names_search.tbl_df <- function(x, q = NULL, ...) {
   do_regns(x, q, ...)
 }
 
 #' @export
-region_names_search.character <- function(x, q = NULL, ...) {
+mr_names_search.character <- function(x, q = NULL, ...) {
   q <- x
-  x <- region_names()
+  x <- mr_names()
   do_regns(x, q, ...)
 }
 

@@ -9,20 +9,20 @@
 #' Matching internally is case insensitive, as we convert your input and match
 #' against EEZ names that are all lower case.
 #' @examples \dontrun{
-#' # You can get EEZ names via the region_names() function
-#' (res <- region_names())
-#' obis_eez_id(res$title[100])
+#' # You can get EEZ names via the mr_names() function
+#' (res <- mr_names())
+#' mr_obis_eez_id(res$title[100])
 #'
 #' # Or pass in a name
-#' obis_eez_id("Bulgarian Exclusive Economic Zone")
+#' mr_obis_eez_id("Bulgarian Exclusive Economic Zone")
 #'
 #' # case doesn't matter
-#' obis_eez_id("bulgarian exclusive economic zone")
+#' mr_obis_eez_id("bulgarian exclusive economic zone")
 #'
 #' # No match, gives NULL
-#' obis_eez_id("stuff things")
+#' mr_obis_eez_id("stuff things")
 #' }
-obis_eez_id <- function(x) {
+mr_obis_eez_id <- function(x) {
   eezs <- obis_eez()
   eezs[tolower(eezs$name) %in% tolower(x), "id"] %&% NULL
 }

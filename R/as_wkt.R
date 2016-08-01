@@ -1,7 +1,7 @@
 #' Convert data to WKT
 #'
 #' @export
-#' @param x Output from \code{\link{region_geojson}}, \code{\link{region_shp}},
+#' @param x Output from \code{\link{mr_geojson}}, \code{\link{mr_shp}},
 #' or a \code{SpatialPolygonsDataFrame}
 #' @param fmt (integer) The number of digits to display after the decimal point when
 #' formatting coordinates. Ignored when shp files or \code{SpatialPolygonsDataFrame}
@@ -19,32 +19,32 @@
 #' @return a character string of WKT data
 #'
 #' @examples \dontrun{
-#' res <- region_geojson(key = "MarineRegions:eez_33176")
-#' as_wkt(res, fmt = 5)
+#' res <- mr_geojson(key = "MarineRegions:eez_33176")
+#' mr_as_wkt(res, fmt = 5)
 #'
-#' nms <- region_names()
-#' res <- region_geojson(key = grep("MarineRegions", nms$name, value = TRUE)[10])
-#' as_wkt(res, fmt = 5)
+#' nms <- mr_names()
+#' res <- mr_geojson(key = grep("MarineRegions", nms$name, value = TRUE)[10])
+#' mr_as_wkt(res, fmt = 5)
 #'
 #' # shp files
 #' ## path to wkt
-#' as_wkt(region_shp(key = "MarineRegions:eez_33176", read = FALSE))
+#' mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = FALSE))
 #'
 #' ## spatial object to wkt
-#' as_wkt(region_shp(key = "MarineRegions:eez_33176", read = TRUE))
+#' mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = TRUE))
 #' }
-as_wkt <- function(x, fmt = 16, ...) {
-  UseMethod("as_wkt")
+mr_as_wkt <- function(x, fmt = 16, ...) {
+  UseMethod("mr_as_wkt")
 }
 
 #' @export
-as_wkt.mr_geojson <- function(x, fmt = 16, ...) {
+mr_as_wkt.mr_geojson <- function(x, fmt = 16, ...) {
   wellknown::geojson2wkt(x$features[[1]]$geometry, fmt = fmt, ...)
 }
 
 #' @export
 #' @importFrom sp spTransform
-as_wkt.SpatialPolygonsDataFrame <- function(x, fmt = 16, ...) {
+mr_as_wkt.SpatialPolygonsDataFrame <- function(x, fmt = 16, ...) {
   check4pkg("rgdal")
   check4pkg("rgeos")
   shp <- .ensureIsLonlat(x)
@@ -52,7 +52,7 @@ as_wkt.SpatialPolygonsDataFrame <- function(x, fmt = 16, ...) {
 }
 
 #' @export
-as_wkt.mr_shp_file <- function(x, fmt = 16, ...) {
+mr_as_wkt.mr_shp_file <- function(x, fmt = 16, ...) {
   check4pkg("rgdal")
   check4pkg("rgeos")
   rgeos::writeWKT(read_shp(x))
@@ -62,7 +62,7 @@ as_wkt.mr_shp_file <- function(x, fmt = 16, ...) {
   check <- .isLonLat(x)
   if (is.na(check)) return(x)  ## do nothing, we don't know
   if (!check) {
-    x <- spTransform(x, "+init=EPSG:4326")
+    x <- sp::spTransform(x, "+init=EPSG:4326")
   }
   x
 }

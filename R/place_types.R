@@ -8,11 +8,11 @@
 #'  \item description (character) description of the place type
 #' }
 #' @examples \dontrun{
-#' res <- place_types()
+#' res <- mr_place_types()
 #' head(res)
 #' res$type
 #' }
-place_types <- function(...) {
+mr_place_types <- function(...) {
   jsonlite::fromJSON(
     getter(
       file.path(mr_base(), 'getGazetteerTypes.json'),

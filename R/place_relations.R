@@ -11,21 +11,21 @@
 ##' @param ... curl options to be passed on to \code{\link[httr]{GET}}
 ##' @examples \dontrun{
 ##' ## geocode to get geospatial data for a place name
-##' (tikehau <- geo_code("tikehau"))
+##' (tikehau <- mr_geo_code("tikehau"))
 ##'
 ##' ## then pass in in an MRGID as the first parameter
-##' place_relations(tikehau$MRGID)
+##' mr_place_relations(tikehau$MRGID)
 ##'
 ##' ## Set direction='both'
-##' place_relations(tikehau$MRGID, direction = "both")
+##' mr_place_relations(tikehau$MRGID, direction = "both")
 ##'
 ##' ## Set type to various other options
-##' place_relations(307, type = "adjacentto")
-##' place_relations(414, type = "similarto")
-##' place_relations(4177, type = "all")
+##' mr_place_relations(307, type = "adjacentto")
+##' mr_place_relations(414, type = "similarto")
+##' mr_place_relations(4177, type = "all")
 ##' }
 ##' @author Francois Michonneau <francois.michonneau@gmail.com>
-place_relations <- function(mrgid, direction = c("upper", "lower", "both"),
+mr_place_relations <- function(mrgid, direction = c("upper", "lower", "both"),
                             type = c("partof", "partlypartof", "adjacentto",
                                      "similarto", "administrativepartof",
                                      "influencedby", "all"), ...) {

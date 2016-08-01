@@ -10,21 +10,21 @@
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
 #' # search for 'oost', like=TRUE, and not fuzzy
-#' geo_code(place = "oost", like = TRUE, fuzzy = FALSE)
+#' mr_geo_code(place = "oost", like = TRUE, fuzzy = FALSE)
 #'
 #' # search for 'oost', like=FALSE, and not fuzzy
-#' geo_code(place = "oost", like = FALSE, fuzzy = FALSE)
+#' mr_geo_code(place = "oost", like = FALSE, fuzzy = FALSE)
 #'
 #' # search for 'oost', like=FALSE, and fuzzy
-#' geo_code(place = "oost", like = FALSE, fuzzy = TRUE)
+#' mr_geo_code(place = "oost", like = FALSE, fuzzy = TRUE)
 #'
 #' # search for 'oost', like=TRUE, and fuzzy
-#' geo_code(place = "oost", like = TRUE, fuzzy = TRUE)
+#' mr_geo_code(place = "oost", like = TRUE, fuzzy = TRUE)
 #'
 #' # search for 'ast', like=TRUE, and fuzzy
-#' geo_code(place = "ast", like = TRUE, fuzzy = TRUE)
+#' mr_geo_code(place = "ast", like = TRUE, fuzzy = TRUE)
 #' }
-geo_code <- function(place, like = TRUE, fuzzy = FALSE, ...) {
+mr_geo_code <- function(place, like = TRUE, fuzzy = FALSE, ...) {
   base <- file.path(mr_base(), "getGazetteerRecordsByName.json/%s/%s/%s")
   url <- sprintf(base, place, conv_log(like), conv_log(fuzzy))
   res <- httr::GET(url, ...)

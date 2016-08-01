@@ -22,7 +22,7 @@
 #' @examples \dontrun{
 #' ## GeoJSON
 #' ### Get region
-#' region_geojson(name = "Turkmen Exclusive Economic Zone")
+#' mr_geojson(name = "Turkmen Exclusive Economic Zone")
 #'
 #' ### Plot data
 #' if (!requireNamespace("leaflet")) {
@@ -36,7 +36,7 @@
 #'
 #' ## Shape
 #' ### Get region
-#' res <- region_shp(name = "Belgian Exclusive Economic Zone")
+#' res <- mr_shp(name = "Belgian Exclusive Economic Zone")
 #' library('leaflet')
 #' leaflet() %>%
 #'   addProviderTiles(provider = 'OpenStreetMap') %>%
@@ -44,12 +44,12 @@
 #'
 #' ## Convert to WKT
 #' ### From geojson
-#' res <- region_geojson(key = "MarineRegions:eez_33176")
-#' as_wkt(res, fmt = 5)
+#' res <- mr_geojson(key = "MarineRegions:eez_33176")
+#' mr_as_wkt(res, fmt = 5)
 #'
 #' ### From shp object (`SpatialPolygonsDataFrame`) or file, both work
-#' as_wkt(region_shp(key = "MarineRegions:eez_33176", read = FALSE))
+#' mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = FALSE))
 #' ## spatial object to wkt
-#' as_wkt(region_shp(key = "MarineRegions:eez_33176", read = TRUE))
+#' mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = TRUE))
 #' }
 NULL
