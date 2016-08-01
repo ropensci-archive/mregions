@@ -47,28 +47,28 @@ library("mregions")
 ## Get list of place types
 
 ```{r}
-res <- place_types()
+res <- mr_place_types()
 head(res$type)
 ```
 
 ## Get Marineregions records by place type
 
 ```{r}
-res1 <- records_by_type(type = "EEZ")
+res1 <- mr_records_by_type(type = "EEZ")
 head(res1)
 ```
 
 ## Get and search region names
 
 ```{r}
-res2 <- region_names()
-region_names_search("IHO")
+res2 <- mr_names()
+mr_names_search("IHO")
 ```
 
 ## Get a region - geojson
 
 ```{r}
-res3 <- region_geojson(name = "Turkmen Exclusive Economic Zone")
+res3 <- mr_geojson(name = "Turkmen Exclusive Economic Zone")
 class(res3)
 names(res3)
 ```
@@ -76,16 +76,16 @@ names(res3)
 ## Get a region - shp
 
 ```{r}
-res4 <- region_shp(name = "Belgian Exclusive Economic Zone")
+res4 <- mr_shp(name = "Belgian Exclusive Economic Zone")
 class(res4)
 ```
 
 ## Get OBIS EEZ ID
 
 ```{r}
-res5 <- region_names()
+res5 <- mr_names()
 res6 <- res5[grepl("eez", res5$name, ignore.case = TRUE),]
-obis_eez_id(res6$title)
+mr_obis_eez_id(res6$title)
 ```
 
 ## Convert to WKT
@@ -93,8 +93,8 @@ obis_eez_id(res6$title)
 From geojson or shp. Here, geojson
 
 ```{r eval=FALSE}
-res7 <- region_geojson(key = "MarineRegions:eez_33176")
-as_wkt(res7, fmt = 5)
+res7 <- mr_geojson(key = "MarineRegions:eez_33176")
+mr_as_wkt(res7, fmt = 5)
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
 ```
 
@@ -103,8 +103,8 @@ as_wkt(res7, fmt = 5)
 Using Well-Known Text. Both shp and geojson data returned from `region_shp()` and `region_geojson()`, respectively, can be passed to `as_wkt()` to get WKT.
 
 ```{r}
-shp <- region_shp(name = "Belgian Exclusive Economic Zone")
-wkt <- as_wkt(shp)
+shp <- mr_shp(name = "Belgian Exclusive Economic Zone")
+wkt <- mr_as_wkt(shp)
 library('httr')
 library('data.table')
 args <- list(scientificname = "Abra alba", geometry = wkt, limit = 100)
@@ -139,7 +139,7 @@ install.packages("rmapshaper")
 Using `rmapshaper` we can simplify a spatial object, then search with that.
 
 ```{r}
-shp <- region_shp(name = "Dutch Exclusive Economic Zone")
+shp <- mr_shp(name = "Dutch Exclusive Economic Zone")
 ```
 
 Visualize
@@ -172,7 +172,7 @@ leaflet() %>%
 Convert to WKT
 
 ```{r}
-wkt <- as_wkt(shp)
+wkt <- mr_as_wkt(shp)
 ```
 
 [mr]: https://github.com/ropenscilabs/mregions
