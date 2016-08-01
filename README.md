@@ -2,6 +2,7 @@ mregions
 ========
 
 [![Build Status](https://travis-ci.org/ropenscilabs/mregions.svg)](https://travis-ci.org/ropenscilabs/mregions)
+[![codecov.io](https://codecov.io/github/ropenscilabs/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/mregions?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/mregions)](https://cran.r-project.org/package=mregions)
 
@@ -9,7 +10,7 @@ mregions
 
 Some data comes from the [Flanders Marine Institute (VLIZ) geoserver](http://geo.vliz.be/geoserver/web/)
 
-`mregions` is useful to a wide diversity of R users because you get access to all of the 
+`mregions` is useful to a wide diversity of R users because you get access to all of the
 data MarineRegions has, which can help in a variety of use cases:
 
 * Visualize marine regions alone
