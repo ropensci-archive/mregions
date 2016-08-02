@@ -18,17 +18,17 @@
 #' }
 #'
 #' @examples \dontrun{
-#' # Get region names with region_names() function
+#' # Get region names with mr_names() function
 #' (res <- mr_names())
 #'
-#' # to save time, pass in the result from region_names()
+#' # to save time, pass in the result from mr_names()
 #' mr_names_search(res, q = "EEZ")
 #'
-#' # if you don't pass in the result from region_names(), we have to
-#' # call region_names() internally, adding some time
+#' # if you don't pass in the result from mr_names(), we have to
+#' # call mr_names() internally, adding some time
 #' mr_names_search("IHO")
 #'
-#' # more examples, with and without passing in region_names() output
+#' # more examples, with and without passing in mr_names() output
 #' mr_names_search(res, q = "IHO")
 #' mr_names_search("Heritage")
 #' mr_names_search(res, q = "Heritage")

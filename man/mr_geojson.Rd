@@ -44,9 +44,9 @@ res2 <- mr_geojson(name = "Turkmen Exclusive Economic Zone")
 
 if (requireNamespace("geojsonio")) {
   library("geojsonio")
-  as.json(unclass(res)) \%>\% map_leaf
+  as.json(unclass(res2)) \%>\% map_leaf
 
-  nms <- region_names()
+  nms <- mr_names()
   as.json(unclass(mr_geojson(nms[[40]]$name))) \%>\% map_leaf()
 
   # MEOW - marine ecoregions

@@ -25,7 +25,7 @@ Get region names
 }
 \examples{
 \dontrun{
-# region_names gives a tidy data.frame
+# mr_names gives a tidy data.frame
 (res <- mr_names())
 
 # index to any given column
