@@ -4,7 +4,6 @@ mregions
 [![Build Status](https://travis-ci.org/ropenscilabs/mregions.svg)](https://travis-ci.org/ropenscilabs/mregions)
 [![codecov.io](https://codecov.io/github/ropenscilabs/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/mregions?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/metacran/cranlogs.app)
-[![cran version](http://www.r-pkg.org/badges/version/mregions)](https://cran.r-project.org/package=mregions)
 
 `mregions` - Get data from <http://www.marineregions.org>
 
@@ -20,8 +19,6 @@ data MarineRegions has, which can help in a variety of use cases:
 * Reverse Geocode - get place names from geolocation data
 
 ## Install
-
-CRAN stable (when on CRAN, not yet as of 2016-07-13)
 
 
 ```r
