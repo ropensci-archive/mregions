@@ -3,18 +3,19 @@ Title: Marine Regions Data from Marineregions
 Description: Tools to get marine regions data from <http://www.marineregions.org/>.
     Includes tools to get region metadata, as well as data in GeoJSON
     format, as well as Shape files.
-Version: 0.0.9.98997
+Version: 0.1.0
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
-    person("Francois", "Michonneau", role = "aut"),
-    person("Pieter", "Provoost", role = "aut")
+    person("Francois", "Michonneau", role = "ctb"),
+    person("Pieter", "Provoost", role = "ctb"),
+    person("Michael", "Sumner", role = "ctb")
     )
 URL: https://github.com/ropenscilabs/mregions
 BugReports: https://github.com/ropenscilabs/mregions/issues
 Imports:
     httr (>= 1.1.0),
-    jsonlite (>= 0.9.20),
+    jsonlite (>= 1.0),
     xml2,
     wellknown,
     rappdirs,
