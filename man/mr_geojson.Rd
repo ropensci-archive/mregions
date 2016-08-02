@@ -47,7 +47,7 @@ if (requireNamespace("geojsonio")) {
   as.json(unclass(res2)) \%>\% map_leaf
 
   nms <- mr_names()
-  as.json(unclass(mr_geojson(nms[[40]]$name))) \%>\% map_leaf()
+  as.json(unclass(mr_geojson(nms$name[40]))) \%>\% map_leaf()
 
   # MEOW - marine ecoregions
   as.json(unclass(mr_geojson("Ecoregions:ecoregions"))) \%>\% map_leaf()

@@ -27,7 +27,7 @@ data MarineRegions has, which can help in a variety of use cases:
 
 ## Install
 
-Stable version (not on CRAN yet, soon though)
+Stable version
 
 ```{r eval=FALSE}
 install.packages("mregions")
@@ -58,10 +58,23 @@ res1 <- mr_records_by_type(type = "EEZ")
 head(res1)
 ```
 
-## Get and search region names
+## Get a data.frame of region names
 
 ```{r}
-res2 <- mr_names()
+rnames <- mr_names()
+```
+
+## Search region names
+
+Either pass output of `mr_names()` 
+
+```{r}
+mr_names_search(rnames, "IHO")
+```
+
+or don't (but then `mr_names_search()` call takes longer)
+
+```{r}
 mr_names_search("IHO")
 ```
 
@@ -83,8 +96,7 @@ class(res4)
 ## Get OBIS EEZ ID
 
 ```{r}
-res5 <- mr_names()
-res6 <- res5[grepl("eez", res5$name, ignore.case = TRUE),]
+res6 <- rnames[grepl("eez", rnames$name, ignore.case = TRUE), ]
 mr_obis_eez_id(res6$title)
 ```
 
@@ -168,11 +180,5 @@ leaflet() %>%
 ```
 
 ![map3](figure/simple.png)
-
-Convert to WKT
-
-```{r}
-wkt <- mr_as_wkt(shp)
-```
 
 [mr]: https://github.com/ropenscilabs/mregions

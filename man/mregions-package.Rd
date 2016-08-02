@@ -28,7 +28,7 @@ all of the data MarineRegions has, which can help in a variety of use cases:
 \dontrun{
 ## GeoJSON
 ### Get region
-mr_geojson(name = "Turkmen Exclusive Economic Zone")
+res <- mr_geojson(name = "Turkmen Exclusive Economic Zone")
 
 ### Plot data
 if (!requireNamespace("leaflet")) {

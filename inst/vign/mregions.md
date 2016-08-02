@@ -20,7 +20,7 @@ data MarineRegions has, which can help in a variety of use cases:
 
 ## Install
 
-Stable version (not on CRAN yet, soon though)
+Stable version
 
 
 ```r
@@ -87,11 +87,36 @@ head(res1)
 #> 6                    English standard     5673
 ```
 
-## Get and search region names
+## Get a data.frame of region names
 
 
 ```r
-res2 <- mr_names()
+rnames <- mr_names()
+```
+
+## Search region names
+
+Either pass output of `mr_names()` 
+
+
+```r
+mr_names_search(rnames, "IHO")
+#> # A tibble: 5 x 4
+#>                                   name
+#>                                  <chr>
+#> 1                    MarineRegions:iho
+#> 2 MarineRegions:iho_quadrants_20150810
+#> 3                     World:iosregions
+#> 4       MarineRegions:eez_iho_union_v2
+#> 5                   Belgium:vl_venivon
+#> # ... with 3 more variables: title <chr>, name_first <chr>,
+#> #   name_second <chr>
+```
+
+or don't (but then `mr_names_search()` call takes longer)
+
+
+```r
 mr_names_search("IHO")
 #> # A tibble: 5 x 4
 #>                                   name
@@ -132,8 +157,7 @@ class(res4)
 
 
 ```r
-res5 <- mr_names()
-res6 <- res5[grepl("eez", res5$name, ignore.case = TRUE),]
+res6 <- rnames[grepl("eez", rnames$name, ignore.case = TRUE), ]
 mr_obis_eez_id(res6$title)
 #>   [1] 218   1   2   3   5   9  10  11  13  16  18  21  24  28  29  30  33
 #>  [18]  34  35  36  37  41  42  43  46  51  56  64  67  68  69  70  71  74
@@ -238,12 +262,5 @@ leaflet() %>%
 ```
 
 ![map3](figure/simple.png)
-
-Convert to WKT
-
-
-```r
-wkt <- mr_as_wkt(shp)
-```
 
 [mr]: https://github.com/ropenscilabs/mregions
