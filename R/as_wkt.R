@@ -62,7 +62,9 @@ mr_as_wkt.mr_shp_file <- function(x, fmt = 16, ...) {
   check <- .isLonLat(x)
   if (is.na(check)) return(x)  ## do nothing, we don't know
   if (!check) {
-    x <- sp::spTransform(x, "+init=EPSG:4326")
+    ## won't work on Linux with EPSG . . .
+    # x <- sp::spTransform(x, "+init=EPSG:4326")
+    x <- sp::spTransform(x, " +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0")
   }
   x
 }
