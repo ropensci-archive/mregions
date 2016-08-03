@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 mregions introduction
 =====================
 
-`mregions` is useful to a wide diversity of R users because you get access to all of the 
+`mregions` is useful to a wide diversity of R users because you get access to all of the
 data MarineRegions has, which can help in a variety of use cases:
 
 * Visualize marine regions alone
@@ -66,7 +66,7 @@ rnames <- mr_names()
 
 ## Search region names
 
-Either pass output of `mr_names()` 
+Either pass output of `mr_names()`
 
 ```{r}
 mr_names_search(rnames, "IHO")
