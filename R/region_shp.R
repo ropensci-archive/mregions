@@ -13,11 +13,23 @@
 #' Default: \code{FALSE}
 #' @param filter (character) String to filter features on
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
-#' @return A \code{SpatialPolygonsDataFrame} if \code{read=TRUE}, or a path to
-#' a SHP file on disk if \code{read=FALSE}.
+#'
+#' @return A \code{SpatialPolygonsDataFrame} if \code{read = TRUE}, or a path to
+#' a SHP file on disk if \code{read = FALSE}.
+#'
 #' @details We use \pkg{rappdirs} to determine where to cache data depening on
 #' your operating system. See \code{rappdirs::user_cache_dir("mregions")} for
 #' location on your machine
+#'
+#' We cache based on the name of the region plus the \code{maxFeatures} parameter.
+#' That is to say, you can query the same region name, but with different
+#' \code{maxFeatures} parameter values, and they will get cached separately.
+#' You can clear the cache by going to the directory at
+#' \code{rappdirs::user_cache_dir("mregions")} and deleting the files.
+#'
+#' We use \code{stringsAsFactors = FALSE} inside of \code{rgdal::readOGR()}
+#' so that character variables aren't converted to factors.
+#'
 #' @examples \dontrun{
 #' ## just get path
 #' mr_shp(key = "MarineRegions:eez_33176", read = FALSE)
@@ -46,7 +58,15 @@ mr_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
   args <- make_args('shp', name, key, maxFeatures)
   key <- nameorkey(name, key)
 
-  file <- file.path(cache_dir, paste0(sub(":", "_", args$typeName), ".zip"))
+  file <- file.path(
+    cache_dir,
+    paste0(
+      sub(":", "_", args$typeName),
+      "_maxfeatures",
+      if (is.null(args$maxFeatures)) "null" else args$maxFeatures,
+      ".zip"
+    )
+  )
   if (!file.exists(sub("\\.zip", "", file))) {
     res <- m_GET(sub("ows", file.path(strsplit(key, ":")[[1]][1], "ows"), vliz_base()),
                  args, file, overwrite, ...)
@@ -68,5 +88,5 @@ mr_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
 }
 
 read_shp <- function(x) {
-  rgdal::readOGR(x, rgdal::ogrListLayers(x), verbose = FALSE)
+  rgdal::readOGR(x, rgdal::ogrListLayers(x), verbose = FALSE, stringsAsFactors = FALSE)
 }
