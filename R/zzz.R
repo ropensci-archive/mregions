@@ -7,9 +7,14 @@ m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "applicatio
     tt <- httr::GET(url, query = args, httr::write_disk(path = path, overwrite = overwrite), ...)
     httr::stop_for_status(tt)
     file <- tt$request$output$path
+    on.exit(unlink(file))
     exdir <- sub(".zip", "", path)
     utils::unzip(file, exdir = exdir)
-    on.exit(unlink(file))
+    if (length(list.files(exdir)) == 0) {
+      unlink(file)
+      unlink(exdir, TRUE)
+      stop("unzip failed, check query, try again - & removed files", call. = FALSE)
+    }
     path.expand(list.files(exdir, pattern = ".shp", full.names = TRUE))
   } else {
     getter(url, args, format, ...)

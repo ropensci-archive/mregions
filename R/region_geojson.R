@@ -21,10 +21,10 @@
 #' }
 #' @examples \dontrun{
 #' # by key
-#' res1 <- mr_geojson(key = "MarineRegions:eez_33176")
+#' res1 <- mr_geojson(key = "Morocco:dam")
 #'
 #' # by name
-#' res2 <- mr_geojson(name = "Turkmen Exclusive Economic Zone")
+#' res2 <- mr_geojson(name = "Ramsar sites in Flanders")
 #'
 #' if (requireNamespace("geojsonio")) {
 #'   library("geojsonio")

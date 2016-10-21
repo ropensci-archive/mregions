@@ -28,7 +28,7 @@ all of the data MarineRegions has, which can help in a variety of use cases:
 \dontrun{
 ## GeoJSON
 ### Get region
-res <- mr_geojson(name = "Turkmen Exclusive Economic Zone")
+res <- mr_geojson(name = "Ramsar sites in Flanders")
 
 ### Plot data
 if (!requireNamespace("leaflet")) {
@@ -42,7 +42,7 @@ leaflet() \%>\%
 
 ## Shape
 ### Get region
-res <- mr_shp(name = "Belgian Exclusive Economic Zone")
+res <- mr_shp(name = "Ramsar sites in Flanders")
 library('leaflet')
 leaflet() \%>\%
   addProviderTiles(provider = 'OpenStreetMap') \%>\%
@@ -50,13 +50,13 @@ leaflet() \%>\%
 
 ## Convert to WKT
 ### From geojson
-res <- mr_geojson(key = "MarineRegions:eez_33176")
+res <- mr_geojson(key = "Morocco:dam")
 mr_as_wkt(res, fmt = 5)
 
 ### From shp object (`SpatialPolygonsDataFrame`) or file, both work
-mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = FALSE))
+mr_as_wkt(mr_shp(key = "Morocco:dam", read = FALSE))
 ## spatial object to wkt
-mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = TRUE))
+mr_as_wkt(mr_shp(key = "Morocco:dam", read = TRUE))
 }
 }
 \author{

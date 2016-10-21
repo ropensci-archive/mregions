@@ -51,9 +51,9 @@ so that character variables aren't converted to factors.
 \examples{
 \dontrun{
 ## just get path
-mr_shp(key = "MarineRegions:eez_33176", read = FALSE)
+mr_shp(key = "MarineRegions:eez_iho_union_v2", read = FALSE)
 ## read shp file into spatial object
-res <- mr_shp(key = "MarineRegions:eez_33176", read = TRUE)
+res <- mr_shp(key = "MarineRegions:eez_iho_union_v2", read = TRUE)
 
 mr_shp(key = "SAIL:w_marinehabitatd")
 

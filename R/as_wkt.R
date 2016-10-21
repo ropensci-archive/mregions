@@ -19,7 +19,7 @@
 #' @return a character string of WKT data
 #'
 #' @examples \dontrun{
-#' res <- mr_geojson(key = "MarineRegions:eez_33176")
+#' res <- mr_geojson(key = "Morocco:dam")
 #' mr_as_wkt(res, fmt = 5)
 #'
 #' nms <- mr_names()
@@ -28,10 +28,10 @@
 #'
 #' # shp files
 #' ## path to wkt
-#' mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = FALSE))
+#' mr_as_wkt(mr_shp(key = "Morocco:dam", read = FALSE))
 #'
 #' ## spatial object to wkt
-#' mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = TRUE))
+#' mr_as_wkt(mr_shp(key = "Morocco:dam", read = TRUE))
 #' }
 mr_as_wkt <- function(x, fmt = 16, ...) {
   UseMethod("mr_as_wkt")

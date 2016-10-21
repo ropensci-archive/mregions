@@ -32,9 +32,9 @@
 #'
 #' @examples \dontrun{
 #' ## just get path
-#' mr_shp(key = "MarineRegions:eez_33176", read = FALSE)
+#' mr_shp(key = "MarineRegions:eez_iho_union_v2", read = FALSE)
 #' ## read shp file into spatial object
-#' res <- mr_shp(key = "MarineRegions:eez_33176", read = TRUE)
+#' res <- mr_shp(key = "MarineRegions:eez_iho_union_v2", read = TRUE)
 #'
 #' mr_shp(key = "SAIL:w_marinehabitatd")
 #'
@@ -68,7 +68,7 @@ mr_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
     )
   )
   if (!file.exists(sub("\\.zip", "", file))) {
-    res <- m_GET(sub("ows", file.path(strsplit(key, ":")[[1]][1], "ows"), vliz_base()),
+    res <- m_GET(url=sub("ows", file.path(strsplit(key, ":")[[1]][1], "ows"), vliz_base()),
                  args, file, overwrite, ...)
   } else {
     res <- path.expand(list.files(sub("\\.zip", "", file), pattern = ".shp", full.names = TRUE))
