@@ -1,6 +1,8 @@
-#' Get region names
+#' Get metadata for regions
 #'
 #' @export
+#' @param type a region type, e.g., "MarineRegions:eez"
+#' @param maxFeatures (integer) Number of features. Default: 500
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #'
 #' @return a data.frame, or tibble, of class tbl_df (basically, a compact
@@ -14,45 +16,20 @@
 #' }
 #'
 #' @examples \dontrun{
-#' # mr_names gives a tidy data.frame
-#' (res <- mr_names())
-#'
-#' # index to any given column
-#' res$name
-#'
-#' # get unique, sorted first names
-#' sort(unique(res$name_first))
-#'
-#' # get unique, sorted second names
-#' sort(unique(res$name_second))
-#'
-#' # get titles
-#' res$title
+#' (res <- mr_features(type = "MarineRegions:eez"))
+#' res
 #' }
-mr_names <- function(...) {
-
-  lapply(slugs, function(z) {
-    args <- list(service = 'WFS', request = 'GetFeature',
-                 typeName = z, maxFeatures = 1000, version = "1.0.0")
-    res <- getter("http://geo.vliz.be/geoserver/MarineRegions/ows",
-           args, format = "text/xml; subtype=gml/2.1.2", config = verbose())
-    xml <- xml2::read_xml(res)
-    xml2::xml_find_all(xml, "//gml:featureMember")
-
-    features <- xml2::xml_children(xml2::xml_children(xml)[[4]])
-    tt <- lapply(features, function(z) {
-      list(name = ex_name(z, 1), title = ex_name(z, 2))
-    })
-    tmp <- lapply(tt, function(x) {
-      gg <- strsplit(x$name, ":")[[1]][[2]]
-      gg <- if (grepl("eez", gg)) "eez" else gg
-      utils::modifyList(x, list(name_first = strsplit(x$name, ":")[[1]][[1]], name_second = gg))
-    })
+mr_features <- function(type, maxFeatures = 100, ...) {
+  args <- list(service = 'WFS', request = 'GetFeature',
+               typeName = type, maxFeatures = maxFeatures, version = "1.0.0")
+  res <- getter("http://geo.vliz.be/geoserver/MarineRegions/ows",
+                args, format = "text/xml; subtype=gml/2.1.2", ...)
+  xml <- xml2::read_xml(res)
+  feats <- xml2::xml_find_all(xml, "//gml:featureMember")
+  lapply(feats, function(z) {
+    xml_text(xml2::xml_find_all(z, ".//MarineRegions:*"))
   })
 
-  # args <- list(SERVICE = 'WFS', REQUEST = 'GetCapabilities', outputFormat = 'a')
-  # res <- m_GET(vliz_base(), args, format = "application/xml", ...)
-  xml <- xml2::read_xml(res)
   features <- xml2::xml_children(xml2::xml_children(xml)[[4]])
   tt <- lapply(features, function(z) {
     list(name = ex_name(z, 1), title = ex_name(z, 2))

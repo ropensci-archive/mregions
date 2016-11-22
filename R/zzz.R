@@ -27,6 +27,19 @@ getter <- function(url, args = list(), format, ...) {
   contutf8(tt)
 }
 
+getter2 <- function(url, args = list(), format, path, ...) {
+  if (format %in% c('application/zip')) {
+    tt <- httr::GET(url, query = args,
+                    write_disk(path = path, overwrite = TRUE), ...)
+    err_handle(tt, format)
+    tt$request$output$path
+  } else {
+    tt <- httr::GET(url, query = args, ...)
+    err_handle(tt, format)
+    contutf8(tt)
+  }
+}
+
 contutf8 <- function(x) httr::content(x, "text", encoding = "UTF-8")
 
 err_handle <- function(x, format) {
