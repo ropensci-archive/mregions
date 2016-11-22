@@ -30,7 +30,7 @@ getter <- function(url, args = list(), format, ...) {
 getter2 <- function(url, args = list(), format, path, ...) {
   if (format %in% c('application/zip')) {
     tt <- httr::GET(url, query = args,
-                    write_disk(path = path, overwrite = TRUE), ...)
+                    httr::write_disk(path = path, overwrite = TRUE), ...)
     err_handle(tt, format)
     tt$request$output$path
   } else {

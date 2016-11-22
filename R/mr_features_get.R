@@ -6,6 +6,8 @@
 #' @param maxFeatures (integer) Number of features. Default: 100
 #' @param format (character) output format, see Details for allowed options.
 #' Default: json
+#' @param path (character) required when \code{format="SHAPE-ZIP"},
+#' otherwise, ignored
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #'
 #' @return depends on the \code{format} option used, usually a text string

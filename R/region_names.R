@@ -35,7 +35,7 @@ mr_names <- function(...) {
     args <- list(service = 'WFS', request = 'GetFeature',
                  typeName = z, maxFeatures = 1000, version = "1.0.0")
     res <- getter("http://geo.vliz.be/geoserver/MarineRegions/ows",
-           args, format = "text/xml; subtype=gml/2.1.2", config = verbose())
+           args, format = "text/xml; subtype=gml/2.1.2", ...)
     xml <- xml2::read_xml(res)
     xml2::xml_find_all(xml, "//gml:featureMember")
 

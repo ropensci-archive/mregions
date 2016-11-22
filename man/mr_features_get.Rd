@@ -17,6 +17,9 @@ mr_features_get(type, featureID, maxFeatures = 100, format = "json",
 \item{format}{(character) output format, see Details for allowed options.
 Default: json}
 
+\item{path}{(character) required when \code{format="SHAPE-ZIP"},
+otherwise, ignored}
+
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
 \value{
