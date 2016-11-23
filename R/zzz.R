@@ -79,7 +79,6 @@ nameorkey <- function(name, key) {
     nms[nms$title == name, ]$name
   } else {
     key
-    #strsplit(key, ":")[[1]][2]
   }
 }
 
