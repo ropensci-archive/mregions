@@ -14,7 +14,8 @@ list layers
 }
 \examples{
 \dontrun{
-mr_layers()
+res <- mr_layers()
+vapply(res, '[[', '', 'Name')
 }
 }
 

@@ -3,7 +3,8 @@
 #' @export
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #' @examples \dontrun{
-#' mr_layers()
+#' res <- mr_layers()
+#' vapply(res, '[[', '', 'Name')
 #' }
 mr_layers <- function(...) {
   res <- getter(url = "http://geo.vliz.be/geoserver/MarineRegions/wms",
@@ -32,7 +33,7 @@ mr_layers <- function(...) {
       }),
       style = {
         styletmp <- list(xml2::as_list(xml2::xml_find_first(z, "Style")))
-        if (length(styletmp[[1]]) == 0) list(NA) else styletmp
+        if (length(styletmp[[1]]) == 0) list(NA_character_) else styletmp
       }
     )
   })
@@ -41,7 +42,7 @@ mr_layers <- function(...) {
 extractr <- function(z, node_name) {
   tmp <- xml2::xml_find_all(z, node_name)
   if (length(tmp) == 0) {
-    stats::setNames(list(NA), node_name)
+    stats::setNames(list(NA_character_), node_name)
   } else {
     if (length(xml2::xml_children(tmp)) > 0) {
       vals <- xml2::xml_children(tmp)
