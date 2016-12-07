@@ -13,13 +13,15 @@ mregions gets data from <http://www.marineregions.org/>
 }
 \section{Use-cases}{
 
-\pkg{mregions} is useful to a wide diversity of R users because you get access to
-all of the data MarineRegions has, which can help in a variety of use cases:
+\pkg{mregions} is useful to a wide diversity of R users because you get
+access to all of the data MarineRegions has, which can help in a
+variety of use cases:
 
 \itemize{
  \item Visualize marine regions alone
  \item Visualize marine regions with associated data paired with analysis
- \item Use marine region geospatial boundaries to query data providers (e.g., OBIS (<http://www.iobis.org>))
+ \item Use marine region geospatial boundaries to query data providers
+ (e.g., OBIS (<http://www.iobis.org>))
  \item Geocode - get geolocation data from place names
  \item Reverse Geocode - get place names from geolocation data
 }
@@ -28,7 +30,7 @@ all of the data MarineRegions has, which can help in a variety of use cases:
 \dontrun{
 ## GeoJSON
 ### Get region
-res <- mr_geojson(name = "Ramsar sites in Flanders")
+res <- mr_geojson(key = "Morocco:dam")
 
 ### Plot data
 if (!requireNamespace("leaflet")) {
@@ -38,11 +40,11 @@ library('leaflet')
 leaflet() \%>\%
   addProviderTiles(provider = 'OpenStreetMap') \%>\%
   addGeoJSON(geojson = res$features) \%>\%
-  setView(53, 40, zoom = 6)
+  setView(-3.98, 35.1, zoom = 11)
 
 ## Shape
 ### Get region
-res <- mr_shp(name = "Ramsar sites in Flanders")
+res <- mr_shp(key = "MarineRegions:eez_iho_union_v2")
 library('leaflet')
 leaflet() \%>\%
   addProviderTiles(provider = 'OpenStreetMap') \%>\%
