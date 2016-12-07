@@ -93,3 +93,8 @@ pluck <- function(x, name, type) {
 `%&%` <- function(x, y) {
   if (length(x) == 0) y else x
 }
+
+dtdf <- function(x) {
+  (zzz <- data.table::setDF(data.table::rbindlist(x, fill = TRUE,
+                                                  use.names = TRUE)))
+}

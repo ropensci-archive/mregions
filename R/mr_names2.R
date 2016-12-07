@@ -16,21 +16,21 @@
 #'
 #' @examples \dontrun{
 #' # mr_names gives a tidy data.frame
-#' (res <- mr_names2("MarineRegions:eez"))
-#' (res <- mr_names2('MarineRegions:eez_boundaries'))
-#' (res <- mr_names2('MarineRegions:iho'))
-#' (res <- mr_names2('MarineRegions:fao'))
-#' (res <- mr_names2('MarineRegions:lme'))
+#' (res <- mr_names("MarineRegions:eez"))
+#' (res <- mr_names('MarineRegions:eez_boundaries'))
+#' (res <- mr_names('MarineRegions:iho'))
+#' (res <- mr_names('MarineRegions:fao'))
+#' (res <- mr_names('MarineRegions:lme'))
 #' }
-mr_names2 <- function(layer) {
+mr_names <- function(layer, ...) {
   args <- list(service = 'WFS', request = 'GetFeature',
                typeName = layer, version = "2.0.0",
                propertyName = prop_name_map[[layer]])
   res <- getter("http://geo.vliz.be/geoserver/MarineRegions/wfs",
-                args, format = "text/xml; subtype=gml/3.2")
+                args, format = "text/xml; subtype=gml/3.2", ...)
   xml <- xml2::read_xml(res)
   xml2::xml_ns_strip(xml)
-  tibble::as_data_frame(data.table::setDF(data.table::rbindlist(
+  tibble::as_data_frame(dtdf(
     lapply(xml2::xml_find_all(xml, "//wfs:member"), function(z) {
       c(
         layer = layer,
@@ -41,7 +41,8 @@ mr_names2 <- function(layer) {
           pull_node(xml2::xml_find_first(z, paste0(".//", x)))
         }, USE.NAMES = FALSE)
       )
-    }), fill = TRUE, use.names = TRUE)))
+    })
+  ))
 }
 
 pull_node <- function(x) {
