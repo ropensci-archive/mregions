@@ -36,7 +36,7 @@ mr_names <- function(layer, ...) {
         layer = layer,
         name_first = strsplit(layer, ":")[[1]][[1]],
         name_second = strsplit(layer, ":")[[1]][[2]],
-        id = xml_attrs(xml_find_first(z, layer))[[1]],
+        id = xml2::xml_attrs(xml2::xml_find_first(z, layer))[[1]],
         sapply(prop_node_map[[layer]], function(x) {
           pull_node(xml2::xml_find_first(z, paste0(".//", x)))
         }, USE.NAMES = FALSE)
