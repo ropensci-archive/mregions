@@ -23,15 +23,11 @@
 #' # by key
 #' res1 <- mr_geojson(key = "Morocco:dam")
 #'
-#' # by name
-#' res2 <- mr_geojson(name = "Ramsar sites in Flanders")
+#' # by name -- not working right now
 #'
 #' if (requireNamespace("geojsonio")) {
 #'   library("geojsonio")
-#'   as.json(unclass(res2)) %>% map_leaf
-#'
-#'   nms <- mr_names()
-#'   as.json(unclass(mr_geojson(nms$name[40]))) %>% map_leaf()
+#'   as.json(unclass(res1)) %>% map_leaf
 #'
 #'   # MEOW - marine ecoregions
 #'   as.json(unclass(mr_geojson("Ecoregions:ecoregions"))) %>% map_leaf()

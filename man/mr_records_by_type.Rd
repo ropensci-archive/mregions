@@ -7,8 +7,8 @@
 mr_records_by_type(type, offset = 0, ...)
 }
 \arguments{
-\item{type}{(character) One place type name. See \code{\link{mr_place_types}} for
-place type names}
+\item{type}{(character) One place type name. See
+\code{\link{mr_place_types}} for place type names}
 
 \item{offset}{(numeric) Offset to start at. Each request can return up to
 100 results. e.g., an offset of 200 will give records 200 to 299.}
@@ -38,8 +38,8 @@ If no results, an empty list. If results found, a data.frame with the columns:
 Get Marineregions records by place type
 }
 \details{
-Internally we use the \code{getGazetteerRecordsByType.json} API method,
-which searches for Marineregions records by user supplied place type
+Internally we use the \code{getGazetteerRecordsByType.json} API
+method, which searches for Marineregions records by user supplied place type
 }
 \examples{
 \dontrun{

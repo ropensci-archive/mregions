@@ -10,8 +10,8 @@ mr_obis_eez_id(x)
 \item{x}{(character) An Exclusive Economic Zone name}
 }
 \value{
-An integer EEZ ID if a match found in list of EEZ's, or \code{NULL} if
-no match found.
+An integer EEZ ID if a match found in list of EEZ's, or
+\code{NULL} if no match found.
 }
 \description{
 Get OBIS EEZ id
@@ -25,8 +25,8 @@ against EEZ names that are all lower case.
 \examples{
 \dontrun{
 # You can get EEZ names via the mr_names() function
-(res <- mr_names())
-mr_obis_eez_id(res$title[100])
+(res <- mr_names('MarineRegions:eez_boundaries'))
+mr_obis_eez_id(res$eez1[19])
 
 # Or pass in a name
 mr_obis_eez_id("Bulgarian Exclusive Economic Zone")

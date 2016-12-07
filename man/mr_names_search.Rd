@@ -8,9 +8,9 @@ mr_names_search(x, q = NULL, ...)
 }
 \arguments{
 \item{x, q}{Either a \code{tbl_df}, returned from \code{\link{mr_names}}, or
-a query as a character string. If a \code{tbl_df}, you must pass a query string to
-\code{q}. If a query string (character) is passed to \code{x}, leave \code{q}
-as \code{NULL}}
+a query as a character string. If a \code{tbl_df}, you must pass a query
+string to \code{q}. If a query string (character) is passed to \code{x},
+leave \code{q} as \code{NULL}}
 
 \item{...}{Parameters passed on to \code{\link{agrep}}}
 }
@@ -31,14 +31,15 @@ Search for region names
 \examples{
 \dontrun{
 # Get region names with mr_names() function
-(res <- mr_names())
+(res <- mr_names("MarineRegions:eez"))
 
 # to save time, pass in the result from mr_names()
-mr_names_search(res, q = "EEZ")
+mr_names_search(res, q = "Amer")
 
 # if you don't pass in the result from mr_names(), we have to
 # call mr_names() internally, adding some time
-mr_names_search("IHO")
+mr_names_search(x = "iho", q = "Black")
+mr_names_search(x = "iho", q = "Sea")
 
 # more examples, with and without passing in mr_names() output
 mr_names_search(res, q = "IHO")
