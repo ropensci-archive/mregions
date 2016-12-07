@@ -7,7 +7,9 @@
 mr_names(layer, ...)
 }
 \arguments{
-\item{layer}{A layer name, e.g., "MarineRegions:eez"}
+\item{layer}{A layer name, one of MarineRegions:eez,
+MarineRegions:eez_boundaries, MarineRegions:iho, MarineRegions:fao,
+or MarineRegions:lme}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }

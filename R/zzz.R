@@ -75,8 +75,10 @@ make_args <- function(format, name, key, maxFeatures) {
 nameorkey <- function(name, key) {
   stopifnot(xor(!is.null(name), !is.null(key)))
   if (is.null(key)) {
-    nms <- mr_names()
-    nms[nms$title == name, ]$name
+    xx <- c('MarineRegions:eez','MarineRegions:eez_boundaries',
+            'MarineRegions:iho','MarineRegions:fao', 'MarineRegions:lme')
+    nms <- dtdf(lapply(xx, mr_names))
+    nms[nms$geoname == name, ]$name
   } else {
     key
   }

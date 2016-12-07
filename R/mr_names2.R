@@ -1,7 +1,9 @@
 #' Get region names - v2
 #'
 #' @export
-#' @param layer A layer name, e.g., "MarineRegions:eez"
+#' @param layer A layer name, one of MarineRegions:eez,
+#' MarineRegions:eez_boundaries, MarineRegions:iho, MarineRegions:fao,
+#' or MarineRegions:lme
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #'
 #' @return a data.frame, or tibble, of class tbl_df (basically, a compact
