@@ -13,7 +13,10 @@
 #' given back. if \code{TRUE}, you need the \code{rgdal} package installed.
 #' Default: \code{FALSE}
 #' @param filter (character) String to filter features on
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @param ... Curl options passed on to \code{\link[httr]{GET}}. since we
+#' use caching, note that if you've made the exact same request before and the
+#' file is still in cache, we grab the cached file and don't make an HTTP
+#' request, so any curl options passed would be ignored.
 #'
 #' @return A \code{SpatialPolygonsDataFrame} if \code{read = TRUE}, or a path to
 #' a SHP file on disk if \code{read = FALSE}.
@@ -63,6 +66,21 @@
 #' rr <- mr_shp(key = "MarineRegions:eez_iho_union_v2",
 #'   filter = "North Atlantic Ocean")
 #' plot(rr)
+#'
+#' # get Samoan Exclusive Economic Zone
+#' res <- mr_shp(
+#'   key = "MarineRegions:eez",
+#'   filter = "Samoan Exclusive Economic Zone"
+#' )
+#' sp::plot(res)
+#'
+#'
+#' # use curl options
+#' library(httr)
+#' res <- mr_shp(
+#'   key = "MarineRegions:eez",
+#'   config = verbose()
+#' )
 #' }
 mr_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
                    overwrite = TRUE, read = TRUE, filter = NULL, ...) {

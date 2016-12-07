@@ -26,7 +26,10 @@ Default: \code{FALSE}}
 
 \item{filter}{(character) String to filter features on}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[httr]{GET}}. since we
+use caching, note that if you've made the exact same request before and the
+file is still in cache, we grab the cached file and don't make an HTTP
+request, so any curl options passed would be ignored.}
 }
 \value{
 A \code{SpatialPolygonsDataFrame} if \code{read = TRUE}, or a path to
@@ -83,6 +86,21 @@ plot(pp)
 rr <- mr_shp(key = "MarineRegions:eez_iho_union_v2",
   filter = "North Atlantic Ocean")
 plot(rr)
+
+# get Samoan Exclusive Economic Zone
+res <- mr_shp(
+  key = "MarineRegions:eez",
+  filter = "Samoan Exclusive Economic Zone"
+)
+sp::plot(res)
+
+
+# use curl options
+library(httr)
+res <- mr_shp(
+  key = "MarineRegions:eez",
+  config = verbose()
+)
 }
 }
 
