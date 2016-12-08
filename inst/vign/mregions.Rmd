@@ -61,7 +61,7 @@ head(res1)
 ## Get a data.frame of region names
 
 ```{r}
-rnames <- mr_names()
+rnames <- mr_names("MarineRegions:iho")
 ```
 
 ## Search region names
@@ -75,13 +75,13 @@ mr_names_search(rnames, "IHO")
 or don't (but then `mr_names_search()` call takes longer)
 
 ```{r}
-mr_names_search("IHO")
+mr_names_search("iho", q = "Sea")
 ```
 
 ## Get a region - geojson
 
 ```{r}
-res3 <- mr_geojson(name = "Turkmen Exclusive Economic Zone")
+res3 <- mr_geojson(key = "Morocco:dam")
 class(res3)
 names(res3)
 ```
@@ -89,15 +89,14 @@ names(res3)
 ## Get a region - shp
 
 ```{r}
-res4 <- mr_shp(name = "Belgian Exclusive Economic Zone")
+res4 <- mr_shp(key = "Morocco:dam")
 class(res4)
 ```
 
 ## Get OBIS EEZ ID
 
 ```{r}
-res6 <- rnames[grepl("eez", rnames$name, ignore.case = TRUE), ]
-mr_obis_eez_id(res6$title)
+mr_obis_eez_id("Bulgarian Exclusive Economic Zone")
 ```
 
 ## Convert to WKT
@@ -105,38 +104,10 @@ mr_obis_eez_id(res6$title)
 From geojson or shp. Here, geojson
 
 ```{r eval=FALSE}
-res7 <- mr_geojson(key = "MarineRegions:eez_33176")
+res7 <- mr_geojson(key = "Morocco:dam")
 mr_as_wkt(res7, fmt = 5)
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
 ```
-
-## Get regions, then OBIS data
-
-Using Well-Known Text. Both shp and geojson data returned from `region_shp()` and `region_geojson()`, respectively, can be passed to `as_wkt()` to get WKT.
-
-```{r}
-shp <- mr_shp(name = "Belgian Exclusive Economic Zone")
-wkt <- mr_as_wkt(shp)
-library('httr')
-library('data.table')
-args <- list(scientificname = "Abra alba", geometry = wkt, limit = 100)
-res <- httr::GET('http://api.iobis.org/occurrence', query = args)
-xx <- data.table::setDF(data.table::rbindlist(httr::content(res)$results, use.names = TRUE, fill = TRUE))
-xx <- xx[, c('scientificName', 'decimalLongitude', 'decimalLatitude')]
-names(xx)[2:3] <- c('longitude', 'latitude')
-```
-
-Plot
-
-```{r eval=FALSE}
-library('leaflet')
-leaflet() %>%
-  addTiles() %>%
-  addCircleMarkers(data = xx) %>%
-  addPolygons(data = shp)
-```
-
-![map1](figure/map1.png)
 
 ## Dealing with bigger WKT
 
@@ -151,12 +122,13 @@ install.packages("rmapshaper")
 Using `rmapshaper` we can simplify a spatial object, then search with that.
 
 ```{r}
-shp <- mr_shp(name = "Dutch Exclusive Economic Zone")
+shp <- mr_shp(key = "MarineRegions:eez_iho_union_v2", maxFeatures = 5)
 ```
 
 Visualize
 
 ```{r eval=FALSE}
+library(leaflet)
 leaflet() %>%
   addTiles() %>%
   addPolygons(data = shp)
@@ -174,6 +146,7 @@ shp <- ms_simplify(shp)
 It's simplified:
 
 ```{r eval=FALSE}
+library(leaflet)
 leaflet() %>%
   addTiles() %>%
   addPolygons(data = shp)

@@ -40,7 +40,7 @@ library("mregions")
 Get region
 
 ```{r}
-res1 <- mr_geojson(name = "Turkmen Exclusive Economic Zone")
+res1 <- mr_geojson(key = "Morocco:dam")
 ```
 
 Get helper library
@@ -56,17 +56,16 @@ library('leaflet')
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
   addGeoJSON(geojson = res1$features) %>%
-  setView(53, 40, zoom = 6)
+  setView(-3.9, 35, zoom = 10)
 ```
 
-![map](http://f.cl.ly/items/0c2c2Z143d2H3F142c35/Screen%20Shot%202015-12-09%20at%2010.01.52%20AM.png)
-
+![map](https://d17oy1vhnax1f7.cloudfront.net/items/023A1m1m413n20060T0M/Screen%20Shot%202016-12-07%20at%204.13.56%20PM.png)
 ## Shape
 
 Get region
 
 ```{r}
-res2 <- mr_shp(name = "Belgian Exclusive Economic Zone")
+res2 <- mr_shp(key = "MarineRegions:eez_iho_union_v2", maxFeatures = 5)
 ```
 
 Get helper library
@@ -84,14 +83,14 @@ leaflet() %>%
   addPolygons(data = res2)
 ```
 
-![map2](http://f.cl.ly/items/1m3R2p241S1u1n3r141R/Screen%20Shot%202015-12-09%20at%209.36.19%20AM.png)
+![map2](https://d17oy1vhnax1f7.cloudfront.net/items/3Z1s1r45043Y3m2j0d0N/Screen%20Shot%202016-12-07%20at%204.14.53%20PM.png)
 
 ## Convert to WKT
 
 From geojson
 
 ```{r eval=FALSE}
-res3 <- mr_geojson(key = "MarineRegions:eez_33176")
+res3 <- mr_geojson(key = "Morocco:dam")
 mr_as_wkt(res3, fmt = 5)
 
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
@@ -100,19 +99,15 @@ mr_as_wkt(res3, fmt = 5)
 From shp object (`SpatialPolygonsDataFrame`) or file, both work
 
 ```{r eval=FALSE}
-## path to wkt
-mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = FALSE))
-## spatial object to wkt
-mr_as_wkt(mr_shp(key = "MarineRegions:eez_33176", read = TRUE))
+mr_as_wkt(mr_shp(key = "MarineRegions:eez_iho_union_v2"))
 
-#> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
+#> [1] "GEOMETRYCOLLECTION (POLYGON ((-7.25 ... cutoff
 ```
 
 ## Get OBIS EEZ ID
 
 ```{r}
-res4 <- mr_names()
-mr_obis_eez_id(res4$title[100])
+mr_obis_eez_id("bulgarian exclusive economic zone")
 ```
 
 ## Contributors

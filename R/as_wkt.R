@@ -39,6 +39,11 @@ mr_as_wkt <- function(x, fmt = 16, ...) {
 }
 
 #' @export
+mr_as_wkt.default <- function(x, fmt = 16, ...) {
+  stop("no 'mr_as_wkt' method for ", class(x), call. = FALSE)
+}
+
+#' @export
 mr_as_wkt.mr_geojson <- function(x, fmt = 16, ...) {
   wellknown::geojson2wkt(x$features[[1]]$geometry, fmt = fmt, ...)
 }

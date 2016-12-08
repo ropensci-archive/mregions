@@ -9,7 +9,7 @@
 mregions introduction
 =====================
 
-`mregions` is useful to a wide diversity of R users because you get access to all of the 
+`mregions` is useful to a wide diversity of R users because you get access to all of the
 data MarineRegions has, which can help in a variety of use cases:
 
 * Visualize marine regions alone
@@ -57,13 +57,20 @@ head(res$type)
 ```r
 res1 <- mr_records_by_type(type = "EEZ")
 head(res1)
-#>   MRGID                                            gazetteerSource
-#> 1  3293 Maritime Boundaries Geodatabase, Flanders Marine Institute
-#> 2  5668 Maritime Boundaries Geodatabase, Flanders Marine Institute
-#> 3  5669 Maritime Boundaries Geodatabase, Flanders Marine Institute
-#> 4  5670 Maritime Boundaries Geodatabase, Flanders Marine Institute
-#> 5  5672 Maritime Boundaries Geodatabase, Flanders Marine Institute
-#> 6  5673 Maritime Boundaries Geodatabase, Flanders Marine Institute
+#>   MRGID
+#> 1  3293
+#> 2  5668
+#> 3  5669
+#> 4  5670
+#> 5  5672
+#> 6  5673
+#>                                                                                                                                                                                                             gazetteerSource
+#> 1 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 2 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 3 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 4 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 5 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 6 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
 #>   placeType latitude longitude minLatitude minLongitude maxLatitude
 #> 1       EEZ 51.46483  2.704458    51.09111     2.238118    51.87000
 #> 2       EEZ 53.61508  4.190675    51.26203     2.539443    55.76500
@@ -91,62 +98,65 @@ head(res1)
 
 
 ```r
-rnames <- mr_names()
+rnames <- mr_names("MarineRegions:iho")
 ```
 
 ## Search region names
 
-Either pass output of `mr_names()` 
+Either pass output of `mr_names()`
 
 
 ```r
 mr_names_search(rnames, "IHO")
-#> # A tibble: 5 x 4
-#>                                   name
-#>                                  <chr>
-#> 1                    MarineRegions:iho
-#> 2 MarineRegions:iho_quadrants_20150810
-#> 3                     World:iosregions
-#> 4       MarineRegions:eez_iho_union_v2
-#> 5                   Belgium:vl_venivon
-#> # ... with 3 more variables: title <chr>, name_first <chr>,
-#> #   name_second <chr>
+#> # A tibble: 7 × 6
+#>               layer    name_first name_second     id                      name mrgid
+#>               <chr>         <chr>       <chr>  <chr>                     <chr> <chr>
+#> 1 MarineRegions:iho MarineRegions         iho iho.34            Gulf of Mexico  4288
+#> 2 MarineRegions:iho MarineRegions         iho iho.37           Rio de La Plata  4325
+#> 3 MarineRegions:iho MarineRegions         iho iho.82                Ionian Sea  3351
+#> 4 MarineRegions:iho MarineRegions         iho iho.65            Sea of Okhotsk  4309
+#> 5 MarineRegions:iho MarineRegions         iho iho.69        Gulf of California  4314
+#> 6 MarineRegions:iho MarineRegions         iho iho.95                 Timor Sea  4344
+#> 7 MarineRegions:iho MarineRegions         iho iho.62 Seto Naikai or Inland Sea  4306
 ```
 
 or don't (but then `mr_names_search()` call takes longer)
 
 
 ```r
-mr_names_search("IHO")
-#> # A tibble: 5 x 4
-#>                                   name
-#>                                  <chr>
-#> 1                    MarineRegions:iho
-#> 2 MarineRegions:iho_quadrants_20150810
-#> 3                     World:iosregions
-#> 4       MarineRegions:eez_iho_union_v2
-#> 5                   Belgium:vl_venivon
-#> # ... with 3 more variables: title <chr>, name_first <chr>,
-#> #   name_second <chr>
+mr_names_search("iho", q = "Sea")
+#> # A tibble: 74 × 6
+#>                layer    name_first name_second     id                                      name mrgid
+#>                <chr>         <chr>       <chr>  <chr>                                     <chr> <chr>
+#> 1  MarineRegions:iho MarineRegions         iho  iho.1 Inner Seas off the West Coast of Scotland  4283
+#> 2  MarineRegions:iho MarineRegions         iho  iho.2         Mediterranean Sea - Western Basin  4279
+#> 3  MarineRegions:iho MarineRegions         iho  iho.3         Mediterranean Sea - Eastern Basin  4280
+#> 4  MarineRegions:iho MarineRegions         iho  iho.4                            Sea of Marmara  3369
+#> 5  MarineRegions:iho MarineRegions         iho  iho.5                                 Black Sea  3319
+#> 6  MarineRegions:iho MarineRegions         iho  iho.6                               Sea of Azov  3320
+#> 7  MarineRegions:iho MarineRegions         iho  iho.7        Irish Sea and St. George's Channel  2357
+#> 8  MarineRegions:iho MarineRegions         iho iho.10                             Bay of Biscay  2359
+#> 9  MarineRegions:iho MarineRegions         iho iho.11                                Celtic Sea  2351
+#> 10 MarineRegions:iho MarineRegions         iho iho.14                                 North Sea  2350
+#> # ... with 64 more rows
 ```
 
 ## Get a region - geojson
 
 
 ```r
-res3 <- mr_geojson(name = "Turkmen Exclusive Economic Zone")
+res3 <- mr_geojson(key = "Morocco:dam")
 class(res3)
 #> [1] "mr_geojson"
 names(res3)
-#> [1] "type"          "totalFeatures" "features"      "crs"          
-#> [5] "bbox"
+#> [1] "type"          "totalFeatures" "features"      "crs"           "bbox"
 ```
 
 ## Get a region - shp
 
 
 ```r
-res4 <- mr_shp(name = "Belgian Exclusive Economic Zone")
+res4 <- mr_shp(key = "Morocco:dam")
 class(res4)
 #> [1] "SpatialPolygonsDataFrame"
 #> attr(,"package")
@@ -157,21 +167,8 @@ class(res4)
 
 
 ```r
-res6 <- rnames[grepl("eez", rnames$name, ignore.case = TRUE), ]
-mr_obis_eez_id(res6$title)
-#>   [1] 218   1   2   3   5   9  10  11  13  16  18  21  24  28  29  30  33
-#>  [18]  34  35  36  37  41  42  43  46  51  56  64  67  68  69  70  71  74
-#>  [35]  78  82  84  85  91  92  93  94  95  97  99 100 101 104 105 106 107
-#>  [52] 108 112 113 114 115 118 120 124 130 134 137 141 147 149 151 153 154
-#>  [69] 158 164 166 167 169 171 172 174 177 184 189 191 193 194 195 196 198
-#>  [86] 200 201 203 204 205 206 209 210 211 212 213 217 223 226 145 143 179
-#> [103]  39  38 181 133 110 216 231 180 183  31  32  44  47  48  53 102 202
-#> [120]   7   8  12  17  19  40  86  88 222 178  73  72  75  76  61  63  66
-#> [137]  96 103  89 146 155 150 152 156 161 173 111 116 117 129 139 168  14
-#> [154]  20  22  23  25  27 207  49 190   6 119 126 122 127 227 228 214  15
-#> [171] 123 182 136 132 131  77 121 165  52 188 199 208 238 239  59 185  45
-#> [188]  54 192  65 237 197 135  50  79  60  62 162 159  98 220 221 219 176
-#> [205] 175 163 138 224 187 241  81
+mr_obis_eez_id("Bulgarian Exclusive Economic Zone")
+#> [1] 71
 ```
 
 ## Convert to WKT
@@ -180,40 +177,10 @@ From geojson or shp. Here, geojson
 
 
 ```r
-res7 <- mr_geojson(key = "MarineRegions:eez_33176")
+res7 <- mr_geojson(key = "Morocco:dam")
 mr_as_wkt(res7, fmt = 5)
 #> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
 ```
-
-## Get regions, then OBIS data
-
-Using Well-Known Text. Both shp and geojson data returned from `region_shp()` and `region_geojson()`, respectively, can be passed to `as_wkt()` to get WKT.
-
-
-```r
-shp <- mr_shp(name = "Belgian Exclusive Economic Zone")
-wkt <- mr_as_wkt(shp)
-library('httr')
-library('data.table')
-args <- list(scientificname = "Abra alba", geometry = wkt, limit = 100)
-res <- httr::GET('http://api.iobis.org/occurrence', query = args)
-xx <- data.table::setDF(data.table::rbindlist(httr::content(res)$results, use.names = TRUE, fill = TRUE))
-xx <- xx[, c('scientificName', 'decimalLongitude', 'decimalLatitude')]
-names(xx)[2:3] <- c('longitude', 'latitude')
-```
-
-Plot
-
-
-```r
-library('leaflet')
-leaflet() %>%
-  addTiles() %>%
-  addCircleMarkers(data = xx) %>%
-  addPolygons(data = shp)
-```
-
-![map1](figure/map1.png)
 
 ## Dealing with bigger WKT
 
@@ -230,13 +197,14 @@ Using `rmapshaper` we can simplify a spatial object, then search with that.
 
 
 ```r
-shp <- mr_shp(name = "Dutch Exclusive Economic Zone")
+shp <- mr_shp(key = "MarineRegions:eez_iho_union_v2", maxFeatures = 5)
 ```
 
 Visualize
 
 
 ```r
+library(leaflet)
 leaflet() %>%
   addTiles() %>%
   addPolygons(data = shp)
@@ -256,6 +224,7 @@ It's simplified:
 
 
 ```r
+library(leaflet)
 leaflet() %>%
   addTiles() %>%
   addPolygons(data = shp)
