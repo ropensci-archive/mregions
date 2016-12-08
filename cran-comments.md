@@ -20,7 +20,8 @@ There are no reverse dependencies.
 
 --------
 
-This version includes .
+This version includes some new functions, and some fixes for tests that 
+were failing on CRAN.
   
 Thanks!
 Scott Chamberlain
