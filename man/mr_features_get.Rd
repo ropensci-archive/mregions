@@ -5,7 +5,7 @@
 \title{Get features}
 \usage{
 mr_features_get(type, featureID, maxFeatures = 100, format = "json",
-  path = NULL, ...)
+  path = NULL, version = "2.0.0", ...)
 }
 \arguments{
 \item{type}{(character) a region type, e.g., "MarineRegions:eez". required}
@@ -19,6 +19,10 @@ Default: json}
 
 \item{path}{(character) required when \code{format="SHAPE-ZIP"},
 otherwise, ignored}
+
+\item{version}{(character) either 1.0.0 or 2.0.0 (default). In v1.0.0, the
+coordinates are in format y,x (long,lat), while in 2.0.0 the coordinates
+are in format x,y (lat,long)}
 
 \item{...}{Curl options passed on to \code{\link[httr]{GET}}}
 }
@@ -66,6 +70,12 @@ unlink(file)
 # glm32
 mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
   format = "gml32")
+
+# version parameter
+## notice the reversed coordinates
+mr_features_get(type = "MarineRegions:eez", featureID = "eez.3")
+mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
+  version = "1.0.0")
 }
 }
 

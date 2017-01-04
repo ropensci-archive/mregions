@@ -8,6 +8,9 @@
 #' Default: json
 #' @param path (character) required when \code{format="SHAPE-ZIP"},
 #' otherwise, ignored
+#' @param version (character) either 1.0.0 or 2.0.0 (default). In v1.0.0, the
+#' coordinates are in format y,x (long,lat), while in 2.0.0 the coordinates
+#' are in format x,y (lat,long)
 #' @param ... Curl options passed on to \code{\link[httr]{GET}}
 #'
 #' @return depends on the \code{format} option used, usually a text string
@@ -48,19 +51,32 @@
 #' # glm32
 #' mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
 #'   format = "gml32")
+#'
+#' # version parameter
+#' ## notice the reversed coordinates
+#' mr_features_get(type = "MarineRegions:eez", featureID = "eez.3")
+#' mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
+#'   version = "1.0.0")
 #' }
 mr_features_get <- function(type, featureID, maxFeatures = 100,
-                            format = "json", path = NULL, ...) {
+                            format = "json", path = NULL, version = "2.0.0",
+                            ...) {
 
   if (!format %in% names(mime_map)) {
-    stop("format ", format, " not in acceptable set, see help file", call. = FALSE)
+    stop("format ", format, " not in acceptable set, see help file",
+         call. = FALSE)
   }
   if (format %in% c('SHAPE-ZIP') && is.null(path)) {
-    stop("if you specify 'SHAPE-ZIP' format, you must give a file path", call. = FALSE)
+    stop("if you specify 'SHAPE-ZIP' format, you must give a file path",
+         call. = FALSE)
+  }
+  if (!version %in% c('1.0.0', '2.0.0')) {
+    stop("version must be one of '1.0.0' or '2.0.0'",
+         call. = FALSE)
   }
   args <- list(typeNames = type, maxFeatures = maxFeatures,
                featureID = featureID, service = 'wfs',
-               request = 'GetFeature', version = "2.0.0",
+               request = 'GetFeature', version = version,
                outputFormat = format)
   getter2(url = "http://geo.vliz.be/geoserver/MarineRegions/wfs",
          args, format = mime_map[[format]], path = path, ...)
