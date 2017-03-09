@@ -61,12 +61,15 @@ mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
 # KML
 mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
   format = "KML")
+
 # if you want SHAPE-ZIP, give a file path
-file <- tempfile(fileext = ".zip")
-mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
-  format = "SHAPE-ZIP", path = file)
-file.exists(file)
-unlink(file)
+# FIXME - shape files not working right now
+# file <- tempfile(fileext = ".zip")
+# mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
+#   format = "SHAPE-ZIP", path = file)
+# file.exists(file)
+# unlink(file)
+
 # glm32
 mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
   format = "gml32")
@@ -78,4 +81,3 @@ mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
   version = "1.0.0")
 }
 }
-
