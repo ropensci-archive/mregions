@@ -57,4 +57,3 @@ mr_geo_code(place = "oost", like = TRUE, fuzzy = TRUE)
 mr_geo_code(place = "ast", like = TRUE, fuzzy = TRUE)
 }
 }
-

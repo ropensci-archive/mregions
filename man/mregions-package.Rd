@@ -2,8 +2,8 @@
 % Please edit documentation in R/mregions-package.R
 \docType{package}
 \name{mregions-package}
-\alias{mregions}
 \alias{mregions-package}
+\alias{mregions}
 \title{Marine regions data from Marineregions}
 \description{
 Marine regions data from Marineregions
@@ -26,6 +26,7 @@ variety of use cases:
  \item Reverse Geocode - get place names from geolocation data
 }
 }
+
 \examples{
 \dontrun{
 ## GeoJSON
@@ -65,4 +66,3 @@ mr_as_wkt(mr_shp(key = "Morocco:dam", read = TRUE))
 Scott Chamberlain \email{myrmecocystus@gmail.com}
 }
 \keyword{package}
-

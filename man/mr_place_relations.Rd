@@ -43,4 +43,3 @@ mr_place_relations(4177, type = "all")
 \author{
 Francois Michonneau <francois.michonneau@gmail.com>
 }
-

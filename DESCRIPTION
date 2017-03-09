@@ -5,7 +5,7 @@ Description: Tools to get marine regions data from <http://
     data in 'GeoJSON' format, as well as Shape files. Use cases include using 
     data downstream to visualize 'geospatial' data by marine region, mapping 
     variation among different regions, and more.
-Version: 0.1.5.9000
+Version: 0.1.5.9310
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
@@ -25,6 +25,7 @@ Imports:
     data.table,
     tibble
 Suggests:
+    roxygen2 (>= 6.0.1),
     testthat,
     geojsonio,
     rgdal,
@@ -34,4 +35,4 @@ Suggests:
     covr
 Enhances: leaflet
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

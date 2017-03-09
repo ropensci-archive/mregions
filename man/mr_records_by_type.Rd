@@ -61,4 +61,3 @@ mr_records_by_type(x)
 mr_records_by_type(x, offset = 100)
 }
 }
-

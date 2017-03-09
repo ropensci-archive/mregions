@@ -49,4 +49,3 @@ mr_names_search("ecoregions")
 mr_names_search(res, q = "ecoregions")
 }
 }
-

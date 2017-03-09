@@ -49,4 +49,3 @@ mr_as_wkt(mr_shp(key = "Morocco:dam", read = FALSE))
 mr_as_wkt(mr_shp(key = "Morocco:dam", read = TRUE))
 }
 }
-

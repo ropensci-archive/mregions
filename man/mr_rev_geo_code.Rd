@@ -57,4 +57,3 @@ mr_rev_geo_code(-15, 45, lat_radius=1, lon_radius=1)
 \author{
 Francois Michonneau <francois.michonneau@gmail.com>
 }
-

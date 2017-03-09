@@ -26,4 +26,3 @@ head(res)
 res$type
 }
 }
-

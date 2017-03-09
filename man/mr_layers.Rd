@@ -18,4 +18,3 @@ res <- mr_layers()
 vapply(res, '[[', '', 'Name')
 }
 }
-
