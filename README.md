@@ -5,6 +5,7 @@ mregions
 [![codecov.io](https://codecov.io/github/ropenscilabs/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/mregions?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/mregions)](https://cran.r-project.org/package=mregions)
+[![](https://badges.ropensci.org/53_status.svg)](https://github.com/ropensci/onboarding/issues/53)
 
 `mregions` - Get data from <http://www.marineregions.org>
 
