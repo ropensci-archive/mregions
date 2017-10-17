@@ -38,5 +38,5 @@ mr_geojson <- function(key = NULL, name = NULL, maxFeatures = 50, ...) {
   key <- nameorkey(name, key)
   structure(jsonlite::fromJSON(
     m_GET(sub("ows", file.path(strsplit(key, ":")[[1]][1], "ows"), vliz_base()), args,
-          format = "application/json", ...), FALSE), class = "mr_geojson")
+          format = "application/json;charset=UTF-8", ...), FALSE), class = "mr_geojson")
 }
