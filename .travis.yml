@@ -6,6 +6,9 @@ dist: trusty
 apt_packages:
   - libudunits2-dev
 
+r_github_packages:
+  - jimhester/covr
+
 before_install:
   - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
   - sudo apt-get --yes --force-yes update -qq
