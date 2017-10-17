@@ -37,10 +37,6 @@ WKT. You could do the conversion to WKT yourself, but we provide
 res <- mr_geojson(key = "Morocco:dam")
 mr_as_wkt(res, fmt = 5)
 
-nms <- mr_names("MarineRegions:eez")
-res <- mr_geojson(key = grep("MarineRegions", nms$geoname, value = TRUE)[10])
-mr_as_wkt(res, fmt = 5)
-
 # shp files
 ## path to wkt
 mr_as_wkt(mr_shp(key = "Morocco:dam", read = FALSE))

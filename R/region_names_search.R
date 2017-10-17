@@ -8,7 +8,7 @@
 #' @param ... Parameters passed on to \code{\link{agrep}}
 #'
 #' @return \code{NULL} if no matches found, or a data.frame, or tibble, of class
-#' tbl_df (basically, a compact data.frame), with slots:
+#' \code{tbl_df}, with slots:
 #' \itemize{
 #'  \item name (character) - name of the region, which is a combination of the
 #'  name_first and name_second, e.g., Morocco:elevation_10m
@@ -29,12 +29,10 @@
 #' mr_names_search(x = "iho", q = "Black")
 #' mr_names_search(x = "iho", q = "Sea")
 #'
-#' # more examples, with and without passing in mr_names() output
-#' mr_names_search(res, q = "IHO")
-#' mr_names_search("Heritage")
-#' mr_names_search(res, q = "Heritage")
-#' mr_names_search("ecoregions")
-#' mr_names_search(res, q = "ecoregions")
+#' # more examples
+#' mr_names_search("iho", "Sea")
+#' (res <- mr_names("MarineRegions:iho"))
+#' mr_names_search(res, q = "Sea")
 #' }
 mr_names_search <- function(x, q = NULL, ...) {
   UseMethod('mr_names_search')
@@ -50,14 +48,11 @@ mr_names_search.character <- function(x, q = NULL, ...) {
   stopifnot(tolower(x) %in% c('eez', 'eez_boundaries', 'iho', 'fao', 'lme'))
   mrx <- paste0("MarineRegions:", tolower(x))
   xx <- mr_names(mrx)
-  # q <- x
-  # x <- mr_names()
   do_regns(xx, q, mrx, ...)
 }
 
 # helper
 do_regns <- function(x, q, mrx = NULL, ...) {
-  #nmsps <- sort(unique(x$title))
   name_field <- switch(
     mrx,
     `MarineRegions:eez` = "geoname",
@@ -71,7 +66,6 @@ do_regns <- function(x, q, mrx = NULL, ...) {
   if (length(tmp) == 0) {
     NULL
   } else {
-    # x[x$title %in% tmp, ]
     x[x[[name_field]] %in% tmp, ]
   }
 }

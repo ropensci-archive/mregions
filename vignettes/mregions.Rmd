@@ -108,16 +108,17 @@ Either pass output of `mr_names()`
 
 ```r
 mr_names_search(rnames, "IHO")
-#> # A tibble: 7 × 6
-#>               layer    name_first name_second     id                      name mrgid
-#>               <chr>         <chr>       <chr>  <chr>                     <chr> <chr>
-#> 1 MarineRegions:iho MarineRegions         iho iho.34            Gulf of Mexico  4288
-#> 2 MarineRegions:iho MarineRegions         iho iho.37           Rio de La Plata  4325
-#> 3 MarineRegions:iho MarineRegions         iho iho.82                Ionian Sea  3351
-#> 4 MarineRegions:iho MarineRegions         iho iho.65            Sea of Okhotsk  4309
-#> 5 MarineRegions:iho MarineRegions         iho iho.69        Gulf of California  4314
-#> 6 MarineRegions:iho MarineRegions         iho iho.95                 Timor Sea  4344
-#> 7 MarineRegions:iho MarineRegions         iho iho.62 Seto Naikai or Inland Sea  4306
+#> # A tibble: 7 x 6
+#>               layer    name_first name_second     id
+#>               <chr>         <chr>       <chr>  <chr>
+#> 1 MarineRegions:iho MarineRegions         iho  iho.1
+#> 2 MarineRegions:iho MarineRegions         iho  iho.7
+#> 3 MarineRegions:iho MarineRegions         iho iho.18
+#> 4 MarineRegions:iho MarineRegions         iho iho.40
+#> 5 MarineRegions:iho MarineRegions         iho iho.53
+#> 6 MarineRegions:iho MarineRegions         iho iho.76
+#> 7 MarineRegions:iho MarineRegions         iho iho.94
+#> # ... with 2 more variables: name <chr>, mrgid <chr>
 ```
 
 or don't (but then `mr_names_search()` call takes longer)
@@ -125,20 +126,20 @@ or don't (but then `mr_names_search()` call takes longer)
 
 ```r
 mr_names_search("iho", q = "Sea")
-#> # A tibble: 74 × 6
-#>                layer    name_first name_second     id                                      name mrgid
-#>                <chr>         <chr>       <chr>  <chr>                                     <chr> <chr>
-#> 1  MarineRegions:iho MarineRegions         iho  iho.1 Inner Seas off the West Coast of Scotland  4283
-#> 2  MarineRegions:iho MarineRegions         iho  iho.2         Mediterranean Sea - Western Basin  4279
-#> 3  MarineRegions:iho MarineRegions         iho  iho.3         Mediterranean Sea - Eastern Basin  4280
-#> 4  MarineRegions:iho MarineRegions         iho  iho.4                            Sea of Marmara  3369
-#> 5  MarineRegions:iho MarineRegions         iho  iho.5                                 Black Sea  3319
-#> 6  MarineRegions:iho MarineRegions         iho  iho.6                               Sea of Azov  3320
-#> 7  MarineRegions:iho MarineRegions         iho  iho.7        Irish Sea and St. George's Channel  2357
-#> 8  MarineRegions:iho MarineRegions         iho iho.10                             Bay of Biscay  2359
-#> 9  MarineRegions:iho MarineRegions         iho iho.11                                Celtic Sea  2351
-#> 10 MarineRegions:iho MarineRegions         iho iho.14                                 North Sea  2350
-#> # ... with 64 more rows
+#> # A tibble: 73 x 6
+#>                layer    name_first name_second     id
+#>                <chr>         <chr>       <chr>  <chr>
+#>  1 MarineRegions:iho MarineRegions         iho  iho.3
+#>  2 MarineRegions:iho MarineRegions         iho  iho.4
+#>  3 MarineRegions:iho MarineRegions         iho  iho.6
+#>  4 MarineRegions:iho MarineRegions         iho  iho.7
+#>  5 MarineRegions:iho MarineRegions         iho  iho.8
+#>  6 MarineRegions:iho MarineRegions         iho iho.10
+#>  7 MarineRegions:iho MarineRegions         iho iho.15
+#>  8 MarineRegions:iho MarineRegions         iho iho.16
+#>  9 MarineRegions:iho MarineRegions         iho iho.17
+#> 10 MarineRegions:iho MarineRegions         iho iho.27
+#> # ... with 63 more rows, and 2 more variables: name <chr>, mrgid <chr>
 ```
 
 ## Get a region - geojson
@@ -149,7 +150,7 @@ res3 <- mr_geojson(key = "Morocco:dam")
 class(res3)
 #> [1] "mr_geojson"
 names(res3)
-#> [1] "type"          "totalFeatures" "features"      "crs"           "bbox"
+#> [1] "type"          "totalFeatures" "features"      "crs"
 ```
 
 ## Get a region - shp

@@ -78,7 +78,7 @@ nameorkey <- function(name, key) {
     xx <- c('MarineRegions:eez','MarineRegions:eez_boundaries',
             'MarineRegions:iho','MarineRegions:fao', 'MarineRegions:lme')
     nms <- dtdf(lapply(xx, mr_names))
-    nms[nms$geoname == name, ]$name
+    nms[nms$geoname == name, ]$geoname
   } else {
     key
   }

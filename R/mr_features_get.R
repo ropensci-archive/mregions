@@ -94,7 +94,7 @@ mime_map <- list(
   `application/json` = 'application/json',
   `application/vnd.google-earth.kml xml` = 'application/vnd.google-earth.kml+xml',
   `application/vnd.google-earth.kml+xml` = 'application/vnd.google-earth.kml+xml',
-  `csv` = 'text/csv',
+  `csv` = 'text/csv;charset=UTF-8',
   `gml3` = 'application/xml',
   `gml32` = 'text/xml; subtype=gml/3.2',
   `json` = "application/json;charset=UTF-8",

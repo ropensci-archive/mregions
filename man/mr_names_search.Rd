@@ -16,7 +16,7 @@ leave \code{q} as \code{NULL}}
 }
 \value{
 \code{NULL} if no matches found, or a data.frame, or tibble, of class
-tbl_df (basically, a compact data.frame), with slots:
+\code{tbl_df}, with slots:
 \itemize{
  \item name (character) - name of the region, which is a combination of the
  name_first and name_second, e.g., Morocco:elevation_10m
@@ -41,11 +41,9 @@ mr_names_search(res, q = "Amer")
 mr_names_search(x = "iho", q = "Black")
 mr_names_search(x = "iho", q = "Sea")
 
-# more examples, with and without passing in mr_names() output
-mr_names_search(res, q = "IHO")
-mr_names_search("Heritage")
-mr_names_search(res, q = "Heritage")
-mr_names_search("ecoregions")
-mr_names_search(res, q = "ecoregions")
+# more examples
+mr_names_search("iho", "Sea")
+(res <- mr_names("MarineRegions:iho"))
+mr_names_search(res, q = "Sea")
 }
 }

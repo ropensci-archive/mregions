@@ -93,13 +93,5 @@ res <- mr_shp(
   filter = "Samoan Exclusive Economic Zone"
 )
 sp::plot(res)
-
-
-# use curl options
-library(httr)
-res <- mr_shp(
-  key = "MarineRegions:eez",
-  config = verbose()
-)
 }
 }

@@ -60,7 +60,8 @@ leaflet() %>%
   setView(-3.9, 35, zoom = 10)
 ```
 
-![map](https://d17oy1vhnax1f7.cloudfront.net/items/023A1m1m413n20060T0M/Screen%20Shot%202016-12-07%20at%204.13.56%20PM.png)
+![map](tools/img/leaf1.png)
+
 ## Shape
 
 Get region
@@ -84,7 +85,7 @@ leaflet() %>%
   addPolygons(data = res2)
 ```
 
-![map2](https://d17oy1vhnax1f7.cloudfront.net/items/3Z1s1r45043Y3m2j0d0N/Screen%20Shot%202016-12-07%20at%204.14.53%20PM.png)
+![map2](tools/img/leaf2.png)
 
 ## Convert to WKT
 
