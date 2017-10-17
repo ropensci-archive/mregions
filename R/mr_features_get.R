@@ -97,7 +97,7 @@ mime_map <- list(
   `csv` = 'text/csv',
   `gml3` = 'application/xml',
   `gml32` = 'text/xml; subtype=gml/3.2',
-  `json` = "application/json",
+  `json` = "application/json;charset=UTF-8",
   `text/xml; subtype=gml/2.1.2` = 'text/xml; subtype=gml/2.1.2',
   `text/xml; subtype=gml/3.1.1` = 'application/xml'
 )

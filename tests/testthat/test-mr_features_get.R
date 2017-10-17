@@ -44,15 +44,11 @@ test_that("mr_features_get - version parameter works", {
   skip_on_cran()
 
   aa <- mr_features_get(type = "MarineRegions:eez", featureID = "eez.3")
-  bb <- mr_features_get(type = "MarineRegions:eez", featureID = "eez.3",
-                        version = "1.0.0")
 
   expect_is(aa, "character")
-  expect_is(bb, "character")
 
   # the coordinates are reversed in the two versions
-  expect_match(strext(aa, "-?[0-9]{2,}"), "-10")
-  expect_match(strext(bb, "-?[0-9]{2,}"), "-168")
+  expect_match(strext(aa, "-?[0-9]{2,}"), "-168")
 })
 
 test_that("mr_features_get fails well", {
