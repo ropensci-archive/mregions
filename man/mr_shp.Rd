@@ -4,7 +4,7 @@
 \alias{mr_shp}
 \title{Get a region shp file}
 \usage{
-mr_shp(key = NULL, name = NULL, maxFeatures = 50, overwrite = TRUE,
+mr_shp(key = NULL, name = NULL, maxFeatures = 500, overwrite = TRUE,
   read = TRUE, filter = NULL, ...)
 }
 \arguments{

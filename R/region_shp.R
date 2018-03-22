@@ -1,6 +1,7 @@
 #' Get a region shp file
 #'
 #' @export
+#' @importFrom sf read_sf
 #' @param key (character) Region key, of the form \code{x:y}, where
 #' \code{x} is a namespace (e.g., \code{MarineRegions}), and \code{y} is
 #' a region (e.g., \code{eez_33176})
@@ -74,7 +75,7 @@
 #' )
 #' sp::plot(res)
 #' }
-mr_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
+mr_shp <- function(key = NULL, name = NULL, maxFeatures = 500,
                    overwrite = TRUE, read = TRUE, filter = NULL, ...) {
 
   if (!is.null(name)) {
@@ -99,7 +100,7 @@ mr_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
   if (!file.exists(sub("\\.zip", "", file))) {
     res <- m_GET(url = sub("ows", file.path(strsplit(key, ":")[[1]][1], "ows"),
                            vliz_base()),
-                 args, file, overwrite, ...)
+                 args, file, overwrite, config = httr::verbose())
   } else {
     res <- path.expand(list.files(sub("\\.zip", "", file), pattern = ".shp",
                                   full.names = TRUE))
@@ -107,9 +108,17 @@ mr_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
 
   if (read) {
     check4pkg("rgdal")
-    shp <- read_shp(res)
+    nm <- basename(sub("\\.zip", "", file))
+    if (nm %in% ls(envir = mr_shp_env)) {
+      # use cached version in an environment
+      shp <- get(nm, envir = mr_shp_env)
+    } else {
+      # read from disk
+      shp <- read_shp(res)
+      assign(nm, shp, envir = mr_shp_env)
+    }
     if (!is.null(filter)) {
-      shp[which(rowSums(shp@data == filter, na.rm = TRUE) > 0),]
+      shp[shp$geoname == filter, ]
     } else {
       shp
     }
@@ -119,6 +128,9 @@ mr_shp <- function(key = NULL, name = NULL, maxFeatures = 50,
 }
 
 read_shp <- function(x) {
-  rgdal::readOGR(x, rgdal::ogrListLayers(x), verbose = FALSE,
-                 stringsAsFactors = FALSE)
+  # rgdal::readOGR(x, rgdal::ogrListLayers(x), verbose = FALSE,
+  #                stringsAsFactors = FALSE)
+  sf::read_sf(x)
 }
+
+mr_shp_env <- new.env()
