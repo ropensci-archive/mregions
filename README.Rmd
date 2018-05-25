@@ -1,8 +1,8 @@
 mregions
 ========
 
-[![Build Status](https://travis-ci.org/ropenscilabs/mregions.svg)](https://travis-ci.org/ropenscilabs/mregions)
-[![codecov.io](https://codecov.io/github/ropenscilabs/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropenscilabs/mregions?branch=master)
+[![Build Status](https://travis-ci.org/ropensci/mregions.svg)](https://travis-ci.org/ropensci/mregions)
+[![codecov.io](https://codecov.io/github/ropensci/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mregions?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/metacran/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/mregions)](https://cran.r-project.org/package=mregions)
 [![](https://badges.ropensci.org/53_status.svg)](https://github.com/ropensci/onboarding/issues/53)
@@ -29,7 +29,7 @@ install.packages("mregions")
 Development version
 
 ```{r eval=FALSE}
-devtools::install_github("ropenscilabs/mregions")
+devtools::install_github("ropensci/mregions")
 ```
 
 ```{r}
@@ -121,7 +121,7 @@ mr_obis_eez_id("bulgarian exclusive economic zone")
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropenscilabs/mregions/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/mregions/issues).
 * License: MIT
 * Get citation information for `mregions` in R doing `citation(package = 'mregions')`
 * Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

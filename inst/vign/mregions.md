@@ -31,7 +31,7 @@ Dev version
 
 
 ```r
-devtools::install_github("ropenscilabs/mregions")
+devtools::install_github("ropensci/mregions")
 install.packages("leaflet")
 ```
 
@@ -233,4 +233,4 @@ leaflet() %>%
 
 ![map3](figure/simple.png)
 
-[mr]: https://github.com/ropenscilabs/mregions
+[mr]: https://github.com/ropensci/mregions

@@ -13,8 +13,8 @@ Authors@R: c(
     person("Pieter", "Provoost", role = "ctb"),
     person("Michael", "Sumner", role = "ctb")
     )
-URL: https://github.com/ropenscilabs/mregions
-BugReports: https://github.com/ropenscilabs/mregions/issues
+URL: https://github.com/ropensci/mregions
+BugReports: https://github.com/ropensci/mregions/issues
 Imports:
     httr (>= 1.1.0),
     jsonlite (>= 1.0),
