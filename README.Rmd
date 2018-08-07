@@ -1,6 +1,8 @@
 mregions
 ========
 
+
+[![cran checks](https://cranchecks.info/badges/worst/mregions)](https://cranchecks.info/pkgs/mregions)
 [![Build Status](https://travis-ci.org/ropensci/mregions.svg)](https://travis-ci.org/ropensci/mregions)
 [![codecov.io](https://codecov.io/github/ropensci/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mregions?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/metacran/cranlogs.app)
