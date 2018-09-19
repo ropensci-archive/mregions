@@ -6,6 +6,7 @@
 #' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
 #' @keywords package
 #' @details mregions gets data from <http://www.marineregions.org/>
+#' @importFrom utils URLencode
 #'
 #' @section Use-cases:
 #' \pkg{mregions} is useful to a wide diversity of R users because you get

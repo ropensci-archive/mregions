@@ -26,7 +26,7 @@
 #' }
 mr_geo_code <- function(place, like = TRUE, fuzzy = FALSE, ...) {
   base <- file.path(mr_base(), "getGazetteerRecordsByName.json/%s/%s/%s")
-  url <- sprintf(base, URLencode(place), conv_log(like), conv_log(fuzzy))
+  url <- sprintf(base, utils::URLencode(place), conv_log(like), conv_log(fuzzy))
   res <- httr::GET(url, ...)
   httr::stop_for_status(res)
   jsonlite::fromJSON(contutf8(res), flatten = TRUE)
