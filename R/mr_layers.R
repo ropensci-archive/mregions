@@ -1,7 +1,7 @@
 #' list layers
 #'
 #' @export
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @param ... Curl options passed on to [httr::GET()]
 #' @examples \dontrun{
 #' res <- mr_layers()
 #' vapply(res, '[[', '', 'Name')

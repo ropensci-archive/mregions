@@ -1,21 +1,19 @@
 #' Search for region names
 #'
 #' @export
-#' @param x,q Either a \code{tbl_df}, returned from \code{\link{mr_names}}, or
-#' a query as a character string. If a \code{tbl_df}, you must pass a query
-#' string to \code{q}. If a query string (character) is passed to \code{x},
-#' leave \code{q} as \code{NULL}
-#' @param ... Parameters passed on to \code{\link{agrep}}
+#' @param x,q Either a `tbl_df`, returned from [mr_names()], or
+#' a query as a character string. If a `tbl_df`, you must pass a query
+#' string to `q`. If a query string (character) is passed to `x`,
+#' leave `q` as `NULL`
+#' @param ... Parameters passed on to [agrep()]
 #'
-#' @return \code{NULL} if no matches found, or a data.frame, or tibble, of class
-#' \code{tbl_df}, with slots:
-#' \itemize{
-#'  \item name (character) - name of the region, which is a combination of the
+#' @return `NULL` if no matches found, or a data.frame, or tibble, of class
+#' `tbl_df`, with slots:
+#' - name (character) - name of the region, which is a combination of the
 #'  name_first and name_second, e.g., Morocco:elevation_10m
-#'  \item title (character) - title for the region
-#'  \item name_first (character) - first part of the name, e.g., Morocco
-#'  \item name_second (character) - second part of the name, e.g., elevation_10m
-#' }
+#' - title (character) - title for the region
+#' - name_first (character) - first part of the name, e.g., Morocco
+#' - name_second (character) - second part of the name, e.g., elevation_10m
 #'
 #' @examples \dontrun{
 #' # Get region names with mr_names() function

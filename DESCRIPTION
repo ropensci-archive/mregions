@@ -38,3 +38,4 @@ Suggests:
 Enhances: leaflet
 VignetteBuilder: knitr
 RoxygenNote: 6.1.0
+Roxygen: list(markdown = TRUE)

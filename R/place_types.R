@@ -1,12 +1,11 @@
 #' Get Marineregions place types
 #'
 #' @export
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @param ... Curl options passed on to [httr::GET()]
 #' @return A data.frame with the columns:
-#' \itemize{
-#'  \item type (character) the place type
-#'  \item description (character) description of the place type
-#' }
+#' - type (character) the place type
+#' - description (character) description of the place type
+#'
 #' @examples \dontrun{
 #' res <- mr_place_types()
 #' head(res)

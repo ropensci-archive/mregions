@@ -13,7 +13,7 @@ mr_shp(key = NULL, name = NULL, maxFeatures = 500,
 a region (e.g., \code{eez_33176})}
 
 \item{name}{(character) Region name, if you supply this, we search
-against titles via \code{\link{mr_names}} function}
+against titles via \code{\link[=mr_names]{mr_names()}} function}
 
 \item{maxFeatures}{(integer) Number of features}
 
@@ -26,7 +26,7 @@ Default: \code{FALSE}}
 
 \item{filter}{(character) String to filter features on}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}. since we
+\item{...}{Curl options passed on to \code{\link[httr:GET]{httr::GET()}}. since we
 use caching, note that if you've made the exact same request before and the
 file is still in cache, we grab the cached file and don't make an HTTP
 request, so any curl options passed would be ignored.}

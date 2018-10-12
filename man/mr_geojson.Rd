@@ -12,23 +12,22 @@ mr_geojson(key = NULL, name = NULL, maxFeatures = 50, ...)
 a region (e.g., \code{eez_33176})}
 
 \item{name}{(character) Region name, if you supply this, we search
-against titles via \code{\link{mr_names}} function}
+against titles via \code{\link[=mr_names]{mr_names()}} function}
 
 \item{maxFeatures}{(integer) Number of features to return. Default: \code{50}}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
 an S3 class of type \code{mr_geojson}, just a thin wrapper around
 a list. The list has names:
-
 \itemize{
- \item type (character) - the geojson type (e.g., FeatureCollection)
- \item totalFeatures (integer) - the
- \item features (list) - the features, with slots for each feature: type,
- id, geometry, geometry_name, and properties
- \item crs (list) - the coordinate reference system
- \item bbox (list) - the bounding box that encapsulates the object
+\item type (character) - the geojson type (e.g., FeatureCollection)
+\item totalFeatures (integer) - the
+\item features (list) - the features, with slots for each feature: type,
+id, geometry, geometry_name, and properties
+\item crs (list) - the coordinate reference system
+\item bbox (list) - the bounding box that encapsulates the object
 }
 }
 \description{

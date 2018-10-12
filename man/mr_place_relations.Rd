@@ -18,7 +18,7 @@ should the records be retrieved? Default: \code{upper}}
 \item{type}{(character) what kind of relations should the records retrieve
 have with the place? Default: \code{partof}}
 
-\item{...}{curl options to be passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options to be passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \description{
 Get related records based on their MRGID.
@@ -41,5 +41,5 @@ mr_place_relations(4177, type = "all")
 }
 }
 \author{
-Francois Michonneau <francois.michonneau@gmail.com>
+Francois Michonneau \href{mailto:francois.michonneau@gmail.com}{francois.michonneau@gmail.com}
 }

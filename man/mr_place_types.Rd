@@ -7,13 +7,13 @@
 mr_place_types(...)
 }
 \arguments{
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
 A data.frame with the columns:
 \itemize{
- \item type (character) the place type
- \item description (character) description of the place type
+\item type (character) the place type
+\item description (character) description of the place type
 }
 }
 \description{

@@ -9,21 +9,20 @@
 Marine regions data from Marineregions
 }
 \details{
-mregions gets data from <http://www.marineregions.org/>
+mregions gets data from \url{http://www.marineregions.org/}
 }
 \section{Use-cases}{
 
 \pkg{mregions} is useful to a wide diversity of R users because you get
 access to all of the data MarineRegions has, which can help in a
 variety of use cases:
-
 \itemize{
- \item Visualize marine regions alone
- \item Visualize marine regions with associated data paired with analysis
- \item Use marine region geospatial boundaries to query data providers
- (e.g., OBIS (<http://www.iobis.org>))
- \item Geocode - get geolocation data from place names
- \item Reverse Geocode - get place names from geolocation data
+\item Visualize marine regions alone
+\item Visualize marine regions with associated data paired with analysis
+\item Use marine region geospatial boundaries to query data providers
+(e.g., OBIS (\url{http://www.iobis.org}))
+\item Geocode - get geolocation data from place names
+\item Reverse Geocode - get place names from geolocation data
 }
 }
 

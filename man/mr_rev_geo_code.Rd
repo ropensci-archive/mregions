@@ -17,25 +17,25 @@ mr_rev_geo_code(lat, lon, lat_radius = 1, lon_radius = 1, ...)
 \item{lon_radius}{(numeric) Extends search to include the range from
 \code{lon}-\code{lon_radius} to \code{lon}+\code{lon_radius}}
 
-\item{...}{curl options to be passed on to \code{\link[httr]{GET}}}
+\item{...}{curl options to be passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
 If no results, an empty list. If results found, a data.frame with the columns:
 \itemize{
- \item MRGID (integer)
- \item gazetteerSource (character)
- \item placeType (character)
- \item latitude (numeric)
- \item longitude (numeric)
- \item minLatitude (numeric)
- \item minLongitude (numeric)
- \item maxLatitude (numeric)
- \item maxLongitude (numeric)
- \item precision (numeric)
- \item preferredGazetteerName (character)
- \item preferredGazetteerNameLang (character)
- \item status (character)
- \item accepted (integer)
+\item MRGID (integer)
+\item gazetteerSource (character)
+\item placeType (character)
+\item latitude (numeric)
+\item longitude (numeric)
+\item minLatitude (numeric)
+\item minLongitude (numeric)
+\item maxLatitude (numeric)
+\item maxLongitude (numeric)
+\item precision (numeric)
+\item preferredGazetteerName (character)
+\item preferredGazetteerNameLang (character)
+\item status (character)
+\item accepted (integer)
 }
 }
 \description{
@@ -55,5 +55,5 @@ mr_rev_geo_code(-15, 45, lat_radius=1, lon_radius=1)
 }
 }
 \author{
-Francois Michonneau <francois.michonneau@gmail.com>
+Francois Michonneau \href{mailto:francois.michonneau@gmail.com}{francois.michonneau@gmail.com}
 }

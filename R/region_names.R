@@ -2,17 +2,15 @@
 #'
 #' @keywords internal
 #' @noRd
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' @param ... Curl options passed on to [httr::GET()]
 #'
 #' @return a data.frame, or tibble, of class tbl_df (basically, a compact
 #' data.frame), with slots:
-#' \itemize{
-#'  \item name (character) - name of the region, which is a combination of the
+#' - name (character) - name of the region, which is a combination of the
 #'  name_first and name_second, e.g., Morocco:elevation_10m
-#'  \item title (character) - title for the region
-#'  \item name_first (character) - first part of the name, e.g., Morocco
-#'  \item name_second (character) - second part of the name, e.g., elevation_10m
-#' }
+#' - title (character) - title for the region
+#' - name_first (character) - first part of the name, e.g., Morocco
+#' - name_second (character) - second part of the name, e.g., elevation_10m
 #'
 #' @examples \dontrun{
 #' # mr_names gives a tidy data.frame

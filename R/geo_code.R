@@ -4,10 +4,10 @@
 #' @template dframe1
 #' @param place (character) a place name
 #' @param like (logical) adds a percent-sign before and after place value
-#' (a SQL LIKE function). Default: \code{TRUE}
+#' (a SQL LIKE function). Default: `TRUE`
 #' @param fuzzy (logical) Uses Levenshtein query to find nearest matches.
-#' Default: \code{FALSE}
-#' @param ... Curl options passed on to \code{\link[httr]{GET}}
+#' Default: `FALSE`
+#' @param ... Curl options passed on to [httr::GET()]
 #' @examples \dontrun{
 #' # search for 'oost', like=TRUE, and not fuzzy
 #' mr_geo_code(place = "oost", like = TRUE, fuzzy = FALSE)

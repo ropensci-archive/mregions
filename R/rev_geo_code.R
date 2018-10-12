@@ -7,10 +7,10 @@
 ##' @param lat (numeric) Latitude for the coordinates (decimal format)
 ##' @param lon (numeric) Longitude for the coordinates (decimal format)
 ##' @param lat_radius (numeric) Extends search to include the range from
-##'     \code{lat}-\code{lat_radius} to \code{lat}+\code{lat_radius}
+##'     `lat`-`lat_radius` to `lat`+`lat_radius`
 ##' @param lon_radius (numeric) Extends search to include the range from
-##'     \code{lon}-\code{lon_radius} to \code{lon}+\code{lon_radius}
-##' @param ... curl options to be passed on to \code{\link[httr]{GET}}
+##'     `lon`-`lon_radius` to `lon`+`lon_radius`
+##' @param ... curl options to be passed on to [httr::GET()]
 ##' @examples \dontrun{
 ##' # Setting radius to 0.5
 ##' mr_rev_geo_code(-21.5, 55.5, lat_radius=0.5, lon_radius=0.5)

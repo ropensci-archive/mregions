@@ -13,14 +13,12 @@
 #' access to all of the data MarineRegions has, which can help in a
 #' variety of use cases:
 #'
-#' \itemize{
-#'  \item Visualize marine regions alone
-#'  \item Visualize marine regions with associated data paired with analysis
-#'  \item Use marine region geospatial boundaries to query data providers
+#' - Visualize marine regions alone
+#' - Visualize marine regions with associated data paired with analysis
+#' - Use marine region geospatial boundaries to query data providers
 #'  (e.g., OBIS (<http://www.iobis.org>))
-#'  \item Geocode - get geolocation data from place names
-#'  \item Reverse Geocode - get place names from geolocation data
-#' }
+#' - Geocode - get geolocation data from place names
+#' - Reverse Geocode - get place names from geolocation data
 #'
 #' @examples \dontrun{
 #' ## GeoJSON
