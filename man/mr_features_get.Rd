@@ -24,7 +24,7 @@ otherwise, ignored}
 coordinates are in format y,x (long,lat), while in 2.0.0 the coordinates
 are in format x,y (lat,long)}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
 depends on the \code{format} option used, usually a text string
@@ -35,20 +35,20 @@ Get features
 \details{
 Allowed options for the \code{format} parameter:
 \itemize{
- \item \code{text/xml; subtype=gml/3.2}
- \item \code{GML2}
- \item \code{KML}
- \item \code{SHAPE-ZIP}
- \item \code{application/gml+xml; version=3.2}
- \item \code{application/json}
- \item \code{application/vnd.google-earth.kml xml}
- \item \code{application/vnd.google-earth.kml+xml}
- \item \code{csv}
- \item \code{gml3}
- \item \code{gml32}
- \item \code{json}
- \item \code{text/xml; subtype=gml/2.1.2}
- \item \code{text/xml; subtype=gml/3.1.1}
+\item \code{text/xml; subtype=gml/3.2}
+\item \code{GML2}
+\item \code{KML}
+\item \code{SHAPE-ZIP}
+\item \code{application/gml+xml; version=3.2}
+\item \code{application/json}
+\item \code{application/vnd.google-earth.kml xml}
+\item \code{application/vnd.google-earth.kml+xml}
+\item \code{csv}
+\item \code{gml3}
+\item \code{gml32}
+\item \code{json}
+\item \code{text/xml; subtype=gml/2.1.2}
+\item \code{text/xml; subtype=gml/3.1.1}
 }
 }
 \examples{

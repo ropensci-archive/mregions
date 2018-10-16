@@ -11,17 +11,18 @@ mr_names(layer, ...)
 MarineRegions:eez_boundaries, MarineRegions:iho, MarineRegions:fao,
 or MarineRegions:lme}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
 a data.frame, or tibble, of class tbl_df (basically, a compact
 data.frame), with slots:
 \itemize{
- \item layer (character) - name of the layer (e.g. MarineRegions:eez)
- \item name_first (character) - first part of the name, e.g., MarineRegions
- \item name_second (character) - second part of the name, e.g., eez
- \item id (character) - the feature ID
+\item layer (character) - name of the layer (e.g. MarineRegions:eez)
+\item name_first (character) - first part of the name, e.g., MarineRegions
+\item name_second (character) - second part of the name, e.g., eez
+\item id (character) - the feature ID
 }
+
 additional columns vary by layer
 }
 \description{

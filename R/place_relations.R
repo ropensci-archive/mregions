@@ -5,10 +5,10 @@
 ##' @param mrgid (numeric) the MRGID (Marineregions Global Identifier) for the
 ##'     record of interest
 ##' @param direction (character) in which direction of the geographical hierarchy
-##'     should the records be retrieved? Default: \code{upper}
+##'     should the records be retrieved? Default: `upper`
 ##' @param type (character) what kind of relations should the records retrieve
-##'     have with the place? Default: \code{partof}
-##' @param ... curl options to be passed on to \code{\link[httr]{GET}}
+##'     have with the place? Default: `partof`
+##' @param ... curl options to be passed on to [httr::GET()]
 ##' @examples \dontrun{
 ##' ## geocode to get geospatial data for a place name
 ##' (tikehau <- mr_geo_code("tikehau"))

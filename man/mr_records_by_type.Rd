@@ -8,30 +8,30 @@ mr_records_by_type(type, offset = 0, ...)
 }
 \arguments{
 \item{type}{(character) One place type name. See
-\code{\link{mr_place_types}} for place type names}
+\code{\link[=mr_place_types]{mr_place_types()}} for place type names}
 
 \item{offset}{(numeric) Offset to start at. Each request can return up to
 100 results. e.g., an offset of 200 will give records 200 to 299.}
 
-\item{...}{Curl options passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \code{\link[httr:GET]{httr::GET()}}}
 }
 \value{
 If no results, an empty list. If results found, a data.frame with the columns:
 \itemize{
- \item MRGID (integer)
- \item gazetteerSource (character)
- \item placeType (character)
- \item latitude (numeric)
- \item longitude (numeric)
- \item minLatitude (numeric)
- \item minLongitude (numeric)
- \item maxLatitude (numeric)
- \item maxLongitude (numeric)
- \item precision (numeric)
- \item preferredGazetteerName (character)
- \item preferredGazetteerNameLang (character)
- \item status (character)
- \item accepted (integer)
+\item MRGID (integer)
+\item gazetteerSource (character)
+\item placeType (character)
+\item latitude (numeric)
+\item longitude (numeric)
+\item minLatitude (numeric)
+\item minLongitude (numeric)
+\item maxLatitude (numeric)
+\item maxLongitude (numeric)
+\item precision (numeric)
+\item preferredGazetteerName (character)
+\item preferredGazetteerNameLang (character)
+\item status (character)
+\item accepted (integer)
 }
 }
 \description{

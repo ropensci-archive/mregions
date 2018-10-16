@@ -3,7 +3,7 @@
 #' @export
 #' @param x (character) An Exclusive Economic Zone name
 #' @return An integer EEZ ID if a match found in list of EEZ's, or
-#' \code{NULL} if no match found.
+#' `NULL` if no match found.
 #' @details internally we use the OBIS API to retrieve an EEZ id.
 #'
 #' Matching internally is case insensitive, as we convert your input and match
