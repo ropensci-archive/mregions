@@ -13,7 +13,7 @@ Authors@R: c(
     person("Pieter", "Provoost", role = "ctb"),
     person("Michael", "Sumner", role = "ctb")
     )
-URL: https://github.com/ropensci/mregions
+URL: https://docs.ropensci.org/mregions, https://github.com/ropensci/mregions
 BugReports: https://github.com/ropensci/mregions/issues
 Encoding: UTF-8
 Imports:
