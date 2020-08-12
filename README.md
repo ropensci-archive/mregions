@@ -135,6 +135,7 @@ mr_obis_eez_id("bulgarian exclusive economic zone")
 * [Francois Michonneau](https://github.com/fmichonneau)
 * [Pieter Provoost](https://github.com/pieterprovoost)
 * [Michael Sumner](https://github.com/mdsumner)
+* [Lennert Schepers](https://github.com/LennertSchepers)
 
 ## Meta
 
