@@ -8,10 +8,11 @@ Description: Tools to get marine regions data from
 Version: 0.1.7.9216
 License: MIT + file LICENSE
 Authors@R: c(
-    person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus@gmail.com"),
+    person("Scott", "Chamberlain", role = "aut"),
     person("Francois", "Michonneau", role = "ctb"),
     person("Pieter", "Provoost", role = "ctb"),
-    person("Michael", "Sumner", role = "ctb")
+    person("Michael", "Sumner", role = "ctb"),
+    person("Lennert, "Schepers", role = c("aut", "cre"), email = "lennert.schepers@vliz.be")
     )
 URL: https://docs.ropensci.org/mregions, https://github.com/ropensci/mregions
 BugReports: https://github.com/ropensci/mregions/issues
