@@ -9,7 +9,11 @@
 #' @name mregions-package
 #' @aliases mregions
 #' @docType package
-#' @author Scott Chamberlain \email{myrmecocystus@@gmail.com}
+#' @author Scott Chamberlain
+#' @author Francois Michonneau
+#' @author Pieter Provoost
+#' @author Michael Sumner
+#' @author Lennert Schepers \email{lennert.schepers@@vliz.be}
 #' @keywords package
 #' @details mregions gets data from <http://www.marineregions.org/>
 #' @importFrom utils URLencode

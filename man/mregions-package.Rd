@@ -66,6 +66,14 @@ mr_as_wkt(mr_shp(key = "Morocco:dam", read = TRUE))
 }
 }
 \author{
-Scott Chamberlain \email{myrmecocystus@gmail.com}
+Scott Chamberlain
+
+Francois Michonneau
+
+Pieter Provoost
+
+Michael Sumner
+
+Lennert Schepers \email{lennert.schepers@vliz.be}
 }
 \keyword{package}
