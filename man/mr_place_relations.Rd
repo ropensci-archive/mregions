@@ -4,9 +4,13 @@
 \alias{mr_place_relations}
 \title{Related records}
 \usage{
-mr_place_relations(mrgid, direction = c("upper", "lower", "both"),
-  type = c("partof", "partlypartof", "adjacentto", "similarto",
-  "administrativepartof", "influencedby", "all"), ...)
+mr_place_relations(
+  mrgid,
+  direction = c("upper", "lower", "both"),
+  type = c("partof", "partlypartof", "adjacentto", "similarto", "administrativepartof",
+    "influencedby", "all"),
+  ...
+)
 }
 \arguments{
 \item{mrgid}{(numeric) the MRGID (Marineregions Global Identifier) for the

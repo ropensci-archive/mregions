@@ -12,7 +12,7 @@ Authors@R: c(
     person("Francois", "Michonneau", role = "ctb"),
     person("Pieter", "Provoost", role = "ctb"),
     person("Michael", "Sumner", role = "ctb"),
-    person("Lennert, "Schepers", role = c("aut", "cre"), email = "lennert.schepers@vliz.be")
+    person("Lennert", "Schepers", role = c("aut", "cre"), email = "lennert.schepers@vliz.be")
     )
 URL: https://docs.ropensci.org/mregions, https://github.com/ropensci/mregions
 BugReports: https://github.com/ropensci/mregions/issues
@@ -38,5 +38,5 @@ Suggests:
     rmapshaper
 Enhances: leaflet
 VignetteBuilder: knitr
-RoxygenNote: 6.1.0
+RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE)
