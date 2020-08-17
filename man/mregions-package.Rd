@@ -6,7 +6,11 @@
 \alias{mregions}
 \title{Marine regions data from Marineregions}
 \description{
-Marine regions data from Marineregions
+Tools to get marine regions data from
+\url{https://www.marineregions.org/}. Includes tools to get region metadata,
+as well as data in 'GeoJSON' format, as well as Shape files. Use cases
+include using data downstream to visualize 'geospatial' data by marine
+region, mapping variation among different regions, and more.
 }
 \details{
 mregions gets data from \url{http://www.marineregions.org/}

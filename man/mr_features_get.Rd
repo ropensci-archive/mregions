@@ -4,8 +4,15 @@
 \alias{mr_features_get}
 \title{Get features}
 \usage{
-mr_features_get(type, featureID, maxFeatures = 100, format = "json",
-  path = NULL, version = "2.0.0", ...)
+mr_features_get(
+  type,
+  featureID,
+  maxFeatures = 100,
+  format = "json",
+  path = NULL,
+  version = "2.0.0",
+  ...
+)
 }
 \arguments{
 \item{type}{(character) a region type, e.g., "MarineRegions:eez". required}
@@ -35,20 +42,20 @@ Get features
 \details{
 Allowed options for the \code{format} parameter:
 \itemize{
-\item \code{text/xml; subtype=gml/3.2}
+\item \verb{text/xml; subtype=gml/3.2}
 \item \code{GML2}
 \item \code{KML}
 \item \code{SHAPE-ZIP}
-\item \code{application/gml+xml; version=3.2}
+\item \verb{application/gml+xml; version=3.2}
 \item \code{application/json}
-\item \code{application/vnd.google-earth.kml xml}
+\item \verb{application/vnd.google-earth.kml xml}
 \item \code{application/vnd.google-earth.kml+xml}
 \item \code{csv}
 \item \code{gml3}
 \item \code{gml32}
 \item \code{json}
-\item \code{text/xml; subtype=gml/2.1.2}
-\item \code{text/xml; subtype=gml/3.1.1}
+\item \verb{text/xml; subtype=gml/2.1.2}
+\item \verb{text/xml; subtype=gml/3.1.1}
 }
 }
 \examples{

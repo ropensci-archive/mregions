@@ -48,7 +48,7 @@ test_that("mr_features_get - version parameter works", {
   expect_is(aa, "character")
 
   # the coordinates are reversed in the two versions
-  expect_match(strext(aa, "-?[0-9]{2,}"), "-168")
+  expect_match(strext(aa, "-?[0-9]{2,}"), "-159")
 })
 
 test_that("mr_features_get fails well", {

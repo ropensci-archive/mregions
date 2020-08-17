@@ -4,8 +4,15 @@
 \alias{mr_shp}
 \title{Get a region shp file}
 \usage{
-mr_shp(key = NULL, name = NULL, maxFeatures = 500,
-  overwrite = TRUE, read = TRUE, filter = NULL, ...)
+mr_shp(
+  key = NULL,
+  name = NULL,
+  maxFeatures = 500,
+  overwrite = TRUE,
+  read = TRUE,
+  filter = NULL,
+  ...
+)
 }
 \arguments{
 \item{key}{(character) Region key, of the form \code{x:y}, where
