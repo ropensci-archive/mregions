@@ -33,4 +33,4 @@ obis_eez <- function() {
   jsonlite::fromJSON(rs)$results
 }
 
-obis_base <- function() "http://api.iobis.org"
+obis_base <- function() "https://api.obis.org"
