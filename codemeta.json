@@ -47,14 +47,19 @@
       "@type": "Person",
       "givenName": "Michael",
       "familyName": "Sumner"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Lennert",
+      "familyName": "Schepers"
     }
   ],
   "maintainer": [
     {
       "@type": "Person",
-      "givenName": "Lennert",
-      "familyName": "Schepers",
-      "email": "lennert.schepers@vliz.be"
+      "givenName": "Salvador",
+      "familyName": "Fernandez",
+      "email": "salvador.fernandez@vliz.be"
     }
   ],
   "softwareSuggestions": [

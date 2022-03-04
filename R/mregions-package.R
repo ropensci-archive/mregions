@@ -13,7 +13,8 @@
 #' @author Francois Michonneau
 #' @author Pieter Provoost
 #' @author Michael Sumner
-#' @author Lennert Schepers \email{lennert.schepers@@vliz.be}
+#' @author Lennert Schepers
+#' @author Salvador Fernandez \email{salvador.fernandez@@vliz.be}
 #' @keywords package
 #' @details mregions gets data from <http://www.marineregions.org/>
 #' @importFrom utils URLencode

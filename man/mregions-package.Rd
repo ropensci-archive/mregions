@@ -74,6 +74,8 @@ Pieter Provoost
 
 Michael Sumner
 
-Lennert Schepers \email{lennert.schepers@vliz.be}
+Lennert Schepers
+
+Salvador Fernandez \email{salvador.fernandez@vliz.be}
 }
 \keyword{package}
