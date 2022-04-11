@@ -31,7 +31,7 @@ mr_names <- function(layer, ...) {
                 args, format = "text/xml; subtype=gml/3.2", ...)
   xml <- xml2::read_xml(res)
   xml2::xml_ns_strip(xml)
-  tibble::as_data_frame(dtdf(
+  tibble::as_tibble(dtdf(
     lapply(xml2::xml_find_all(xml, "//wfs:member"), function(z) {
       c(
         layer = layer,

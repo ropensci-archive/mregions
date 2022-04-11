@@ -40,7 +40,7 @@ mr_features <- function(type, maxFeatures = 100, ...) {
     utils::modifyList(x, list(name_first = strsplit(x$name, ":")[[1]][[1]], name_second = gg))
   })
   dd <- data.table::setDF(data.table::rbindlist(tmp, use.names = TRUE, fill = TRUE))
-  tibble::as_data_frame(dd)
+  tibble::as_tibble(dd)
 }
 
 slugs <- list(
