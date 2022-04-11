@@ -131,7 +131,7 @@ mr_as_wkt(mr_shp(key = "MarineRegions:eez_iho_union_v2"))
 -   Get citation information for `mregions` in R doing
     `citation(package = 'mregions')`
 -   Please note that this project is released with a [Contributor Code
-    of Conduct](CONDUCT.md). By participating in this project you agree
+    of Conduct](https://github.com/ropensci/mregions/blob/master/CONDUCT.md). By participating in this project you agree
     to abide by its terms.
 
 [![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
