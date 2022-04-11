@@ -27,7 +27,7 @@
 #' - Visualize marine regions alone
 #' - Visualize marine regions with associated data paired with analysis
 #' - Use marine region geospatial boundaries to query data providers
-#'  (e.g., OBIS (<https://www.iobis.org>))
+#'  (e.g., OBIS (<https://www.obis.org>))
 #' - Geocode - get geolocation data from place names
 #' - Reverse Geocode - get place names from geolocation data
 #'
