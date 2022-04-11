@@ -93,11 +93,6 @@ res4 <- mr_shp(key = "Morocco:dam")
 class(res4)
 ```
 
-## Get OBIS EEZ ID
-
-```{r}
-mr_obis_eez_id("Bulgarian Exclusive Economic Zone")
-```
 
 ## Convert to WKT
 

@@ -164,14 +164,6 @@ class(res4)
 #> [1] "sp"
 ```
 
-## Get OBIS EEZ ID
-
-
-```r
-mr_obis_eez_id("Bulgarian Exclusive Economic Zone")
-#> [1] 71
-```
-
 ## Convert to WKT
 
 From geojson or shp. Here, geojson

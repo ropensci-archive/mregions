@@ -44,8 +44,6 @@ devtools::install_github("ropensci/mregions")
 library("mregions")
 ```
 
-    ## Warning: package 'mregions' was built under R version 4.0.5
-
 ## GeoJSON
 
 Get region
@@ -114,12 +112,6 @@ From shp object (`SpatialPolygonsDataFrame`) or file, both work
 mr_as_wkt(mr_shp(key = "MarineRegions:eez_iho_union_v2"))
 
 #> [1] "GEOMETRYCOLLECTION (POLYGON ((-7.25 ... cutoff
-```
-
-## Get OBIS EEZ ID
-
-``` r
-mr_obis_eez_id("bulgarian exclusive economic zone")
 ```
 
 ## Contributors

@@ -112,11 +112,6 @@ mr_as_wkt(mr_shp(key = "MarineRegions:eez_iho_union_v2"))
 #> [1] "GEOMETRYCOLLECTION (POLYGON ((-7.25 ... cutoff
 ```
 
-## Get OBIS EEZ ID
-
-```{r, eval = FALSE}
-mr_obis_eez_id("bulgarian exclusive economic zone")
-```
 
 ## Contributors
 

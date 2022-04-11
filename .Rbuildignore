@@ -9,3 +9,5 @@ cran-comments.md
 ^cran-comments\.md$
 ^man-roxygen
 ^codemeta\.json$
+^doc$
+^Meta$
