@@ -28,7 +28,7 @@ mr_obis_eez_id <- function(x) {
 }
 
 obis_eez <- function() {
-  rs <- getter(file.path(obis_base(), "eez"),
+  rs <- getter(file.path(obis_base(), "area"),
                format = "application/json;charset=UTF-8")
   jsonlite::fromJSON(rs)$results
 }

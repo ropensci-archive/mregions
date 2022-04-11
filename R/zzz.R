@@ -43,10 +43,13 @@ getter2 <- function(url, args = list(), format, path, ...) {
 contutf8 <- function(x) httr::content(x, "text", encoding = "UTF-8")
 
 err_handle <- function(x, format) {
+  content_type <- tolower(gsub(" ", "", x$headers$`content-type`, fixed = TRUE))
+  format <- tolower(gsub(" ", "", format, fixed = TRUE))
+
   if (x$status_code > 201) {
     stop(httr::http_status(x)$message, call. = FALSE)
   } else {
-    if (x$headers$`content-type` != format) {
+    if (content_type != format) {
       stop("Region not found or no results found, try another search", call. = FALSE)
     }
   }
