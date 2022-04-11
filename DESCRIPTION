@@ -23,16 +23,17 @@ Imports:
     httr (>= 1.1.0),
     jsonlite (>= 1.0),
     xml2,
-    wellknown,
     rappdirs,
     sp,
     sf,
     data.table,
-    tibble
+    tibble,
+    geojsonio,
+    geojson,
+    geojsonsf
 Suggests:
     roxygen2 (>= 6.0.1),
     testthat,
-    geojsonio,
     rgdal,
     rgeos,
     knitr,

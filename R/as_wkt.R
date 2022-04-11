@@ -21,7 +21,7 @@
 #'
 #' @examples \dontrun{
 #' res <- mr_geojson(key = "Morocco:dam")
-#' mr_as_wkt(res, fmt = 5)
+#' mr_as_wkt(res)
 #'
 #' # shp files
 #' ## path to wkt
@@ -41,7 +41,11 @@ mr_as_wkt.default <- function(x, fmt = 16, ...) {
 
 #' @export
 mr_as_wkt.mr_geojson <- function(x, fmt = 16, ...) {
-  wellknown::geojson2wkt(x$features[[1]]$geometry, fmt = fmt, ...)
+  out <- geojsonio::as.json(unclass(x))
+  out <- geojson::as.geojson(out)
+  out <- geojsonsf::geojson_wkt(out)
+
+  unlist(out$geometry)
 }
 
 #' @export

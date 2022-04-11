@@ -35,7 +35,7 @@ WKT. You could do the conversion to WKT yourself, but we provide
 \examples{
 \dontrun{
 res <- mr_geojson(key = "Morocco:dam")
-mr_as_wkt(res, fmt = 5)
+mr_as_wkt(res)
 
 # shp files
 ## path to wkt
