@@ -7,12 +7,12 @@ checks](https://cranchecks.info/badges/worst/mregions)](https://cranchecks.info/
 Status](https://travis-ci.org/ropensci/mregions.svg)](https://travis-ci.org/ropensci/mregions)
 [![codecov.io](https://codecov.io/github/ropensci/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mregions?branch=master)
 [![rstudio mirror
-downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/metacran/cranlogs.app)
+downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/r-hub/cranlogs.app)
 [![cran
 version](http://www.r-pkg.org/badges/version/mregions)](https://cran.r-project.org/package=mregions)
-[![](https://badges.ropensci.org/53_status.svg)](https://github.com/ropensci/onboarding/issues/53)
+[![](https://badges.ropensci.org/53_status.svg)](https://github.com/ropensci/software-review/issues/53)
 
-`mregions` - Get data from <http://www.marineregions.org>
+`mregions` - Get data from <https://www.marineregions.org>
 
 Some data comes from the [Flanders Marine Institute (VLIZ)
 geoserver](http://geo.vliz.be/geoserver/web/)
@@ -24,7 +24,7 @@ of use cases:
 -   Visualize marine regions alone
 -   Visualize marine regions with associated data paired with analysis
 -   Use marine region geospatial boundaries to query data providers
-    (e.g., OBIS (<http://www.iobis.org>))
+    (e.g., OBIS (<https://www.iobis.org>))
 -   Geocode - get geolocation data from place names
 -   Reverse Geocode - get place names from geolocation data
 
@@ -134,4 +134,4 @@ mr_as_wkt(mr_shp(key = "MarineRegions:eez_iho_union_v2"))
     of Conduct](CONDUCT.md). By participating in this project you agree
     to abide by its terms.
 
-[![rofooter](http://ropensci.org/public_images/github_footer.png)](http://ropensci.org)
+[![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)

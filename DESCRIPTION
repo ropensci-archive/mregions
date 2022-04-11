@@ -1,11 +1,11 @@
 Package: mregions
 Title: Marine Regions Data from 'Marineregions.org'
 Description: Tools to get marine regions data from
-    <http://www.marineregions.org/>. Includes tools to get region metadata,
+    <https://www.marineregions.org/>. Includes tools to get region metadata,
     as well as data in 'GeoJSON' format, as well as Shape files. Use cases
     include using data downstream to visualize 'geospatial' data by marine
     region, mapping variation among different regions, and more.
-Version: 0.1.7.9216
+Version: 0.1.8
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = "aut"),
@@ -15,7 +15,7 @@ Authors@R: c(
     person("Lennert", "Schepers", role = "aut"),
     person("Salvador", "Fernandez", role = c("aut", "cre"), email = "salvador.fernandez@vliz.be")
     )
-URL: https://docs.ropensci.org/mregions, https://github.com/ropensci/mregions
+URL: https://docs.ropensci.org/mregions/, https://github.com/ropensci/mregions
 BugReports: https://github.com/ropensci/mregions/issues
 Encoding: UTF-8
 Imports:

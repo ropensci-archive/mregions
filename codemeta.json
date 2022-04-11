@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "mregions",
-  "description": "Tools to get marine regions data from\n    <http://www.marineregions.org/>. Includes tools to get region metadata,\n    as well as data in 'GeoJSON' format, as well as Shape files. Use cases\n    include using data downstream to visualize 'geospatial' data by marine\n    region, mapping variation among different regions, and more.",
+  "description": "Tools to get marine regions data from\n    <https://www.marineregions.org/>. Includes tools to get region metadata,\n    as well as data in 'GeoJSON' format, as well as Shape files. Use cases\n    include using data downstream to visualize 'geospatial' data by marine\n    region, mapping variation among different regions, and more.",
   "name": "mregions: Marine Regions Data from 'Marineregions.org'",
   "codeRepository": "https://github.com/ropensci/mregions",
   "issueTracker": "https://github.com/ropensci/mregions/issues",
@@ -267,8 +267,8 @@
   "fileSize": "3377.982KB",
   "review": {
     "@type": "Review",
-    "url": "https://github.com/ropensci/onboarding/issues/53",
-    "provider": "http://ropensci.org"
+    "url": "https://github.com/ropensci/software-review/issues/53",
+    "provider": "https://ropensci.org"
   },
   "keywords": "rstats"
 }

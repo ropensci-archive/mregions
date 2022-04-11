@@ -1,3 +1,13 @@
+mregions 0.1.8
+==============
+
+### DEPENDENCY SWITCH
+
+* Switch wellknown dependency to geojson, geojsonio and geojsonsf. Users should not notice the difference
+* Remove function relying on OBIS API as it has changed
+* Change package maintainer Lennert Schepers -> Salvador Fernandez
+
+
 mregions 0.1.6
 ==============
 
@@ -9,7 +19,7 @@ mregions 0.1.6
 mregions 0.1.4
 ==============
 
-<http://marineregions.org/> changed some of their services. Thus,
+<https://marineregions.org/> changed some of their services. Thus,
 we had to change the way some functions work, remove functionality
 of some parameters, and add new functions. We are still in the process
 of making it all work smoothly.

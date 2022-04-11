@@ -178,7 +178,7 @@ pre code {
 <ul>
 <li>Visualize marine regions alone</li>
 <li>Visualize marine regions with associated data paired with analysis</li>
-<li>Use marine region geospatial boundaries to query data providers (e.g., OBIS (<a href="http://www.iobis.org" class="uri">http://www.iobis.org</a>))</li>
+<li>Use marine region geospatial boundaries to query data providers (e.g., OBIS (<a href="https://www.iobis.org" class="uri">https://www.iobis.org</a>))</li>
 <li>Geocode - get geolocation data from place names</li>
 <li>Reverse Geocode - get place names from geolocation data</li>
 </ul>
@@ -195,7 +195,7 @@ install.packages(&quot;leaflet&quot;)</code></pre>
 <h2>Get list of place types</h2>
 <pre class="r"><code>res &lt;- mr_place_types()
 head(res$type)
-#&gt; [1] &quot;Town&quot;                      &quot;Arrondissement&quot;           
+#&gt; [1] &quot;Town&quot;                      &quot;Arrondissement&quot;
 #&gt; [3] &quot;Department&quot;                &quot;Province (administrative)&quot;
 #&gt; [5] &quot;Country&quot;                   &quot;Continent&quot;</code></pre>
 </div>
@@ -211,12 +211,12 @@ head(res1)
 #&gt; 5  5672
 #&gt; 6  5673
 #&gt;                                                                                                                                                                                                            gazetteerSource
-#&gt; 1 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at http://www.marineregions.org/. https://doi.org/10.14284/386
-#&gt; 2 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at http://www.marineregions.org/. https://doi.org/10.14284/386
-#&gt; 3 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at http://www.marineregions.org/. https://doi.org/10.14284/386
-#&gt; 4 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at http://www.marineregions.org/. https://doi.org/10.14284/386
-#&gt; 5 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at http://www.marineregions.org/. https://doi.org/10.14284/386
-#&gt; 6 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at http://www.marineregions.org/. https://doi.org/10.14284/386
+#&gt; 1 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at https://www.marineregions.org/. https://doi.org/10.14284/386
+#&gt; 2 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at https://www.marineregions.org/. https://doi.org/10.14284/386
+#&gt; 3 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at https://www.marineregions.org/. https://doi.org/10.14284/386
+#&gt; 4 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at https://www.marineregions.org/. https://doi.org/10.14284/386
+#&gt; 5 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at https://www.marineregions.org/. https://doi.org/10.14284/386
+#&gt; 6 Flanders Marine Institute (2019). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 11. Available online at https://www.marineregions.org/. https://doi.org/10.14284/386
 #&gt;   placeType latitude longitude minLatitude minLongitude maxLatitude
 #&gt; 1       EEZ 51.46545   2.70504    51.08931      2.23833    51.87611
 #&gt; 2       EEZ 53.61208   4.18654    51.03976      2.53933    55.76500
@@ -250,28 +250,28 @@ head(res1)
 #&gt; # A tibble: 7 x 6
 #&gt;   layer            name_first    name_second id     name                   mrgid
 #&gt;   &lt;chr&gt;            &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;                  &lt;chr&gt;
-#&gt; 1 MarineRegions:i~ MarineRegions iho         iho.1  Rio de La Plata        4325 
-#&gt; 2 MarineRegions:i~ MarineRegions iho         iho.7  Timor Sea              4344 
-#&gt; 3 MarineRegions:i~ MarineRegions iho         iho.18 Gulf of California     4314 
-#&gt; 4 MarineRegions:i~ MarineRegions iho         iho.40 Ionian Sea             3351 
-#&gt; 5 MarineRegions:i~ MarineRegions iho         iho.53 Seto Naikai or Inland~ 4306 
-#&gt; 6 MarineRegions:i~ MarineRegions iho         iho.75 Gulf of Mexico         4288 
+#&gt; 1 MarineRegions:i~ MarineRegions iho         iho.1  Rio de La Plata        4325
+#&gt; 2 MarineRegions:i~ MarineRegions iho         iho.7  Timor Sea              4344
+#&gt; 3 MarineRegions:i~ MarineRegions iho         iho.18 Gulf of California     4314
+#&gt; 4 MarineRegions:i~ MarineRegions iho         iho.40 Ionian Sea             3351
+#&gt; 5 MarineRegions:i~ MarineRegions iho         iho.53 Seto Naikai or Inland~ 4306
+#&gt; 6 MarineRegions:i~ MarineRegions iho         iho.75 Gulf of Mexico         4288
 #&gt; 7 MarineRegions:i~ MarineRegions iho         iho.93 Sea of Okhotsk         4309</code></pre>
 <p>or don’t (but then <code>mr_names_search()</code> call takes longer)</p>
 <pre class="r"><code>mr_names_search(&quot;iho&quot;, q = &quot;Sea&quot;)
 #&gt; # A tibble: 73 x 6
 #&gt;    layer             name_first    name_second id     name                 mrgid
 #&gt;    &lt;chr&gt;             &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;                &lt;chr&gt;
-#&gt;  1 MarineRegions:iho MarineRegions iho         iho.3  Great Australian Bi~ 4276 
-#&gt;  2 MarineRegions:iho MarineRegions iho         iho.4  Tasman Sea           4365 
-#&gt;  3 MarineRegions:iho MarineRegions iho         iho.6  Savu Sea             4343 
-#&gt;  4 MarineRegions:iho MarineRegions iho         iho.7  Timor Sea            4344 
-#&gt;  5 MarineRegions:iho MarineRegions iho         iho.8  Bali Sea             4340 
-#&gt;  6 MarineRegions:iho MarineRegions iho         iho.9  Coral Sea            4364 
-#&gt;  7 MarineRegions:iho MarineRegions iho         iho.10 Flores Sea           4341 
-#&gt;  8 MarineRegions:iho MarineRegions iho         iho.11 Solomon Sea          4361 
-#&gt;  9 MarineRegions:iho MarineRegions iho         iho.12 Arafura Sea          4347 
-#&gt; 10 MarineRegions:iho MarineRegions iho         iho.14 Java Sea             4338 
+#&gt;  1 MarineRegions:iho MarineRegions iho         iho.3  Great Australian Bi~ 4276
+#&gt;  2 MarineRegions:iho MarineRegions iho         iho.4  Tasman Sea           4365
+#&gt;  3 MarineRegions:iho MarineRegions iho         iho.6  Savu Sea             4343
+#&gt;  4 MarineRegions:iho MarineRegions iho         iho.7  Timor Sea            4344
+#&gt;  5 MarineRegions:iho MarineRegions iho         iho.8  Bali Sea             4340
+#&gt;  6 MarineRegions:iho MarineRegions iho         iho.9  Coral Sea            4364
+#&gt;  7 MarineRegions:iho MarineRegions iho         iho.10 Flores Sea           4341
+#&gt;  8 MarineRegions:iho MarineRegions iho         iho.11 Solomon Sea          4361
+#&gt;  9 MarineRegions:iho MarineRegions iho         iho.12 Arafura Sea          4347
+#&gt; 10 MarineRegions:iho MarineRegions iho         iho.14 Java Sea             4338
 #&gt; # ... with 63 more rows</code></pre>
 </div>
 <div id="get-a-region---geojson" class="section level2">

@@ -13,7 +13,7 @@ include using data downstream to visualize 'geospatial' data by marine
 region, mapping variation among different regions, and more.
 }
 \details{
-mregions gets data from \url{http://www.marineregions.org/}
+mregions gets data from \url{https://www.marineregions.org/}
 }
 \section{Use-cases}{
 
@@ -24,7 +24,7 @@ variety of use cases:
 \item Visualize marine regions alone
 \item Visualize marine regions with associated data paired with analysis
 \item Use marine region geospatial boundaries to query data providers
-(e.g., OBIS (\url{http://www.iobis.org}))
+(e.g., OBIS (\url{https://www.iobis.org}))
 \item Geocode - get geolocation data from place names
 \item Reverse Geocode - get place names from geolocation data
 }

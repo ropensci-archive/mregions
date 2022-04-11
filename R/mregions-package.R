@@ -16,7 +16,7 @@
 #' @author Lennert Schepers
 #' @author Salvador Fernandez \email{salvador.fernandez@@vliz.be}
 #' @keywords package
-#' @details mregions gets data from <http://www.marineregions.org/>
+#' @details mregions gets data from <https://www.marineregions.org/>
 #' @importFrom utils URLencode
 #'
 #' @section Use-cases:
@@ -27,7 +27,7 @@
 #' - Visualize marine regions alone
 #' - Visualize marine regions with associated data paired with analysis
 #' - Use marine region geospatial boundaries to query data providers
-#'  (e.g., OBIS (<http://www.iobis.org>))
+#'  (e.g., OBIS (<https://www.iobis.org>))
 #' - Geocode - get geolocation data from place names
 #' - Reverse Geocode - get place names from geolocation data
 #'

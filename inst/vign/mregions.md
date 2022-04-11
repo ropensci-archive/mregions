@@ -14,7 +14,7 @@ data MarineRegions has, which can help in a variety of use cases:
 
 * Visualize marine regions alone
 * Visualize marine regions with associated data paired with analysis
-* Use marine region geospatial boundaries to query data providers (e.g., OBIS (<http://www.iobis.org>))
+* Use marine region geospatial boundaries to query data providers (e.g., OBIS (<https://www.iobis.org>))
 * Geocode - get geolocation data from place names
 * Reverse Geocode - get place names from geolocation data
 
@@ -65,12 +65,12 @@ head(res1)
 #> 5  5672
 #> 6  5673
 #>                                                                                                                                                                                                             gazetteerSource
-#> 1 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
-#> 2 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
-#> 3 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
-#> 4 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
-#> 5 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
-#> 6 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at http://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 1 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at https://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 2 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at https://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 3 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at https://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 4 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at https://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 5 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at https://www.marineregions.org/. http://dx.doi.org/10.14284/242
+#> 6 Flanders Marine Institute (2016). Maritime Boundaries Geodatabase: Maritime Boundaries and Exclusive Economic Zones (200NM), version 9. Available online at https://www.marineregions.org/. http://dx.doi.org/10.14284/242
 #>   placeType latitude longitude minLatitude minLongitude maxLatitude
 #> 1       EEZ 51.46483  2.704458    51.09111     2.238118    51.87000
 #> 2       EEZ 53.61508  4.190675    51.26203     2.539443    55.76500

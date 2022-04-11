@@ -1,6 +1,6 @@
 #vliz_base <- function() "http://geo.vliz.be/geoserver/MarineRegions/ows"
-vliz_base <- function() "http://geo.vliz.be/geoserver/ows"
-mr_base <- function() "http://marineregions.org/rest"
+vliz_base <- function() "https://geo.vliz.be/geoserver/ows"
+mr_base <- function() "https://marineregions.org/rest"
 
 m_GET <- function(url, args, path = NULL, overwrite = NULL, format = "application/xml", ...) {
   if (args$outputFormat == "SHAPE-ZIP") {
