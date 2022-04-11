@@ -47,6 +47,5 @@ test_that("mr_records_by_type fails well", {
   expect_error(mr_records_by_type("town", offset = "asdf"),
                "is not TRUE")
 
-  expect_equal(mr_records_by_type("adfadsf"),
-               list())
+  expect_error(mr_records_by_type("adfadsf"))
 })
