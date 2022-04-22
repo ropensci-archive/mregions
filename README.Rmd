@@ -48,6 +48,7 @@ Get region
 
 ```{r}
 res1 <- mr_geojson(key = "Morocco:dam")
+# test
 ```
 
 Get helper library
