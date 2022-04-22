@@ -26,10 +26,17 @@ data MarineRegions has, which can help in a variety of use cases:
 * Geocode - get geolocation data from place names
 * Reverse Geocode - get place names from geolocation data
 
+## garbage collection
+```{r}
+gc()
+```
+
+
 ## Install
 
 ```{r eval=FALSE}
 install.packages("mregions")
+install.packages("mapview")
 ```
 
 Development version
@@ -40,7 +47,41 @@ devtools::install_github("ropensci/mregions")
 
 ```{r}
 library("mregions")
+# library("mapview")
+library('leaflet')
 ```
+## Gazetteer Record by Name
+
+```{r, results='hide'}
+highseas_info <- mr_geo_code(place = "High Seas")
+highseas <- mr_geojson(key = "MarineRegions:high_seas")
+ecoregions <- mr_geojson(key = "Ecoregions:ecoregions")
+# check class
+class(highseas) # data.frame
+```
+
+Conversion to WKT
+
+```{r}
+ecoregions_wkt <- mr_as_wkt(mr_geojson(key = "Ecoregions:ecoregions", read = TRUE))
+class(ecoregions_wkt)
+```
+
+
+Plot Data
+
+```{r eval=FALSE}
+leaflet() %>%
+  addProviderTiles(provider = 'OpenStreetMap') %>%
+  addGeoJSON(geojson = highseas$features) %>%
+  setView(30, 30, zoom = 5)
+```
+
+
+```{r}
+mapview(ecoregions_wkt)
+```
+
 
 ## GeoJSON
 
@@ -49,6 +90,9 @@ Get region
 ```{r}
 res1 <- mr_geojson(key = "Morocco:dam")
 # test
+highseas <- mr_geo_code(place = "High Seas")
+# check class
+class(highseas)
 ```
 
 Get helper library
