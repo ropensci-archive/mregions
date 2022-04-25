@@ -32,58 +32,45 @@ of use cases:
 
 ``` r
 install.packages("mregions")
-install.packages("mapview")
+install.packages("sf")
 ```
 
 Development version
 
 ``` r
 devtools::install_github("ropensci/mregions")
-devtools::install_github("wch/webshot")
-install.packages("tibble")
 ```
 
 ``` r
 library("mregions")
+library("sf")
+```
 
-# helper libraries
+    ## Linking to GEOS 3.9.1, GDAL 3.2.1, PROJ 7.2.1; sf_use_s2() is TRUE
+
+``` r
+# helper library
 library("leaflet")
-library("tibble")
 ```
 
 ## GeoJSON
-
-<!-- ### Northeast Atlantic -- file too large -->
-<!-- Get Data -->
-<!-- ```{r} -->
-<!-- ne_atlantic <- mr_geojson(key = "World:ne_atlantic") -->
-<!-- ``` -->
-<!-- Plot Data -->
-<!-- ```{r eval=FALSE} -->
-<!-- leaflet() %>% -->
-<!--   addProviderTiles(provider = 'OpenStreetMap') %>% -->
-<!--   addGeoJSON(geojson = ne_atlantic$features) %>% -->
-<!--   fitBounds(-160,-52,160,60) -->
-<!-- ``` -->
 
 ### Marine Ecoregions of the World (MEOW)
 
 Get Data
 
 ``` r
-ecoregions <- mr_geojson(key = "Ecoregions:ecoregions")
-# check number of features (max. = 50)
-length(ecoregions$features)
+ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions")
+# check number of features
+length(ecoregions_geoJSON$features)
 ```
-
-    ## [1] 50
 
 Plot Data
 
 ``` r
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
-  addGeoJSON(geojson = ecoregions$features) %>%
+  addGeoJSON(geojson = ecoregions_geoJSON$features) %>%
   fitBounds(-160,-52,160,60)
 ```
 
@@ -94,7 +81,7 @@ leaflet() %>%
 Get Data
 
 ``` r
-eezboundaries <- mr_geojson(key = "MarineRegions:eez_boundaries")
+eezboundaries_geoJSON <- mr_geojson(key = "MarineRegions:eez_boundaries")
 ```
 
 Plot Data
@@ -102,37 +89,11 @@ Plot Data
 ``` r
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
-  addGeoJSON(geojson = eezboundaries$features) %>%
+  addGeoJSON(geojson = eezboundaries_geoJSON$features) %>%
   fitBounds(-160,-52,160,60)
 ```
 
 ![map2](tools/img/leaf1_eezboundaries.png)
-
-### Morocco Dam
-
-Get Data
-
-``` r
-res1 <- mr_geojson(key = "Morocco:dam")
-# test
-highseas <- mr_geo_code(place = "High Seas")
-# check class
-class(highseas)
-```
-
-    ## [1] "data.frame"
-
-Plot data
-
-``` r
-library('leaflet')
-leaflet() %>%
-  addProviderTiles(provider = 'OpenStreetMap') %>%
-  addGeoJSON(geojson = res1$features) %>%
-  setView(-3.9, 35, zoom = 10)
-```
-
-![map3](tools/img/leaf1.png)
 
 ## Shape
 
@@ -142,7 +103,11 @@ Get region
 
 ``` r
 ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 50)
+# check class
+class(ecoregions_shp)
 ```
+
+    ## [1] "sf"         "tbl_df"     "tbl"        "data.frame"
 
 Plot data
 
@@ -170,31 +135,6 @@ leaflet() %>%
 
 ![map5](tools/img/leaf2_eezboundaries.png)
 
-### Morocco Dam
-
-Get region
-
-``` r
-res2 <- mr_shp(key = "MarineRegions:eez_iho_union_v2", maxFeatures = 5)
-```
-
-Get helper library
-
-``` r
-install.packages("leaflet")
-```
-
-Plot data
-
-``` r
-library('leaflet')
-leaflet() %>%
-  addProviderTiles(provider = 'OpenStreetMap') %>%
-  addPolygons(data = res2)
-```
-
-![map6](tools/img/leaf2.png)
-
 ## Convert to WKT
 
 ### Marine Ecoregions of the World (MEOW)
@@ -202,35 +142,36 @@ leaflet() %>%
 From GeoJSON
 
 ``` r
-ecoregions <- mr_geojson(key = "Ecoregions:ecoregions")
-ecoregions_wkt <- mr_as_wkt(ecoregions, fmt = 2)
+ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions")
+ecoregions_wkt1 <- mr_as_wkt(ecoregions_geoJSON, fmt = 2)
 # check class
-class(ecoregions_wkt)
+class(ecoregions_wkt1) # character
 ```
 
-<!-- From shp object (`SpatialPolygonsDataFrame`) or file, both work -->
-<!-- ```{r eval=FALSE} -->
-<!-- ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 5) -->
-<!-- ecoregions_wkt2 <- mr_as_wkt(ecoregions_shp) -->
-<!-- #> [1] "GEOMETRYCOLLECTION (POLYGON ((-7.25 ... cutoff -->
-<!-- ``` -->
-
-### Morocco Dam
-
-From GeoJSON
+From shp object (using the sf package)
 
 ``` r
-res3 <- mr_geojson(key = "Morocco:dam")
-res3_wkt <- mr_as_wkt(res3, fmt = 5)
-
-#> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
+ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 50)
+ecoregions_shp_geom <- sf::st_geometry(ecoregions_shp)
+ecoregions_wkt2 <- sf::st_as_text(ecoregions_shp_geom)
 ```
 
-<!-- From shp object (`SpatialPolygonsDataFrame`) or file, both work -->
-<!-- ```{r eval=FALSE} -->
-<!-- res3_wkt2 <- mr_as_wkt(mr_shp(key = "MarineRegions:eez_iho_union_v2")) -->
-<!-- #> [1] "GEOMETRYCOLLECTION (POLYGON ((-7.25 ... cutoff -->
-<!-- ``` -->
+More detailed example using the Black Sea Ecoregion only
+
+``` r
+# subset Black Sea Ecoregion
+ecoregions_blacksea <- subset(ecoregions_shp, ecoregions_shp$ecoregion == "Black Sea")
+## check class
+class(ecoregions_blacksea) # sf
+# extract geometry
+ecoregions_blacksea_geom <- sf::st_geometry(ecoregions_blacksea) 
+## check class
+class(ecoregions_blacksea_geom) # sfc
+# convert to wkt from sfc
+ecoregions_blacksea_wkt2 <- sf::st_as_text(ecoregions_blacksea_geom)
+## check class
+class(ecoregions_blacksea_wkt2) # character
+```
 
 ## Gazetteer Record by Name
 
@@ -239,7 +180,7 @@ res3_wkt <- mr_as_wkt(res3, fmt = 5)
 ``` r
 highseas_info <- mr_geo_code(place = "High Seas")
 # check class
-class(highseas) # data.frame
+class(highseas_info) # data.frame
 ```
 
 ### Marine Ecoregions of the World (MEOW)
