@@ -5,6 +5,9 @@ output: github_document
 mregions
 ========
 
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+```
 
 [![cran checks](https://cranchecks.info/badges/worst/mregions)](https://cranchecks.info/pkgs/mregions)
 [![Build Status](https://travis-ci.org/ropensci/mregions.svg)](https://travis-ci.org/ropensci/mregions)
@@ -39,6 +42,8 @@ Development version
 devtools::install_github("ropensci/mregions")
 ```
 
+Load Libraries
+
 ```{r}
 library("mregions")
 library("sf")
@@ -48,19 +53,22 @@ library("leaflet")
 ```
 
 
-## GeoJSON
+## Get GeoJSON
 
-### Marine Ecoregions of the World (MEOW)
+#### example 1: Marine Ecoregions of the World (MEOW)
 
-Get Data
+**Get Data**
 
-```{r, eval=FALSE}
+Keys accessible from the [Flanders Marine Institute (VLIZ) geoserver](http://geo.vliz.be/geoserver/web/).
+
+```{r, eval=TRUE}
 ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions")
-# check number of features
 length(ecoregions_geoJSON$features)
 ```
 
-Plot Data
+**Plot Data**
+
+50 features are loaded, therefore the result differs from the map available on the [geoserver](http://geo.vliz.be/geoserver/Ecoregions/wms?service=WMS&version=1.1.0&request=GetMap&layers=Ecoregions:ecoregions&styles=&bbox=-180.0,-89.9,180.0,86.919&width=768&height=377&srs=EPSG:4326&format=application/openlayers).
 
 ```{r eval=FALSE}
 leaflet() %>%
@@ -72,15 +80,15 @@ leaflet() %>%
 
 
 
-### Maritime Boundaries (EEZ)
+### example 2: Maritime Boundaries (EEZ)
 
-Get Data
+**Get Data**
 
 ```{r}
 eezboundaries_geoJSON <- mr_geojson(key = "MarineRegions:eez_boundaries")
 ```
 
-Plot Data
+**Plot Data**
 
 ```{r eval=FALSE}
 leaflet() %>%
@@ -90,19 +98,18 @@ leaflet() %>%
 ```
 ![map2](tools/img/leaf1_eezboundaries.png)
 
-## Shape
+## Get Shape
 
-### Marine Ecoregions of the World (MEOW)
+#### example 1: Marine Ecoregions of the World (MEOW)
 
-Get region
+**Select region**
 
-```{r}
+```{r, eval=TRUE}
 ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 50)
-# check class
 class(ecoregions_shp)
 ```
 
-Plot data
+**Plot data**
 
 ```{r eval=FALSE}
 leaflet() %>%
@@ -111,15 +118,16 @@ leaflet() %>%
 ```
 
 ![map4](tools/img/leaf2_ecoregions.png)
-### Maritime Boundaries (EEZ)
 
-Get region
+#### example 2: Maritime Boundaries (EEZ)
 
-```{r}
+**Select region**
+
+```{r, eval=FALSE}
 eezboundaries_shp <- mr_shp(key = "MarineRegions:eez_boundaries", maxFeatures = 50)
 ```
 
-Plot data
+**Plot data**
 
 ```{r eval=FALSE}
 leaflet() %>%
@@ -131,59 +139,51 @@ leaflet() %>%
 
 ## Convert to WKT
 
-### Marine Ecoregions of the World (MEOW)
+#### example 1: Marine Ecoregions of the World (MEOW)
 
-From GeoJSON
+**From GeoJSON**
 
-```{r eval=FALSE}
+```{r eval=TRUE}
 ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions")
-ecoregions_wkt1 <- mr_as_wkt(ecoregions_geoJSON, fmt = 2)
-# check class
-class(ecoregions_wkt1) # character
+ecoregions_wkt_fromGeoJSON <- mr_as_wkt(ecoregions_geoJSON, fmt = 2)
+class(ecoregions_wkt_fromGeoJSON)
+ecoregions_wkt_fromGeoJSON[1]
+
 ```
 
-From shp object (using the sf package)
+**From shp object (using the sf package)**
 
 
 ```{r eval=FALSE}
 ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 50)
-ecoregions_shp_geom <- sf::st_geometry(ecoregions_shp)
-ecoregions_wkt2 <- sf::st_as_text(ecoregions_shp_geom)
+ecoregions_shp_geom <- st_geometry(ecoregions_shp)
+ecoregions_wkt_fromshp <- st_as_text(ecoregions_shp_geom)
+ecoregions_wkt_fromshp[1]
 ```
-More detailed example using the Black Sea Ecoregion only
+*More detailed example using the Black Sea Ecoregion only*
 
-```{r, eval=FALSE}
-# subset Black Sea Ecoregion
+```{r, eval=TRUE}
 ecoregions_blacksea <- subset(ecoregions_shp, ecoregions_shp$ecoregion == "Black Sea")
-## check class
-class(ecoregions_blacksea) # sf
-# extract geometry
-ecoregions_blacksea_geom <- sf::st_geometry(ecoregions_blacksea) 
-## check class
-class(ecoregions_blacksea_geom) # sfc
-# convert to wkt from sfc
-ecoregions_blacksea_wkt2 <- sf::st_as_text(ecoregions_blacksea_geom)
-## check class
-class(ecoregions_blacksea_wkt2) # character
+class(ecoregions_blacksea)
+
+ecoregions_blacksea_geom <- st_geometry(ecoregions_blacksea) 
+class(ecoregions_blacksea_geom)
+
+ecoregions_blacksea_wkt <- st_as_text(ecoregions_blacksea_geom)
+class(ecoregions_blacksea_wkt)
+ecoregions_blacksea_wkt
 ```
 
 ## Gazetteer Record by Name
 
-### High Seas
+#### example: High Seas
 
-```{r, results='hide'}
+```{r, eval=TRUE}
 highseas_info <- mr_geo_code(place = "High Seas")
-# check class
-class(highseas_info) # data.frame
+class(highseas_info)
+str(highseas_info)
 ```
 
-### Marine Ecoregions of the World (MEOW)
-
-```{r, results='hide'}
-ecoregions_info <- mr_geo_code(place = "Ecoregions")
-# check class
-class(ecoregions_info) # data.frame
-```
 
 ## Contributors
 
