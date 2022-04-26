@@ -6,7 +6,12 @@ mregions
 ========
 
 ```{r setup, include=FALSE} 
-knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
+knitr::opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+) 
 ```
 
 [![cran checks](https://cranchecks.info/badges/worst/mregions)](https://cranchecks.info/pkgs/mregions)
