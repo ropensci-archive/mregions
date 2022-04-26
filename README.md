@@ -75,7 +75,7 @@ leaflet() %>%
   fitBounds(-160,-52,160,60)
 ```
 
-![map1](tools/img/leaf_ecoregions.png)
+![map1](man/figures/leaf_ecoregions.png)
 
 ### example 2: Maritime Boundaries (EEZ)
 
@@ -94,7 +94,7 @@ leaflet() %>%
   fitBounds(39,11,83,-10)
 ```
 
-![map2](tools/img/leaf_eez.png)
+![map2](man/figures/leaf_eez.png)
 
 ## Get Shape
 
@@ -117,7 +117,7 @@ leaflet() %>%
   fitBounds(-182,-79,178,83)
 ```
 
-![map4](tools/img/leaf_ecoregions.png)
+![map4](man/figures/leaf_ecoregions.png)
 
 #### example 2: Maritime Boundaries (EEZ)
 
@@ -135,7 +135,7 @@ leaflet() %>%
   addPolygons(data = eezboundaries_shp)
 ```
 
-![map5](tools/img/leaf_eez.png)
+![map5](man/figures/leaf_eez.png)
 
 ## Convert to WKT
 
