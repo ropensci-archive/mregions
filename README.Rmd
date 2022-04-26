@@ -5,6 +5,14 @@ output: github_document
 mregions
 ========
 
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(
+  warning = FALSE, 
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+) 
+```
 
 [![cran checks](https://cranchecks.info/badges/worst/mregions)](https://cranchecks.info/pkgs/mregions)
 [![Build Status](https://travis-ci.org/ropensci/mregions.svg)](https://travis-ci.org/ropensci/mregions)
@@ -30,6 +38,7 @@ data MarineRegions has, which can help in a variety of use cases:
 
 ```{r eval=FALSE}
 install.packages("mregions")
+install.packages("sf")
 ```
 
 Development version
@@ -38,78 +47,145 @@ Development version
 devtools::install_github("ropensci/mregions")
 ```
 
+Load Libraries
+
 ```{r}
 library("mregions")
+library("sf")
+
+# helper library
+library("leaflet")
 ```
 
-## GeoJSON
 
-Get region
+## Get GeoJSON
 
-```{r}
-res1 <- mr_geojson(key = "Morocco:dam")
+#### example 1: Marine Ecoregions of the World (MEOW)
+
+**Get Data**
+
+Keys accessible from the [Flanders Marine Institute (VLIZ) geoserver](http://geo.vliz.be/geoserver/web/).
+
+```{r, eval=TRUE}
+ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions", maxFeatures = 250)
+length(ecoregions_geoJSON$features)
 ```
 
-Get helper library
+**Plot Data**
+
 
 ```{r eval=FALSE}
-install.packages("leaflet")
-```
-
-Plot data
-
-```{r eval=FALSE}
-library('leaflet')
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
-  addGeoJSON(geojson = res1$features) %>%
-  setView(-3.9, 35, zoom = 10)
+  addGeoJSON(geojson = ecoregions_geoJSON$features) %>%
+  fitBounds(-160,-52,160,60)
 ```
+![map1](tools/img/leaf_ecoregions.png)
 
-![map](tools/img/leaf1.png)
 
-## Shape
 
-Get region
+### example 2: Maritime Boundaries (EEZ)
+
+**Get Data**
 
 ```{r}
-res2 <- mr_shp(key = "MarineRegions:eez_iho_union_v2", maxFeatures = 5)
+eezboundaries_geoJSON <- mr_geojson(key = "MarineRegions:eez", maxFeatures = 1)
 ```
 
-Get helper library
+**Plot Data**
 
 ```{r eval=FALSE}
-install.packages("leaflet")
-```
-
-Plot data
-
-```{r eval=FALSE}
-library('leaflet')
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
-  addPolygons(data = res2)
+  addGeoJSON(geojson = eezboundaries_geoJSON$features) %>%
+  fitBounds(39,11,83,-10)
+```
+![map2](tools/img/leaf_eez.png)
+
+## Get Shape
+
+#### example 1: Marine Ecoregions of the World (MEOW)
+
+**Select region**
+
+```{r, eval=TRUE}
+ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 250)
+class(ecoregions_shp)
 ```
 
-![map2](tools/img/leaf2.png)
+**Plot data**
+
+```{r eval=FALSE}
+leaflet() %>%
+  addProviderTiles(provider = 'OpenStreetMap') %>%
+  addPolygons(data = ecoregions_shp)%>%
+  fitBounds(-182,-79,178,83)
+```
+
+![map4](tools/img/leaf_ecoregions.png)
+
+#### example 2: Maritime Boundaries (EEZ)
+
+**Select region**
+
+```{r, eval=FALSE}
+eezboundaries_shp <- mr_shp(key = "MarineRegions:eez", maxFeatures = 1)
+```
+
+**Plot data**
+
+```{r eval=FALSE}
+leaflet() %>%
+  addProviderTiles(provider = 'OpenStreetMap') %>%
+  addPolygons(data = eezboundaries_shp)
+```
+
+![map5](tools/img/leaf_eez.png)
 
 ## Convert to WKT
 
-From geojson
+#### example 1: Marine Ecoregions of the World (MEOW)
 
-```{r eval=FALSE}
-res3 <- mr_geojson(key = "Morocco:dam")
-mr_as_wkt(res3, fmt = 5)
+**From GeoJSON**
 
-#> [1] "MULTIPOLYGON (((41.573732 -1.659444, 45.891882 ... cutoff
+```{r eval=TRUE}
+ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions", maxFeatures = 250)
+ecoregions_wkt_fromGeoJSON <- mr_as_wkt(ecoregions_geoJSON, fmt = 2)
+class(ecoregions_wkt_fromGeoJSON)
+ecoregions_wkt_fromGeoJSON[1]
 ```
 
-From shp object (`SpatialPolygonsDataFrame`) or file, both work
+**From shp object (using the sf package)**
 
-```{r eval=FALSE}
-mr_as_wkt(mr_shp(key = "MarineRegions:eez_iho_union_v2"))
 
-#> [1] "GEOMETRYCOLLECTION (POLYGON ((-7.25 ... cutoff
+```{r eval=TRUE}
+ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 250)
+ecoregions_shp_geom <- st_geometry(ecoregions_shp)
+ecoregions_wkt_fromshp <- st_as_text(ecoregions_shp_geom)
+ecoregions_wkt_fromshp[1]
+```
+*More detailed example using the Black Sea Ecoregion only*
+
+```{r, eval=TRUE}
+ecoregions_blacksea <- subset(ecoregions_shp, ecoregions_shp$ecoregion == "Black Sea")
+class(ecoregions_blacksea)
+
+ecoregions_blacksea_geom <- st_geometry(ecoregions_blacksea) 
+class(ecoregions_blacksea_geom)
+
+ecoregions_blacksea_wkt <- st_as_text(ecoregions_blacksea_geom)
+class(ecoregions_blacksea_wkt)
+ecoregions_blacksea_wkt
+```
+
+## Gazetteer Record by Name
+
+#### example: High Seas
+
+```{r, eval=TRUE}
+highseas_info <- mr_geo_code(place = "High Seas")
+class(highseas_info)
+str(highseas_info)
 ```
 
 
