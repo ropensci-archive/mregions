@@ -67,13 +67,12 @@ library("leaflet")
 Keys accessible from the [Flanders Marine Institute (VLIZ) geoserver](http://geo.vliz.be/geoserver/web/).
 
 ```{r, eval=TRUE}
-ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions")
+ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions", maxFeatures = 250)
 length(ecoregions_geoJSON$features)
 ```
 
 **Plot Data**
 
-50 features are loaded, therefore the result differs from the map available on the [geoserver](http://geo.vliz.be/geoserver/Ecoregions/wms?service=WMS&version=1.1.0&request=GetMap&layers=Ecoregions:ecoregions&styles=&bbox=-180.0,-89.9,180.0,86.919&width=768&height=377&srs=EPSG:4326&format=application/openlayers).
 
 ```{r eval=FALSE}
 leaflet() %>%
@@ -81,7 +80,7 @@ leaflet() %>%
   addGeoJSON(geojson = ecoregions_geoJSON$features) %>%
   fitBounds(-160,-52,160,60)
 ```
-![map1](tools/img/leaf1_ecoregions.png)
+![map1](tools/img/leaf_ecoregions.png)
 
 
 
@@ -90,7 +89,7 @@ leaflet() %>%
 **Get Data**
 
 ```{r}
-eezboundaries_geoJSON <- mr_geojson(key = "MarineRegions:eez_boundaries")
+eezboundaries_geoJSON <- mr_geojson(key = "MarineRegions:eez", maxFeatures = 1)
 ```
 
 **Plot Data**
@@ -99,9 +98,9 @@ eezboundaries_geoJSON <- mr_geojson(key = "MarineRegions:eez_boundaries")
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
   addGeoJSON(geojson = eezboundaries_geoJSON$features) %>%
-  fitBounds(-160,-52,160,60)
+  fitBounds(39,11,83,-10)
 ```
-![map2](tools/img/leaf1_eezboundaries.png)
+![map2](tools/img/leaf_eez.png)
 
 ## Get Shape
 
@@ -110,7 +109,7 @@ leaflet() %>%
 **Select region**
 
 ```{r, eval=TRUE}
-ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 50)
+ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 250)
 class(ecoregions_shp)
 ```
 
@@ -119,17 +118,18 @@ class(ecoregions_shp)
 ```{r eval=FALSE}
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
-  addPolygons(data = ecoregions_shp)
+  addPolygons(data = ecoregions_shp)%>%
+  fitBounds(-182,-79,178,83)
 ```
 
-![map4](tools/img/leaf2_ecoregions.png)
+![map4](tools/img/leaf_ecoregions.png)
 
 #### example 2: Maritime Boundaries (EEZ)
 
 **Select region**
 
 ```{r, eval=FALSE}
-eezboundaries_shp <- mr_shp(key = "MarineRegions:eez_boundaries", maxFeatures = 50)
+eezboundaries_shp <- mr_shp(key = "MarineRegions:eez", maxFeatures = 1)
 ```
 
 **Plot data**
@@ -140,7 +140,7 @@ leaflet() %>%
   addPolygons(data = eezboundaries_shp)
 ```
 
-![map5](tools/img/leaf2_eezboundaries.png)
+![map5](tools/img/leaf_eez.png)
 
 ## Convert to WKT
 
@@ -149,18 +149,17 @@ leaflet() %>%
 **From GeoJSON**
 
 ```{r eval=TRUE}
-ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions")
+ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions", maxFeatures = 250)
 ecoregions_wkt_fromGeoJSON <- mr_as_wkt(ecoregions_geoJSON, fmt = 2)
 class(ecoregions_wkt_fromGeoJSON)
 ecoregions_wkt_fromGeoJSON[1]
-
 ```
 
 **From shp object (using the sf package)**
 
 
-```{r eval=FALSE}
-ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 50)
+```{r eval=TRUE}
+ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 250)
 ecoregions_shp_geom <- st_geometry(ecoregions_shp)
 ecoregions_wkt_fromshp <- st_as_text(ecoregions_shp_geom)
 ecoregions_wkt_fromshp[1]

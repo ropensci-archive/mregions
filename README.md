@@ -61,16 +61,12 @@ Keys accessible from the [Flanders Marine Institute (VLIZ)
 geoserver](http://geo.vliz.be/geoserver/web/).
 
 ``` r
-ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions")
+ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions", maxFeatures = 250)
 length(ecoregions_geoJSON$features)
-#> [1] 50
+#> [1] 232
 ```
 
 **Plot Data**
-
-50 features are loaded, therefore the result differs from the map
-available on the
-[geoserver](http://geo.vliz.be/geoserver/Ecoregions/wms?service=WMS&version=1.1.0&request=GetMap&layers=Ecoregions:ecoregions&styles=&bbox=-180.0,-89.9,180.0,86.919&width=768&height=377&srs=EPSG:4326&format=application/openlayers).
 
 ``` r
 leaflet() %>%
@@ -79,14 +75,14 @@ leaflet() %>%
   fitBounds(-160,-52,160,60)
 ```
 
-![map1](tools/img/leaf1_ecoregions.png)
+![map1](tools/img/leaf_ecoregions.png)
 
 ### example 2: Maritime Boundaries (EEZ)
 
 **Get Data**
 
 ``` r
-eezboundaries_geoJSON <- mr_geojson(key = "MarineRegions:eez_boundaries")
+eezboundaries_geoJSON <- mr_geojson(key = "MarineRegions:eez", maxFeatures = 1)
 ```
 
 **Plot Data**
@@ -95,10 +91,10 @@ eezboundaries_geoJSON <- mr_geojson(key = "MarineRegions:eez_boundaries")
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
   addGeoJSON(geojson = eezboundaries_geoJSON$features) %>%
-  fitBounds(-160,-52,160,60)
+  fitBounds(39,11,83,-10)
 ```
 
-![map2](tools/img/leaf1_eezboundaries.png)
+![map2](tools/img/leaf_eez.png)
 
 ## Get Shape
 
@@ -107,7 +103,7 @@ leaflet() %>%
 **Select region**
 
 ``` r
-ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 50)
+ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 250)
 class(ecoregions_shp)
 #> [1] "sf"         "tbl_df"     "tbl"        "data.frame"
 ```
@@ -117,17 +113,18 @@ class(ecoregions_shp)
 ``` r
 leaflet() %>%
   addProviderTiles(provider = 'OpenStreetMap') %>%
-  addPolygons(data = ecoregions_shp)
+  addPolygons(data = ecoregions_shp)%>%
+  fitBounds(-182,-79,178,83)
 ```
 
-![map4](tools/img/leaf2_ecoregions.png)
+![map4](tools/img/leaf_ecoregions.png)
 
 #### example 2: Maritime Boundaries (EEZ)
 
 **Select region**
 
 ``` r
-eezboundaries_shp <- mr_shp(key = "MarineRegions:eez_boundaries", maxFeatures = 50)
+eezboundaries_shp <- mr_shp(key = "MarineRegions:eez", maxFeatures = 1)
 ```
 
 **Plot data**
@@ -138,7 +135,7 @@ leaflet() %>%
   addPolygons(data = eezboundaries_shp)
 ```
 
-![map5](tools/img/leaf2_eezboundaries.png)
+![map5](tools/img/leaf_eez.png)
 
 ## Convert to WKT
 
@@ -147,7 +144,7 @@ leaflet() %>%
 **From GeoJSON**
 
 ``` r
-ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions")
+ecoregions_geoJSON <- mr_geojson(key = "Ecoregions:ecoregions", maxFeatures = 250)
 ecoregions_wkt_fromGeoJSON <- mr_as_wkt(ecoregions_geoJSON, fmt = 2)
 class(ecoregions_wkt_fromGeoJSON)
 #> [1] "character"
@@ -158,10 +155,11 @@ ecoregions_wkt_fromGeoJSON[1]
 **From shp object (using the sf package)**
 
 ``` r
-ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 50)
+ecoregions_shp <- mr_shp(key = "Ecoregions:ecoregions", maxFeatures = 250)
 ecoregions_shp_geom <- st_geometry(ecoregions_shp)
 ecoregions_wkt_fromshp <- st_as_text(ecoregions_shp_geom)
 ecoregions_wkt_fromshp[1]
+#> [1] "MULTIPOLYGON (((170.9169 -49.6906, 171.563 -50.1232, 171.798 -50.47261, 172.0302 -50.76008, 172.1817 -51.0473, 172.3036 -51.23506, 172.3531 -51.3837, 172.3874 -51.44183, 172.4355 -51.72388, 172.5552 -52.19995, 172.5706 -52.56945, 172.4755 -53.37392, 172.3147 -53.8679, 172.1341 -54.13821, 171.8737 -54.58598, 171.7118 -54.77017, 171.5926 -54.94858, 171.358 -55.16183, 170.9178 -55.42768, 170.7718 -55.53547, 170.6138 -55.61074, 170.4823 -55.68208, 170.3887 -55.71538, 170.2292 -55.7576, 169.8963 -55.81512, 169.2905 -55.93462, 169.1551 -55.942, 169.0643 -55.93962, 168.9983 -55.93158, 168.7618 -55.91483, 168.5524 -55.89051, 168.4819 -55.87975, 167.844 -55.68949, 167.7536 -55.6715, 167.5815 -55.5565, 167.2593 -55.38606, 166.9435 -55.13026, 166.6638 -54.93936, 166.1577 -54.29278, 168.7368 -49.64412, 170.2105 -49.67554, 170.9169 -49.6906), (169.1247 -52.57611, 169.1617 -52.57805, 169.1855 -52.57696, 169.2262 -52.56528, 169.2382 -52.55431, 169.2362 -52.53904, 169.2169 -52.52834, 169.2097 -52.48584, 169.2094 -52.46579, 169.2123 -52.45819, 169.208 -52.44416, 169.1741 -52.44332, 169.1636 -52.44583, 169.0033 -52.50417, 169.0001 -52.51889, 169.0078 -52.53612, 169.0172 -52.54806, 169.0283 -52.55916, 169.113 -52.57417, 169.1247 -52.57611)))"
 ```
 
 *More detailed example using the Black Sea Ecoregion only*
