@@ -2,7 +2,7 @@
 # mregions
 
 [![cran
-checks](https://cranchecks.info/badges/worst/mregions)](https://cranchecks.info/pkgs/mregions)
+checks](https://badges.cranchecks.info/worst/mregions.svg)](https://cran.r-project.org/web/checks/check_results_mregions.html)
 [![Build
 Status](https://travis-ci.org/ropensci/mregions.svg)](https://travis-ci.org/ropensci/mregions)
 [![codecov.io](https://codecov.io/github/ropensci/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mregions?branch=master)
