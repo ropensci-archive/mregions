@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.3 (2020-02-29)",
+  "runtimePlatform": "R version 4.3.2 (2023-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -93,26 +93,12 @@
     {
       "@type": "SoftwareApplication",
       "identifier": "rgdal",
-      "name": "rgdal",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rgdal"
+      "name": "rgdal"
     },
     {
       "@type": "SoftwareApplication",
       "identifier": "rgeos",
-      "name": "rgeos",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=rgeos"
+      "name": "rgeos"
     },
     {
       "@type": "SoftwareApplication",
@@ -281,8 +267,8 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "5450.728KB",
-  "releaseNotes": "https://github.com/ropensci/mregions/blob/master/NEWS.md",
+  "fileSize": "3630.096KB",
+  "releaseNotes": "https://github.com/ropensci/mregions/blob/main/NEWS.md",
   "readme": "https://github.com/ropensci/mregions/blob/master/README.md",
   "contIntegration": ["https://travis-ci.org/ropensci/mregions", "https://codecov.io/github/ropensci/mregions?branch=master"],
   "review": {
@@ -290,5 +276,5 @@
     "url": "https://github.com/ropensci/software-review/issues/53",
     "provider": "https://ropensci.org"
   },
-  "keywords": ["rstats", "r", "marine", "spatial", "r-package", "peer-reviewed"]
+  "keywords": ["rstats", "r", "marine", "spatial", "r-package", "peer-reviewed", "jerico-relevant"]
 }
