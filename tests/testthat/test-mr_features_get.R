@@ -15,22 +15,22 @@ test_that("mr_features_get - KML", {
 })
 
 # FIXME - shape files not working right now
-# test_that("mr_features_get - zip", {
-#   skip_on_cran()
-#   file <- tempfile(fileext = ".zip")
-#   tdir <- tempdir()
-#   aa <- mr_features_get(type = "MarineRegions:eez", featureID = "eez.3", format = "SHAPE-ZIP", path = file)
-#   expect_is(aa, "character")
-#   expect_true(file.exists(file))
-#
-#   unzip(aa, exdir = tdir)
-#   lfiles <- list.files(tdir)
-#
-#   expect_true(any(grepl("eez", lfiles)))
-#
-#   # cleanup
-#   unlink(file)
-# })
+test_that("mr_features_get - zip", {
+  skip_on_cran()
+  file <- tempfile(fileext = ".zip")
+  tdir <- tempdir()
+  aa <- mr_features_get(type = "MarineRegions:eez", featureID = "eez.3", format = "SHAPE-ZIP", path = file)
+  expect_is(aa, "character")
+  expect_true(file.exists(file))
+
+  unzip(aa, exdir = tdir)
+  lfiles <- list.files(tdir)
+
+  expect_true(any(grepl("eez", lfiles)))
+
+  # cleanup
+  unlink(file)
+})
 
 test_that("mr_features_get - gml32", {
   skip_on_cran()

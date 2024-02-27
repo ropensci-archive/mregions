@@ -32,8 +32,6 @@
 #' cached separately. You can clear the cache by going to the directory at
 #' `rappdirs::user_cache_dir("mregions")` and deleting the files.
 #'
-#' We use `stringsAsFactors = FALSE` inside of `rgdal::readOGR()`
-#' so that character variables aren't converted to factors.
 #'
 #' @note the parameter `name` is temporarily not useable. MarineRegions
 #' updated their web services, and we haven't sorted out yet how to make
@@ -107,7 +105,7 @@ mr_shp <- function(key = NULL, name = NULL, maxFeatures = 500,
   }
 
   if (read) {
-    check4pkg("rgdal")
+    # check4pkg("rgdal")
     nm <- basename(sub("\\.zip", "", file))
     if (nm %in% ls(envir = mr_shp_env)) {
       # use cached version in an environment

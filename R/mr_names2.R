@@ -28,7 +28,7 @@ mr_names <- function(layer, ...) {
                typeName = layer, version = "2.0.0",
                propertyName = prop_name_map[[layer]])
   res <- getter("http://geo.vliz.be/geoserver/MarineRegions/wfs",
-                args, format = "text/xml; subtype=gml/3.2", ...)
+                args, format = "application/gml+xml;version=3.2", ...)
   xml <- xml2::read_xml(res)
   xml2::xml_ns_strip(xml)
   tibble::as_tibble(dtdf(

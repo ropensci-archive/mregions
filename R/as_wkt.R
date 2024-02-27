@@ -49,19 +49,18 @@ mr_as_wkt.mr_geojson <- function(x, fmt = 16, ...) {
 }
 
 #' @export
-#' @importFrom sp spTransform
 mr_as_wkt.SpatialPolygonsDataFrame <- function(x, fmt = 16, ...) {
-  check4pkg("rgdal")
-  check4pkg("rgeos")
-  shp <- .ensureIsLonlat(x)
-  rgeos::writeWKT(shp)
+  sf::st_as_text(sf::st_as_sfc(x))
+}
+
+#' @export
+mr_as_wkt.sf <- function(x, fmt = 16, ...) {
+  sf::st_as_text(sf::st_as_sfc(x))
 }
 
 #' @export
 mr_as_wkt.mr_shp_file <- function(x, fmt = 16, ...) {
-  check4pkg("rgdal")
-  check4pkg("rgeos")
-  rgeos::writeWKT(read_shp(x))
+  sf::st_as_text(read_shp(x))
 }
 
 .ensureIsLonlat <- function(x) {

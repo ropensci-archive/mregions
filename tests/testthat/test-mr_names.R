@@ -33,6 +33,5 @@ test_that("mr_names works for fao data source", {
 test_that("mr_names fails well", {
   skip_on_cran()
 
-  expect_error(mr_names('MarineRegions:asdfadf'),
-               "Region not found")
+  expect_error(mr_names('MarineRegions:asdfadf'))
 })

@@ -55,9 +55,6 @@ parameter. That is to say, you can query the same region name, but
 with different \code{maxFeatures} parameter values, and they will get
 cached separately. You can clear the cache by going to the directory at
 \code{rappdirs::user_cache_dir("mregions")} and deleting the files.
-
-We use \code{stringsAsFactors = FALSE} inside of \code{rgdal::readOGR()}
-so that character variables aren't converted to factors.
 }
 \note{
 the parameter \code{name} is temporarily not useable. MarineRegions
