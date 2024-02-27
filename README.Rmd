@@ -14,10 +14,10 @@ knitr::opts_chunk$set(
 ) 
 ```
 
-[![cran
-checks](https://badges.cranchecks.info/worst/mregions.svg)](https://cran.r-project.org/web/checks/check_results_mregions.html)
-[![Build Status](https://travis-ci.org/ropensci/mregions.svg)](https://travis-ci.org/ropensci/mregions)
-[![codecov.io](https://codecov.io/github/ropensci/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mregions?branch=master)
+<!-- [![cran -->
+<!-- checks](https://badges.cranchecks.info/worst/mregions.svg)](https://cran.r-project.org/web/checks/check_results_mregions.html) -->
+[![Build Status](https://app.travis-ci.com/ropensci/mregions.svg)](https://app.travis-ci.com/ropensci/mregions)
+[![codecov.io](https://codecov.io/github/ropensci/mregions/coverage.svg?branch=master)](https://app.codecov.io/github/ropensci/mregions?branch=master)
 [![rstudio mirror downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/r-hub/cranlogs.app)
 [![cran version](http://www.r-pkg.org/badges/version/mregions)](https://cran.r-project.org/package=mregions)
 [![](https://badges.ropensci.org/53_status.svg)](https://github.com/ropensci/software-review/issues/53)

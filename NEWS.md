@@ -1,9 +1,18 @@
+mregions 0.1.9
+==============
+
+### DEPENDENCY SWITCH
+
+* Remove dependency on rgeos and rgdal as they were archived on CRAN. Users 
+should not notice the difference
+
 mregions 0.1.8
 ==============
 
 ### DEPENDENCY SWITCH
 
-* Switch wellknown dependency to geojson, geojsonio and geojsonsf. Users should not notice the difference
+* Switch wellknown dependency to geojson, geojsonio and geojsonsf. Users should 
+not notice the difference
 * Remove function relying on OBIS API as it has changed
 * Change package maintainer Lennert Schepers -> Salvador Fernandez
 

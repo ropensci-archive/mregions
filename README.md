@@ -1,11 +1,12 @@
 
 # mregions
 
-[![cran
-checks](https://badges.cranchecks.info/worst/mregions.svg)](https://cran.r-project.org/web/checks/check_results_mregions.html)
+<!-- [![cran -->
+<!-- checks](https://badges.cranchecks.info/worst/mregions.svg)](https://cran.r-project.org/web/checks/check_results_mregions.html) -->
+
 [![Build
-Status](https://travis-ci.org/ropensci/mregions.svg)](https://travis-ci.org/ropensci/mregions)
-[![codecov.io](https://codecov.io/github/ropensci/mregions/coverage.svg?branch=master)](https://codecov.io/github/ropensci/mregions?branch=master)
+Status](https://app.travis-ci.com/ropensci/mregions.svg)](https://app.travis-ci.com/ropensci/mregions)
+[![codecov.io](https://codecov.io/github/ropensci/mregions/coverage.svg?branch=master)](https://app.codecov.io/github/ropensci/mregions?branch=master)
 [![rstudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/mregions?color=FAB657)](https://github.com/r-hub/cranlogs.app)
 [![cran
@@ -21,12 +22,12 @@ geoserver](http://geo.vliz.be/geoserver/web/)
 access to all of the data MarineRegions has, which can help in a variety
 of use cases:
 
--   Visualize marine regions alone
--   Visualize marine regions with associated data paired with analysis
--   Use marine region geospatial boundaries to query data providers
-    (e.g., OBIS (<https://www.obis.org>))
--   Geocode - get geolocation data from place names
--   Reverse Geocode - get place names from geolocation data
+- Visualize marine regions alone
+- Visualize marine regions with associated data paired with analysis
+- Use marine region geospatial boundaries to query data providers (e.g.,
+  OBIS (<https://www.obis.org>))
+- Geocode - get geolocation data from place names
+- Reverse Geocode - get place names from geolocation data
 
 ## Install
 
@@ -75,7 +76,10 @@ leaflet() %>%
   fitBounds(-160,-52,160,60)
 ```
 
-![map1](man/figures/leaf_ecoregions.png)
+<figure>
+<img src="man/figures/leaf_ecoregions.png" alt="map1" />
+<figcaption aria-hidden="true">map1</figcaption>
+</figure>
 
 ### example 2: Maritime Boundaries (EEZ)
 
@@ -94,7 +98,10 @@ leaflet() %>%
   fitBounds(39,11,83,-10)
 ```
 
-![map2](man/figures/leaf_eez.png)
+<figure>
+<img src="man/figures/leaf_eez.png" alt="map2" />
+<figcaption aria-hidden="true">map2</figcaption>
+</figure>
 
 ## Get Shape
 
@@ -117,7 +124,10 @@ leaflet() %>%
   fitBounds(-182,-79,178,83)
 ```
 
-![map4](man/figures/leaf_ecoregions.png)
+<figure>
+<img src="man/figures/leaf_ecoregions.png" alt="map4" />
+<figcaption aria-hidden="true">map4</figcaption>
+</figure>
 
 #### example 2: Maritime Boundaries (EEZ)
 
@@ -135,7 +145,10 @@ leaflet() %>%
   addPolygons(data = eezboundaries_shp)
 ```
 
-![map5](man/figures/leaf_eez.png)
+<figure>
+<img src="man/figures/leaf_eez.png" alt="map5" />
+<figcaption aria-hidden="true">map5</figcaption>
+</figure>
 
 ## Convert to WKT
 
@@ -208,23 +221,22 @@ str(highseas_info)
 
 ## Contributors
 
--   [Scott Chamberlain](https://github.com/sckott)
--   [Francois Michonneau](https://github.com/fmichonneau)
--   [Pieter Provoost](https://github.com/pieterprovoost)
--   [Michael Sumner](https://github.com/mdsumner)
--   [Lennert Schepers](https://github.com/LennertSchepers)
--   [Salvador Fernandez](https://github.com/salvafern)
+- [Scott Chamberlain](https://github.com/sckott)
+- [Francois Michonneau](https://github.com/fmichonneau)
+- [Pieter Provoost](https://github.com/pieterprovoost)
+- [Michael Sumner](https://github.com/mdsumner)
+- [Lennert Schepers](https://github.com/LennertSchepers)
+- [Salvador Fernandez](https://github.com/salvafern)
 
 ## Meta
 
--   Please [report any issues or
-    bugs](https://github.com/ropensci/mregions/issues).
--   License: MIT
--   Get citation information for `mregions` in R doing
-    `citation(package = 'mregions')`
--   Please note that this project is released with a [Contributor Code
-    of
-    Conduct](https://github.com/ropensci/mregions/blob/master/CONDUCT.md).
-    By participating in this project you agree to abide by its terms.
+- Please [report any issues or
+  bugs](https://github.com/ropensci/mregions/issues).
+- License: MIT
+- Get citation information for `mregions` in R doing
+  `citation(package = 'mregions')`
+- Please note that this project is released with a [Contributor Code of
+  Conduct](https://github.com/ropensci/mregions/blob/master/CONDUCT.md).
+  By participating in this project you agree to abide by its terms.
 
 [![rofooter](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)

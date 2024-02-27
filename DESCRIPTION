@@ -5,7 +5,7 @@ Description: Tools to get marine regions data from
     as well as data in 'GeoJSON' format, as well as Shape files. Use cases
     include using data downstream to visualize 'geospatial' data by marine
     region, mapping variation among different regions, and more.
-Version: 0.1.8
+Version: 0.1.9
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = "aut"),
